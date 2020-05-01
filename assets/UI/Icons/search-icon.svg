@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>UI/Icons/search-icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Resources:-Newsroom-Page---Desktop" transform="translate(-1173.000000, -578.000000)">
+            <g id="Filter---search-bar" transform="translate(0.000000, 553.000000)">
+                <g id="Icons/social-icon-blog" transform="translate(1173.000000, 25.000000)">
+                    <circle id="Oval" fill="#F0F6F6" fill-rule="evenodd" cx="15" cy="15" r="15"></circle>
+                    <g id="Icons/search-icon" transform="translate(7.000000, 7.000000)" stroke="#3D44BE" stroke-linecap="round" stroke-width="2">
+                        <path d="M9.44444444,11.7777778 C12.2058682,11.7777778 14.4444444,9.53920153 14.4444444,6.77777778 C14.4444444,4.01635403 12.2058682,1.77777778 9.44444444,1.77777778 C6.6830207,1.77777778 4.44444444,4.01635403 4.44444444,6.77777778 C4.44444444,9.53920153 6.6830207,11.7777778 9.44444444,11.7777778 Z M9.44444444,11.7777778 L9.44444444,17.7777778" id="Combined-Shape" transform="translate(9.444444, 9.777778) rotate(-45.000000) translate(-9.444444, -9.777778) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

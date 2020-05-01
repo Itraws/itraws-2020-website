@@ -1,0 +1,349 @@
+// The layout file contains everything that takes part in laying out the site or application.
+// This file could have stylesheets for the main parts of the site
+// (header, footer, navigation, sidebar…),
+//  the grid system or even CSS styles for all the forms.
+//
+
+// -----------------------------------------------------------------------------
+// Floating svg properties
+// -----------------------------------------------------------------------------
+.pattern {
+  position: absolute;
+
+  &--circle {
+    width: 66.5rem;
+    height: 60rem;
+    opacity: 10%;
+    background: url(../img/pattern-circle-dots.svg);
+    background-repeat: no-repeat;
+    background-position: top right;
+    z-index: -3;
+    top: -3vh;
+    right: -5vw;
+    bottom: 0;
+    left: auto;
+  }
+
+  &--circle-alt {
+    width: 56rem;
+    height: auto;
+    opacity: 10%;
+    background: url(../img/pattern-circle-dots.svg);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    z-index: -3;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+  }
+
+  &--dot-vertical {
+    width: 12rem;
+    height: auto;
+    background: url(../img/pattern-dot-vertical.svg);
+    background-repeat: no-repeat;
+    background-position: top right;
+    opacity: 30%;
+    z-index: -3;
+    top: 1vh;
+    right: 3vw;
+    bottom: 0;
+    left: auto;
+  }
+
+  &--dot-rectangle {
+    width: 12rem;
+    height: auto;
+    background: url(../img/pattern-dot-rectangle.svg);
+    background-repeat: no-repeat;
+    background-position: top left;
+    opacity: 1;
+    z-index: -1;
+    top: 5.5rem;
+    right: 0;
+    bottom: 0;
+    left: 21.5rem;
+  }
+}
+
+.shape {
+  &-red {
+    @include shape-image('red', 7.5);
+    top: 14rem;
+    right: 10rem;
+    bottom: 0;
+    left: auto;
+  }
+
+  &-red--alt {
+    @include shape-image('red', 3.886);
+    top: 9rem;
+    right: 19rem;
+    bottom: 0;
+    left: auto;
+  }
+
+  &-red--2 {
+    @include shape-image('red-2', 5.25);
+    top: 26.33vh;
+    right: auto;
+    bottom: 0;
+    left: 29.652vw;
+  }
+
+  &-red--3 {
+    @include shape-image('red-3', 4.625);
+    top: 18rem;
+    right: auto;
+    bottom: 0;
+    left: 4rem;
+  }
+
+  &-blue {
+    @include shape-image('blue', 4.625);
+    top: 30rem;
+    right: 11rem;
+    bottom: 0;
+    left: auto;
+  }
+
+  &-blue--alt {
+    @include shape-image('blue', 2.438);
+    top: 22rem;
+    right: 11rem;
+    bottom: 0;
+    left: auto;
+  }
+
+  &-blue--2 {
+    @include shape-image('blue-2', 4.625);
+    top: 33.66vh;
+    right: auto;
+    bottom: 0;
+    left: 44.236vw;
+  }
+
+  &-white {
+    @include shape-image('white', 5.063);
+    top: 4rem;
+    right: auto;
+    bottom: 0;
+    left: 28rem;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Header properties
+// -----------------------------------------------------------------------------
+.header-bg {
+  background: url(../img/mountain-graphic.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+}
+
+.header {
+  box-sizing: border-box;
+  background-color: colors(coconut);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  min-height: 0;
+  position: fixed;
+
+  .header__content {
+    display: flex;
+    overflow: visible;
+    align-items: center;
+    justify-content: space-between;
+    padding: spacing-multiply($DEFAULT-SPACING, 5rem) 0
+      spacing-multiply($DEFAULT-SPACING, 10rem);
+  }
+
+  .header-menu {
+    display: block;
+    height: auto;
+    padding-top: 0;
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+    padding-left: 0;
+    left: 0;
+    right: 0;
+    background-color: colors(coconut);
+    list-style-type: none;
+    margin: 0;
+
+    .header-menu__item {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0;
+      text-transform: uppercase;
+      min-height: 0;
+      margin-left: 3.75em;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      a {
+        display: block;
+        max-width: none;
+        color: colors(rich-black);
+        text-decoration: none;
+        transition: color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+
+        &:hover {
+          color: colors(ocean-blue);
+        }
+      }
+    }
+  }
+}
+
+.hero {
+  width: 100%;
+  position: relative;
+
+  &--homePage {
+    max-width: 19.375rem;
+  }
+
+  &--altPage {
+    max-width: 29.845rem;
+  }
+
+  &--blogPage {
+    max-width: 40rem;
+
+    .blog-headline-container {
+      a {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+    }
+    .blog-hero-excerp {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .hero__headline {
+    color: colors(rich-black);
+  }
+
+  .hero__text {
+    color: colors(rich-black-75);
+    margin-bottom: spacing-multiply($DEFAULT-SPACING, 5rem);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Logo properties
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Navigation properties
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// About Page properties
+// -----------------------------------------------------------------------------
+.about-section {
+  &:first-of-type {
+    max-width: 32.5rem;
+  }
+
+  &:nth-of-type(2) {
+    max-width: 28.625rem;
+  }
+
+  &__image {
+    overflow: hidden;
+
+    &--1 {
+      max-width: 28.063rem;
+      max-height: 31.125rem;
+    }
+
+    &--2 {
+      max-width: 32.5rem;
+      max-height: 17.688rem;
+    }
+  }
+}
+
+.mission-section {
+  &__list {
+    margin: 0;
+  }
+
+  &__list__item {
+    color: colors(rich-black-75);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Footer properties
+// -----------------------------------------------------------------------------
+.footer {
+  box-sizing: border-box;
+  background-color: colors(coconut-50);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  min-height: 0;
+
+  .footer__content {
+    display: flex;
+    overflow: visible;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: spacing-multiply($DEFAULT-SPACING, 10rem) 0
+      spacing-multiply($DEFAULT-SPACING, 5rem);
+  }
+
+  .footer-menu {
+    display: block;
+    height: auto;
+    padding-top: 0;
+    opacity: 1;
+    position: relative;
+    pointer-events: auto;
+    padding-left: 0;
+    left: 0;
+    right: 0;
+    background-color: colors(coconut);
+    list-style-type: none;
+    margin: 0;
+    margin-left: spacing-multiply($DEFAULT-SPACING, 11em);
+
+    .footer-menu__item {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0;
+      margin-left: spacing-multiply($DEFAULT-SPACING, 5em);
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .footer-icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .footer-copyright {
+    display: block;
+    width: 100%;
+    margin-top: spacing-multiply($DEFAULT-SPACING, 5em);
+  }
+}

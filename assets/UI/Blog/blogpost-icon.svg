@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>UI/Blog Icons/blogpost-icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons/social-icon-blog">
+            <circle id="Oval" fill="#F0F6F6" cx="15" cy="15" r="15"></circle>
+            <g id="Icons/Blog/blogpost" transform="translate(7.000000, 7.000000)" fill="#3D44BE" stroke-width="1">
+                <g id="blog" transform="translate(0.000000, 0.888889)">
+                    <path d="M7.11111111,13.3333333 L7.11111111,14.2222222 L0,14.2222222 L0,13.3333333 L7.11111111,13.3333333 Z M16,2.66666667 L16,14.2222222 L9.77777778,14.2222222 L9.77777778,2.66666667 L16,2.66666667 Z M8.88888889,11.5555556 L8.88888889,12.4444444 L0,12.4444444 L0,11.5555556 L8.88888889,11.5555556 Z M8.88888889,9.77777778 L8.88888889,10.6666667 L0,10.6666667 L0,9.77777778 L8.88888889,9.77777778 Z M8.88888889,8 L8.88888889,8.88888889 L0,8.88888889 L0,8 L8.88888889,8 Z M8.88888889,6.22222222 L8.88888889,7.11111111 L0,7.11111111 L0,6.22222222 L8.88888889,6.22222222 Z M8.88888889,4.44444444 L8.88888889,5.33333333 L0,5.33333333 L0,4.44444444 L8.88888889,4.44444444 Z M8.88888889,2.66666667 L8.88888889,3.55555556 L0,3.55555556 L0,2.66666667 L8.88888889,2.66666667 Z M16,0 L16,1.77777778 L0,1.77777778 L0,0 L16,0 Z" id="Combined-Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

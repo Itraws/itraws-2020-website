@@ -1,0 +1,429 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;600;700&display=swap');
+
+// -----------------------------------------------------------------------------
+// application-wide Sass functions.
+// -----------------------------------------------------------------------------
+
+@function colors($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+@function fontSize($font-size-name) {
+  @return map-get($fontSize, $font-size-name);
+}
+
+@function fontWeight($weight-name) {
+  @return map-get($fontWeight, $weight-name);
+}
+
+@function multily-px($value1, $value2) {
+  @return $value1 * $value2 / 1rem;
+}
+
+@function spacing-multiply($value1, $value2) {
+  @return $value1 * $value2 / 1rem;
+}
+
+// -----------------------------------------------------------------------------
+// application-wide Sass Mixins.
+// -----------------------------------------------------------------------------
+@mixin quick-spacing($direction, $multiply, $spacing-type) {
+  &-#{$direction}-#{$multiply} {
+    #{$spacing-type}-#{$direction}: spacing-multiply(
+      $DEFAULT-SPACING,
+      ($multiply + 0rem)
+    );
+  }
+}
+
+// triangle shape mixin
+@mixin shape-image($color, $width) {
+  width: $width + rem;
+  height: auto;
+  position: absolute;
+  background: url(../img/shape-#{$color}.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top left;
+  z-index: -1;
+}
+
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Regular font family
+/// @type List
+$text-poppins: 'Poppins', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica',
+  'Arial', sans-serif !default;
+
+/// Code (monospace) font family
+/// @type List
+$code-font: 'Courier New', monospace !default;
+
+// Serif front family
+/// @type List
+$serif-dm-display: 'DM Serif Display', serif;
+
+/// Colors
+$colors: (
+  rich-black: rgba(5, 6, 9, 1),
+  rich-black-75: rgba(5, 6, 9, 0.75),
+  rich-black-50: rgba(5, 6, 9, 0.5),
+  rich-black-25: rgba(5, 6, 9, 0.25),
+  rich-black-10: rgba(5, 6, 9, 0.1),
+  white-smoke: rgba(240, 246, 246, 1),
+  coconut: rgba(255, 255, 255, 1),
+  coconut-75: rgba(255, 255, 255, 0.75),
+  coconut-50: rgba(255, 255, 255, 0.5),
+  coconut-25: rgba(255, 255, 255, 0.25),
+  coconut-10: rgba(255, 255, 255, 0.1),
+  ocean-blue: rgba(61, 68, 190, 1),
+  sizzling-red: rgba(243, 57, 80, 1)
+);
+
+/// Font Size
+$fontSize: (
+  display: 3.25rem,
+  h1: 2.75rem,
+  h2: 2.25rem,
+  h3: 1.7rem,
+  h4: 1.25rem,
+  body: 16px,
+  button: 0.875rem,
+  meta: 0.75rem,
+  small: 0.6875rem
+);
+
+/// Font weight
+$fontWeight: (
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700
+);
+
+// Spacing
+// Spacing is size by multiple of 6.
+$DEFAULT-SPACING: 0.375rem;
+$DEFAULT-LETTER-SPACING: 0.0375em;
+$DEFAULT-LINE-HEIGHT: 1.5rem;
+/**
+* Basic typography style for copy text
+*/
+
+html,
+body {
+  font-family: $text-poppins;
+  font-size: fontSize(body);
+  color: colors(rich-black);
+}
+
+.display-typo {
+  font-size: fontSize(display);
+  line-height: multily-px(fontSize(display), $DEFAULT-LINE-HEIGHT);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-family: $serif-dm-display;
+  font-size: fontSize(h1);
+  letter-spacing: $DEFAULT-LETTER-SPACING;
+  line-height: multily-px(fontSize(h1), $DEFAULT-LINE-HEIGHT);
+}
+
+h2 {
+  font-family: $serif-dm-display;
+  font-size: fontSize(h2);
+  letter-spacing: $DEFAULT-LETTER-SPACING;
+  line-height: multily-px(fontSize(h2), $DEFAULT-LINE-HEIGHT);
+}
+
+h3 {
+  font-family: $serif-dm-display;
+  font-size: fontSize(h3);
+  letter-spacing: $DEFAULT-LETTER-SPACING;
+  line-height: multily-px(fontSize(h3), $DEFAULT-LINE-HEIGHT);
+}
+
+.h3-alt {
+  font-family: $text-poppins;
+}
+
+h4 {
+  font-family: $text-poppins;
+  font-size: fontSize(h4);
+  letter-spacing: $DEFAULT-LETTER-SPACING;
+  line-height: multily-px(fontSize(h4), $DEFAULT-LINE-HEIGHT);
+}
+
+button {
+  font-family: $text-poppins;
+  font-size: fontSize(button);
+  font-weight: fontWeight(medium);
+  letter-spacing: $DEFAULT-LETTER-SPACING;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.meta-typo {
+  font-family: $text-poppins;
+  font-size: fontSize(meta);
+  letter-spacing: $DEFAULT-LETTER-SPACING;
+  text-transform: uppercase;
+}
+
+small {
+  font-family: $text-poppins;
+  font-size: fontSize(small);
+  letter-spacing: $DEFAULT-LETTER-SPACING;
+}
+
+// -----------------------------------------------------------------------------
+// Typography Weight properties
+// -----------------------------------------------------------------------------
+.text-regular {
+  font-weight: fontWeight(regular);
+}
+
+.text-medium {
+  font-weight: fontWeight(medium);
+}
+
+.text-semibold {
+  font-weight: fontWeight(semibold);
+}
+
+.text-bold {
+  font-weight: fontWeight(bold);
+}
+
+// -----------------------------------------------------------------------------
+// Typography Transform properties
+// -----------------------------------------------------------------------------
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+// -----------------------------------------------------------------------------
+// Typography Color properties
+// -----------------------------------------------------------------------------
+.text-coconut {
+  color: colors(coconut);
+}
+
+.text-coconut-75 {
+  color: colors(coconut-75);
+}
+
+.text-coconut-50 {
+  color: colors(coconut-50);
+}
+
+.text-coconut-25 {
+  color: colors(coconut-25);
+}
+
+.text-coconut-10 {
+  color: colors(coconut-10);
+}
+
+.text-rich-black {
+  color: colors(rich-black);
+}
+
+.text-rich-black-75 {
+  color: colors(rich-black-75);
+}
+
+.text-rich-black-50 {
+  color: colors(rich-black-50);
+}
+
+.text-rich-black-25 {
+  color: colors(rich-black-25);
+}
+
+.text-rich-black-10 {
+  color: colors(rich-black-10);
+}
+
+.text-ocean-blue {
+  color: colors(ocean-blue);
+}
+
+// -----------------------------------------------------------------------------
+// Quick spacing properties
+// -----------------------------------------------------------------------------
+$sizing-directions: ('top', 'right', 'bottom', 'left');
+$sizing-list: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+@each $direction in $sizing-directions {
+  @each $size in $sizing-list {
+    .mg {
+      //margin
+      @include quick-spacing($direction, $size, 'margin');
+    }
+
+    .pg {
+      //padding
+      @include quick-spacing($direction, $size, 'padding');
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Links properties
+// -----------------------------------------------------------------------------
+a {
+  color: colors(ocean-blue);
+  text-decoration: none;
+  background-color: transparent;
+
+  &:hover {
+    color: colors(rich-black-50);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Base page properties
+// -----------------------------------------------------------------------------
+
+html {
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  letter-spacing: 0.0375em;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+// Body Class properties
+.body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+//Section class properties
+.section {
+  width: 100%;
+  overflow: hidden;
+
+  &--dark {
+    background-color: colors(rich-black);
+  }
+
+  &--white-smoke {
+    background-color: colors(white-smoke);
+  }
+
+  &--100vh {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+  }
+
+  &--not100vh {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 7.625rem;
+  }
+
+  .section__content {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .section__inner {
+    width: 100%;
+    max-width: 1068px;
+    margin: 0 auto;
+    padding: spacing-multiply($DEFAULT-SPACING, 10rem) 0;
+
+    .section__grid {
+      column-gap: 5.875rem;
+    }
+
+    .mission-grid {
+      grid-template-columns: 22rem auto;
+      column-gap: 4.813rem;
+    }
+  }
+
+  .section__grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Card Component properties
+// -----------------------------------------------------------------------------
+.icon {
+  width: 30px;
+  height: 30px;
+
+  &-arrow--branch-white-right {
+    background: url(../UI/Icons/Arrows/arrow-branch-right-white.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+
+  &-arrow--branch-red-right {
+    background: url(../UI/Icons/Arrows/arrow-branch-right-red.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+
+  &-arrow--circle-right {
+    background: url(../UI/Icons/Arrows/Arrow-circle-right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &-blog--post {
+    background: url(../UI/Blog/blogpost-icon.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+  }
+}
