@@ -1,7 +1,6 @@
 <template>
   <div class="body">
     <LayoutHeader />
-    <HeaderHero />
     <nuxt keep-alive />
   </div>
 </template>
@@ -9,13 +8,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import LayoutHeader from '~/components/layout/Header.vue'
-import HeaderHero from '~/components/layout/HeaderHero.vue'
 
 export default Vue.extend({
-  name: 'LandingPageLayout',
+  name: 'BlogPageLayout',
   components: {
-    LayoutHeader,
-    HeaderHero
+    LayoutHeader
   }
 })
 </script>

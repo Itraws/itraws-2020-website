@@ -71,7 +71,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import LayoutFooter from '~/components/layout/Footer'
+import LayoutFooter from '~/components/layout/Footer.vue'
 
 export default Vue.extend({
   name: 'AboutPage',

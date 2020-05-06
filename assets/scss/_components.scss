@@ -470,6 +470,7 @@
           height: 30px;
           width: 30px;
           justify-content: center;
+          align-items: center;
 
           &:not(:last-child) {
             margin: 0 spacing-multiply($DEFAULT-SPACING, 1rem) 0 0;
@@ -487,5 +488,33 @@
         }
       }
     }
+  }
+}
+// -----------------------------------------------------------------------------
+// Breadcrumb
+// -----------------------------------------------------------------------------
+.breadcrumb {
+  display: flex;
+  justify-content: flex-start;
+  font-size: fontSize(meta);
+  text-transform: uppercase;
+  font-weight: fontWeight(semibold);
+  &__parent {
+    color: colors(coconut);
+    &:hover {
+      color: colors(ocean-blue);
+    }
+  }
+  &__icon {
+    width: auto;
+    height: 19px;
+    margin-left: spacing-multiply($DEFAULT-SPACING, 3rem);
+    &--color {
+      stroke: colors(ocean-blue);
+    }
+  }
+  &__child {
+    color: colors(coconut);
+    margin-left: spacing-multiply($DEFAULT-SPACING, 3rem);
   }
 }

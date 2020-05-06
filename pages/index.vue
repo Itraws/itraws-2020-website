@@ -54,8 +54,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import LayoutArticlesPreview from '~/components/layout/ArticlesPreview'
-import LayoutFooter from '~/components/layout/Footer'
+import LayoutArticlesPreview from '~/components/layout/ArticlesPreview.vue'
+import LayoutFooter from '~/components/layout/Footer.vue'
 
 export default Vue.extend({
   name: 'HomePage',

@@ -88,7 +88,7 @@ $colors: (
   coconut-10: rgba(255, 255, 255, 0.1),
   ocean-blue: rgba(61, 68, 190, 1),
   sizzling-red: rgba(243, 57, 80, 1)
-);
+) !default;
 
 /// Font Size
 $fontSize: (
@@ -393,6 +393,10 @@ body {
     display: grid;
     width: 100%;
     grid-template-columns: repeat(2, 1fr);
+  }
+  .section__flex {
+    display: flex;
+    width: 100%;
   }
 }
 

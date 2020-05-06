@@ -22,7 +22,7 @@
         </span>
         <div
           v-for="author in authors"
-          :key="index"
+          :key="author.id"
           class="post-meta-author__card"
         >
           <div class="post-meta-author__card__bubble">

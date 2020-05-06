@@ -21,12 +21,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import ArticlesPreview from '~/components/layout/ArticlesPreview'
-import LayoutFooter from '~/components/layout/Footer'
-import ProductItem from '~/components/elements/ProductItem'
+import ArticlesPreview from '~/components/layout/ArticlesPreview.vue'
+import LayoutFooter from '~/components/layout/Footer.vue'
+import ProductItem from '~/components/elements/ProductItem.vue'
 
 export default Vue.extend({
-  name: 'AboutPage',
+  name: 'ProductsPage',
   components: {
     ProductItem,
     ArticlesPreview,
