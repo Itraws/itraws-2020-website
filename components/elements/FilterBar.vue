@@ -3,23 +3,20 @@
     <div class="filter-section__inner">
       <div class="filter-select">
         <ul class="filter-select__menu">
-          <li class="filter-select__item filter-select__item--active">
-            All
-          </li>
-          <li class="filter-select__item">
-            podcast
-          </li>
-          <li class="filter-select__item">
-            blog post
-          </li>
-          <li class="filter-select__item">
-            publication
-          </li>
-          <li class="filter-select__item">
-            news
-          </li>
-          <li class="filter-select__item">
-            open source
+          <li
+            v-for="key in searchKeys"
+            :key="key.id"
+            class="filter-select__item"
+            :class="
+              getActiveTab === key
+                ? 'filter-select__item--active'
+                : getActiveTab === ''
+                ? setActiveTab('all')
+                : ''
+            "
+            @click="setActiveTab(key)"
+          >
+            {{ key }}
           </li>
         </ul>
       </div>
@@ -36,7 +33,7 @@
           >Search</label
         >
         <input
-          v-model="searchInput.field"
+          v-model="search"
           class="filter-search-input"
           name="search"
           role="button"
@@ -44,11 +41,12 @@
           @focus="onFocus($event)"
           @blur="onBlur"
         />
-        <img
-          class="icon filter-search-icon"
-          src="~/assets/UI/Icons/search-icon.svg"
-          alt="Search"
-          role="img"
+        <Icon
+          class="filter-search-icon"
+          i-type="fas"
+          i-icon="search"
+          i-color="blue"
+          i-background="true"
         />
       </div>
     </div>
@@ -57,6 +55,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapGetters, mapActions } from 'vuex'
+import Icon from '~/components/elements/Icon.vue'
 
 interface searchInput {
   field: string
@@ -65,20 +65,38 @@ interface searchInput {
 
 export default Vue.extend({
   name: 'FilterBar',
+  components: {
+    Icon
+  },
   data() {
     return {
+      search: '',
       searchInput: {
-        field: '',
         isFocused: false
-      }
+      },
+      searchKeys: [
+        'all',
+        'podcast',
+        'blog post',
+        'publication',
+        'news',
+        'open source'
+      ]
     }
   },
   computed: {
+    ...mapGetters('blog', ['getActiveTab']),
     searchInputLength() {
-      return this.searchInput.field.length
+      return this.search.length
+    }
+  },
+  watch: {
+    search() {
+      this.$emit('changeSearchInput', this.search)
     }
   },
   methods: {
+    ...mapActions('blog', ['setActiveTab']),
     onFocus(event) {
       event.target.select()
       this.searchInput.isFocused = true

@@ -11,6 +11,10 @@ import LayoutHeader from '~/components/layout/Header.vue'
 
 export default Vue.extend({
   name: 'BlogPageLayout',
+  transition: {
+    name: 'default',
+    mode: 'out-in'
+  },
   components: {
     LayoutHeader
   }

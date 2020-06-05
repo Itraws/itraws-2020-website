@@ -2,7 +2,11 @@
   <nuxt-link to="/">
     <svg
       class="logo"
-      :class="isHeader ? 'logo--header' : 'logo--footer'"
+      :class="{
+        'logo--header': isHeader,
+        'logo--footer': !isHeader,
+        'logo--header--white': whiteLogo === 'true'
+      }"
       width="399px"
       height="63px"
       viewBox="0 0 399 63"
@@ -61,6 +65,10 @@ export default Vue.extend({
     isHeader: {
       type: Boolean,
       default: true
+    },
+    whiteLogo: {
+      type: String,
+      default: ''
     }
   }
 })

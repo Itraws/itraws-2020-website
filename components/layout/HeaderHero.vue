@@ -1,12 +1,11 @@
 <template>
   <section
     class="section"
-    :class="isHomePage ? 'section--100vh header-bg' : 'section--not100vh'"
+    :class="isHomePage ? 'section--100vh' : 'section--not100vh'"
   >
+    <layout-header />
     <span :class="isHomePage ? 'shape-red' : 'shape-red--alt'" />
-    <span v-if="isHomePage" class="shape-red--2" />
     <span :class="isHomePage ? 'shape-blue' : 'shape-blue--alt'" />
-    <span v-if="isHomePage" class="shape-blue--2" />
     <span
       :class="isHomePage ? 'pattern--circle' : 'pattern--circle-alt'"
       class="pattern"
@@ -22,18 +21,36 @@
             class="hero__headline text-bold"
             :class="isHomePage ? 'display-typo mg-bottom-5' : 'mg-bottom-3'"
           >
-            {{ isHomePage ? data.homePage.headline : data.otherPage.headline }}
+            {{
+              isHomePage
+                ? homeContent.heroHeadline
+                : isAboutPage
+                ? aboutContent.heroHeadline
+                : isProductsPage
+                ? productsContent.heroHeadline
+                : ''
+            }}
           </h1>
 
           <p v-if="isHomePage" class="hero__text text-regular">
-            {{ data.homePage.text }}
+            {{ homeContent.heroText }}
           </p>
           <h4 v-else class="text-regular text-rich-black-75">
-            {{ data.otherPage.text }}
+            {{
+              isAboutPage
+                ? aboutContent.heroText
+                : isProductsPage
+                ? productsContent.heroText
+                : ''
+            }}
           </h4>
-          <button v-if="isHomePage" class="button button--oceanBlue">
-            Know more
-          </button>
+          <button-component
+            v-if="isHomePage"
+            :button-to="homeContent.heroButton.url"
+            :button-value="homeContent.heroButton.text"
+            button-type="button"
+            button-color="oceanBlue"
+          />
         </div>
 
         <!-- Alt Page Hero End -->
@@ -44,32 +61,35 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import ButtonComponent from '~/components/elements/ButtonComponent.vue'
+import LayoutHeader from '~/components/layout/Header.vue'
+import homeContent from '~/content/home.md'
+import aboutContent from '~/content/about.md'
+import productsContent from '~/content/products.md'
 
 export default Vue.extend({
   name: 'HeaderHero',
-
-  data() {
-    return {
-      data: {
-        homePage: {
-          headline: 'Stillness. Firmness. Constancy.',
-          text:
-            '“Every mountain top is within reach if you just keep climbing.”'
-        },
-        otherPage: {
-          headline: 'Aiming for the peak',
-          text:
-            'At Itraws we build infrastructural technologies to improve the world we live in.'
-        }
-      }
-    }
+  components: {
+    ButtonComponent,
+    LayoutHeader
   },
 
   computed: {
     isHomePage() {
       const indexName = this.$route.name
       return indexName === 'index'
-    }
+    },
+    isAboutPage() {
+      const indexName = this.$route.name
+      return indexName === 'about'
+    },
+    isProductsPage() {
+      const indexName = this.$route.name
+      return indexName === 'products'
+    },
+    homeContent: () => homeContent.attributes,
+    aboutContent: () => aboutContent.attributes,
+    productsContent: () => productsContent.attributes
   }
 })
 </script>

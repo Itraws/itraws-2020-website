@@ -1,0 +1,14 @@
+Our todo list:
+
+
+Task to accomplish and fix.
+
+
+FIXME - blog post search filtering.
+required file: blog page component.
+    - Limit number of Post cards to the maximum number designated within the data.
+    - 
+
+FIXME - Pagination.
+required file: pagination component
+    - syncronize pagination with display number of blog cards.

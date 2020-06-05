@@ -3,18 +3,25 @@
     <div class="post-meta-section__inner">
       <div class="post-meta-social">
         <span class="meta-typo text-semibold mg-right-6">share</span>
-        <nuxt-link to="about"
-          ><img
-            class="icon"
-            src="~/assets/icons/social/tw-social-icon.svg"/></nuxt-link
-        ><nuxt-link to="products"
-          ><img class="icon" src="~/assets/icons/social/fb-social-icon.svg"
-        /></nuxt-link>
-        <nuxt-link to="blog"
-          ><img
-            class="icon"
-            src="~/assets/icons/social/linkedin-social-icon.svg"
-        /></nuxt-link>
+
+        <ShareNetwork
+          v-for="(network, index) in networks"
+          :key="index"
+          :network="network"
+          :url="postUrl"
+          :title="postTitle"
+          :description="postDescription"
+          :hashtags="postHashTag"
+          style="cursor: pointer;"
+        >
+          <Icon
+            class="filter-search-icon"
+            i-type="fab"
+            :i-icon="network"
+            i-color="white"
+            i-background="true"
+          />
+        </ShareNetwork>
       </div>
       <div class="post-meta-authors">
         <span class="meta-typo text-semibold mg-right-6">
@@ -26,11 +33,14 @@
           class="post-meta-author__card"
         >
           <div class="post-meta-author__card__bubble">
-            <span>{{ author.abr }}</span>
+            <span class="text-semibold">{{
+              authorNameAbreviation(author.name)
+            }}</span>
           </div>
-          <small class="text-capitalize mg-left-1 text-rich-black-75">{{
-            author.name
-          }}</small>
+          <small
+            class="text-capitalize mg-left-1 text-rich-black-75 text-semibold"
+            >{{ author.name }}</small
+          >
         </div>
       </div>
     </div>
@@ -39,16 +49,51 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import Icon from '~/components/elements/Icon.vue'
 
 export default Vue.extend({
   name: 'PostMetaBar',
+  components: {
+    Icon
+  },
+  props: {
+    authors: {
+      type: Array,
+      default: () => []
+    },
+    postUrl: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    postTitle: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    postDescription: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    postHashTag: {
+      type: String,
+      required: true,
+      default: ''
+    }
+  },
   data() {
     return {
-      authors: [
-        { abr: 'cm', name: 'carlo moleka' },
-        { abr: 'ab', name: 'axel bossekota' },
-        { abr: 'lm', name: 'leon masengo' }
-      ]
+      networks: ['facebook', 'twitter', 'linkedin']
+    }
+  },
+  methods: {
+    authorNameAbreviation(name: string) {
+      const splitNames = name.trim().split(' ')
+      if (splitNames.length > 1) {
+        return splitNames[0].charAt(0) + splitNames[1].charAt(0)
+      }
+      return splitNames[0].charAt(0)
     }
   }
 })

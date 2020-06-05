@@ -3,43 +3,74 @@
     <div class="section__inner">
       <div class="articles-preview__link mg-bottom-5">
         <h4 class="text-rich-black text-semibold mg-right-4">
-          <nuxt-link to="/blog">Read more on our blog</nuxt-link>
+          <nuxt-link to="/blog"
+            >Read more on our blog
+            <Icon
+              i-type="fas"
+              i-icon="arrow-right"
+              i-color="red"
+              i-background="false"
+              class="mg-left-1 hvr-forward"
+          /></nuxt-link>
         </h4>
-        <i class="icon icon-arrow--branch-red-right" />
       </div>
       <div v-if="getLatestPosts" class="articles-container">
-        <BlogCard v-for="post in getLatestPosts" :key="post.id">
+        <BlogCard
+          v-for="post in getLatestPosts"
+          :key="post.id"
+          :card-color="
+            post.tags[0].slug === 'blog-post'
+              ? 'white'
+              : post.tags[0].slug === 'publication'
+              ? 'blue'
+              : post.tags[0].slug === 'open-source'
+              ? 'black'
+              : 'white'
+          "
+          i-type="fas"
+          :i-icon="
+            post.tags[0].slug === 'blog-post'
+              ? 'newspaper'
+              : post.tags[0].slug === 'publication'
+              ? 'file-alt'
+              : post.tags[0].slug === 'open-source'
+              ? 'file-code'
+              : post.tags[0].slug === 'podcast'
+              ? 'podcast'
+              : ''
+          "
+          i-color="blue"
+          i-background="true"
+          :i-link="`/blog/${post.slug}`"
+        >
           <template #postCategory>
-            <p
-              v-if="post.tags ? post.tags[0] : ''"
-              class="blog-card__category text-semibold"
-            >
+            <p v-if="post.tags ? post.tags[0] : ''" class="blog-card__category">
               {{ post.tags[0].name }}
             </p>
           </template>
           <template #postTag
             ><p
               v-if="post.tags ? post.tags[1] : ''"
-              class="blog-card__posttype text-regular"
+              class="blog-card__posttype"
             >
               {{ post.tags[1].name }}
             </p></template
           >
           <template #postTitle
             ><h3 class="blog-card__title mg-bottom-2">
-              <nuxt-link :to="{ path: `blog/${post.slug}` }">{{
+              <nuxt-link :to="{ path: `/blog/${post.slug}` }">{{
                 post.title
               }}</nuxt-link>
             </h3></template
           >
           <template #postExcerp
-            ><p class="blog-card__excerp text-rich-black-75">
+            ><p class="blog-card__excerp">
               {{ post.excerpt }}
             </p></template
           >
           <template #postDate
-            ><p class="blog-card__date  text-rich-black-75">
-              {{ post.created_at }}
+            ><p class="blog-card__date">
+              {{ $moment(post.created_at).format('MMM Do YYYY') }}
             </p></template
           >
         </BlogCard>
@@ -55,11 +86,13 @@
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import BlogCard from '~/components/blog/BlogCard.vue'
+import Icon from '~/components/elements/Icon.vue'
 
 export default Vue.extend({
   name: 'BlogArticlesPreview',
   components: {
-    BlogCard
+    BlogCard,
+    Icon
   },
   computed: {
     ...mapGetters('blog', ['getLatestPosts'])

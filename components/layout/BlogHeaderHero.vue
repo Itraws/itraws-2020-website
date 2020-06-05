@@ -1,5 +1,6 @@
 <template>
   <section class="section section--not100vh">
+    <layout-header />
     <span class="pattern pattern--circle-alt" />
     <div class="section__content">
       <div class="section__inner">
@@ -17,10 +18,12 @@
               <h2 class="text-bold">
                 {{ featuredPost.title }}
               </h2>
-              <img
-                class="icon icon-arrow--circle-right mg-left-3"
-                src="~/assets/UI/Icons/Arrows/Arrow-circle-right.svg"
-                alt="See Article"
+              <Icon
+                class="mg-left-5 hvr-forward"
+                i-type="fas"
+                i-icon="arrow-right"
+                i-color="blue"
+                i-background="true"
               />
             </nuxt-link>
           </div>
@@ -35,9 +38,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import LayoutHeader from '~/components/layout/Header.vue'
+import Icon from '~/components/elements/Icon.vue'
 
 export default Vue.extend({
   name: 'BlogPageHero',
+  components: {
+    Icon,
+    LayoutHeader
+  },
 
   props: {
     featuredPost: {

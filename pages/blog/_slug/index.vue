@@ -4,10 +4,17 @@
       :post-hero="{
         title: data.title,
         excerpt: data.excerpt,
+        date: data.created_at,
         image: data.feature_image
       }"
     />
-    <PostMetaBar />
+    <PostMetaBar
+      :authors="data.authors"
+      :post-url="fullPageUrl"
+      :post-title="data.title"
+      :post-description="data.excerpt"
+      post-hash-tag="itraws"
+    />
     <section class="section">
       <div class="section__inner">
         <section class="blog-container">
@@ -29,7 +36,6 @@ import LayoutFooter from '~/components/layout/Footer.vue'
 
 export default Vue.extend({
   name: 'BlogPostPage',
-  layout: 'BlogPostLayout',
   components: {
     BlogPostHeaderHero,
     PostMetaBar,
@@ -42,6 +48,11 @@ export default Vue.extend({
       return { data: post }
     } catch (error) {
       console.log({ error })
+    }
+  },
+  computed: {
+    fullPageUrl(): string {
+      return 'http://localhost' + this.$route.path
     }
   }
 })

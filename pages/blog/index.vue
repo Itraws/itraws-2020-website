@@ -1,17 +1,45 @@
 <template>
   <div class="blog-page">
-    <FilterBar />
+    <BlogHeaderHero :featured-post="getFeaturedPost" />
+    <FilterBar @changeSearchInput="updateSearchInput($event)" />
     <section class="section section--white-smoke">
       <div class="section__inner">
         <div class="articles-container">
-          <BlogCard v-for="post in getAllPosts" :key="post.id">
+          <BlogCard
+            v-for="post in pageList"
+            :key="post.id"
+            :card-color="
+              post.tags[0].slug === 'blog-post'
+                ? 'white'
+                : post.tags[0].slug === 'publication'
+                ? 'blue'
+                : post.tags[0].slug === 'open-source'
+                ? 'black'
+                : 'white'
+            "
+            i-type="fas"
+            :i-icon="
+              post.tags[0].slug === 'blog-post'
+                ? 'newspaper'
+                : post.tags[0].slug === 'publication'
+                ? 'file-alt'
+                : post.tags[0].slug === 'open-source'
+                ? 'file-code'
+                : post.tags[0].slug === 'podcast'
+                ? 'podcast'
+                : ''
+            "
+            i-color="blue"
+            i-background="true"
+            :i-link="`/blog/${post.slug}`"
+          >
             <template #postCategory>
-              <p v-if="post.tags[0]" class="blog-card__category text-semibold">
+              <p v-if="post.tags[0]" class="blog-card__category">
                 {{ post.tags[0].name }}
               </p>
             </template>
             <template #postTag
-              ><p v-if="post.tags[1]" class="blog-card__posttype text-regular">
+              ><p v-if="post.tags[1]" class="blog-card__posttype">
                 {{ post.tags[1].name }}
               </p></template
             >
@@ -23,18 +51,18 @@
               </h3></template
             >
             <template #postExcerp
-              ><p class="blog-card__excerp text-rich-black-75">
+              ><p class="blog-card__excerp">
                 {{ post.excerpt }}
               </p></template
             >
             <template #postDate
-              ><p class="blog-card__date  text-rich-black-75">
-                {{ post.created_at }}
+              ><p class="blog-card__date">
+                {{ $moment(post.created_at).format('MMM Do YYYY') }}
               </p></template
             >
           </BlogCard>
         </div>
-        <Pagination />
+        <Pagination :filter-data="search" :number-per-page="getNumberPerPage" />
       </div>
     </section>
     <LayoutFooter />
@@ -43,23 +71,55 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
+import { getFeaturedPost } from '../../api/GhostApi'
+import BlogHeaderHero from '~/components/layout/BlogHeaderHero.vue'
 import FilterBar from '~/components/elements/FilterBar.vue'
 import BlogCard from '~/components/blog/BlogCard.vue'
 import Pagination from '~/components/elements/Pagination.vue'
 import LayoutFooter from '~/components/layout/Footer.vue'
 
+interface filterInt {
+  [key: string]: any | {}
+}
+
 export default Vue.extend({
   name: 'BlogPage',
-  layout: 'BlogLayout',
   components: {
     FilterBar,
+    BlogHeaderHero,
     BlogCard,
     Pagination,
     LayoutFooter
   },
+  data() {
+    return {
+      search: '',
+      currentPage: 1
+    }
+  },
   computed: {
-    ...mapGetters('blog', ['getAllPosts'])
+    ...mapGetters('blog', [
+      'getBlogPostsLength',
+      'getFeaturedPost',
+      'getNumberPerPage'
+    ]),
+    ...mapGetters('blog', {
+      blogPosts: 'getFilteredPosts',
+      paginatedPosts: 'getFilteredPostsV2'
+    }),
+    ...mapGetters('pagination', ['getCurrentPage']),
+    pageList(): [] {
+      const begin: number = this.getCurrentPage
+      const end: number = begin + this.getNumberPerPage
+      return this.blogPosts(this.search)
+    }
+  },
+  methods: {
+    ...mapActions('blog', ['setFilteredPosts']),
+    updateSearchInput(input: string) {
+      this.search = input
+    }
   }
 })
 </script>

@@ -4,26 +4,18 @@
       <div class="section__inner footer__content">
         <ItrawsLogo :is-header="false" />
         <ul class="footer-menu">
-          <li class="footer-menu__item meta-typo">
-            <nuxt-link to="about"
-              ><img
-                class="footer-icon"
-                src="~/assets/icons/social/tw-social-icon.svg"
-            /></nuxt-link>
-          </li>
-          <li class="footer-menu__item meta-typo">
-            <nuxt-link to="products"
-              ><img
-                class="footer-icon"
-                src="~/assets/icons/social/fb-social-icon.svg"
-            /></nuxt-link>
-          </li>
-          <li class="footer-menu__item meta-typo">
-            <nuxt-link to="blog"
-              ><img
-                class="footer-icon"
-                src="~/assets/icons/social/linkedin-social-icon.svg"
-            /></nuxt-link>
+          <li
+            v-for="(social, key, index) in socialMedias"
+            :key="index"
+            class="footer-menu__item meta-typo"
+          >
+            <a :href="social" target="_blank"
+              ><Icon
+                i-type="fab"
+                :i-icon="key"
+                i-color="white"
+                i-background="true"
+            /></a>
           </li>
         </ul>
         <small class="footer-copyright">
@@ -38,10 +30,16 @@
 <script lang="ts">
 import Vue from 'vue'
 import ItrawsLogo from '~/components/branding/Logo.vue'
+import Icon from '~/components/elements/Icon.vue'
+import SocialLinks from '~/content/social.md'
 
 export default Vue.extend({
   components: {
-    ItrawsLogo
+    ItrawsLogo,
+    Icon
+  },
+  computed: {
+    socialMedias: () => SocialLinks.attributes
   }
 })
 </script>

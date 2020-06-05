@@ -7,13 +7,29 @@
   animation: 1s appear;
 
   &--header {
-    width: 201px;
-    height: 32px;
+    width: 150px;
+    height: auto;
+
+    g {
+      fill: colors(ocean-blue);
+    }
+  }
+
+  &--header--white {
+    width: 150px;
+    height: auto;
+
+    g {
+      fill: colors(coconut);
+    }
   }
 
   &--footer {
     width: 121px;
     height: 19px;
+    g {
+      fill: colors(coconut);
+    }
   }
 
   @keyframes appear {
@@ -31,11 +47,16 @@
 // Button Component properties
 // -----------------------------------------------------------------------------
 .button {
-  padding: spacing-multiply($DEFAULT-SPACING, 2rem)
-    spacing-multiply($DEFAULT-SPACING, 4rem);
+  display: inline-block;
+  font-family: $text-poppins;
+  font-size: fontSize(button);
+  font-weight: fontWeight(semibold);
+  letter-spacing: $DEFAULT-LETTER-SPACING;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 4rem);
   border-radius: $DEFAULT-SPACING;
   border: none;
-  cursor: pointer;
   transition: background-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 
   &--oceanBlue {
@@ -50,10 +71,10 @@
 
   &--coconut {
     background-color: colors(coconut);
-    color: colors(rich-black);
+    color: colors(rich-black-75);
 
     &:hover {
-      background-color: colors(coconut-50);
+      background-color: colors(coconut);
       color: colors(rich-black-75);
     }
   }
@@ -98,6 +119,9 @@
         }
 
         a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           color: colors(coconut);
 
           &:hover {
@@ -122,12 +146,15 @@
   background: transparent;
   border: 0;
   border-bottom: 1px solid colors(coconut);
+  padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
+  color: colors(coconut);
+  font-size: fontSize(button);
+  letter-spacing: 0.1rem;
 
   &::placeholder {
     font-family: $text-poppins;
-    font-size: fontSize(small);
+    font-size: fontSize(button);
     text-transform: uppercase;
-    color: colors(coconut);
     opacity: 1;
   }
 }
@@ -146,6 +173,7 @@
     padding: 0;
 
     a {
+      display: flex;
       color: colors(rich-black);
 
       &:hover {
@@ -169,18 +197,128 @@
 // Blog cards
 // -----------------------------------------------------------------------------
 .blog-card {
-  display: block;
+  display: flex;
   width: 20.625em;
-  max-height: 20.625em;
-  background: colors(coconut);
   padding: spacing-multiply($DEFAULT-SPACING, 3em);
+  flex-direction: column;
+  justify-content: flex-start;
+
+  &--white {
+    background: colors(coconut);
+
+    .blog-card__category {
+      color: colors(rich-black);
+      font-weight: fontWeight(semibold);
+    }
+
+    .blog-card__posttype {
+      color: colors(rich-black-75);
+      font-weight: fontWeight(regular);
+    }
+
+    .blog-card__title {
+      color: colors(rich-black);
+      font-weight: fontWeight(semibold);
+    }
+
+    .blog-card__excerp {
+      color: colors(rich-black-75);
+    }
+
+    a {
+      color: colors(ocean-blue);
+
+      &:hover {
+        color: colors(white-smoke);
+      }
+    }
+  }
+
+  &--black {
+    background: colors(rich-black);
+
+    .blog-card__category {
+      color: colors(coconut);
+      font-weight: fontWeight(semibold);
+    }
+
+    .blog-card__posttype {
+      color: colors(coconut);
+      font-weight: fontWeight(regular);
+    }
+
+    .blog-card__title {
+      color: colors(coconut);
+      font-weight: fontWeight(semibold);
+    }
+
+    .blog-card__excerp {
+      color: colors(coconut);
+    }
+
+    .blog-card__date {
+      color: colors(coconut);
+    }
+
+    a {
+      color: colors(white-smoke);
+
+      &:hover {
+        color: colors(ocean-blue);
+      }
+    }
+  }
+
+  &--blue {
+    background: colors(ocean-blue);
+
+    .blog-card__category {
+      color: colors(coconut);
+      font-weight: fontWeight(semibold);
+    }
+
+    .blog-card__posttype {
+      color: colors(coconut);
+      font-weight: fontWeight(regular);
+    }
+
+    .blog-card__title {
+      color: colors(coconut);
+      font-weight: fontWeight(semibold);
+    }
+
+    .blog-card__excerp {
+      color: colors(coconut);
+    }
+
+    .blog-card__date {
+      color: colors(coconut);
+    }
+
+    a {
+      color: colors(white-smoke);
+
+      &:hover {
+        color: colors(coconut);
+      }
+    }
+  }
 
   .blog-card__header {
     display: flex;
     flex-direction: row;
 
-    .blog-card__type {
+    .blog-card__icon {
+      display: flex;
       flex-direction: column;
+      justify-content: center;
+    }
+
+    .blog-card__type {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: spacing-multiply($DEFAULT-SPACING, 2rem);
 
       .blog-card__category,
       .blog-card__posttype {
@@ -191,27 +329,36 @@
   }
 
   .blog-card__main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
     .blog-card__title {
       line-height: 2rem;
     }
 
     .blog-card__excerp {
-      font-size: fontSize(meta);
-      white-space: nowrap;
+      font-size: fontSize(button);
+      text-transform: capitalize;
       overflow: hidden;
-      text-overflow: ellipsis;
     }
   }
 
   .blog-card__footer {
     display: flex;
+    flex-direction: row;
     width: 100%;
     justify-content: space-between;
     align-items: center;
 
     .blog-card__date {
       font-size: fontSize(meta);
+      font-weight: fontWeight(semibold);
       text-transform: uppercase;
+    }
+
+    .blog-card__icon {
+      margin-left: auto;
     }
   }
 }
@@ -253,6 +400,7 @@
     }
   }
 }
+
 // -----------------------------------------------------------------------------
 // Post Meta Bar
 // -----------------------------------------------------------------------------
@@ -283,11 +431,13 @@
       max-width: 30px;
       max-height: 30px;
       margin: 0 0 0 spacing-multiply($DEFAULT-SPACING, 4rem);
+
       &:first-of-type {
         margin-left: 0;
       }
     }
   }
+
   .post-meta-authors {
     display: flex;
     justify-content: flex-start;
@@ -355,9 +505,10 @@
       font-size: fontSize(small);
       text-transform: uppercase;
       color: colors(rich-black-75);
-      padding: spacing-multiply($DEFAULT-SPACING, 2rem)
-        spacing-multiply($DEFAULT-SPACING, 3rem);
+      padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
       cursor: pointer;
+      border-bottom: none;
+      transition: border-bottom 0.2s ease;
 
       &--active {
         border-bottom: 0.375rem solid colors(sizzling-red);
@@ -392,6 +543,7 @@
       &--not-focused {
         transform: translateY(0px);
       }
+
       &--focused {
         transform: translateY(-10px) scale(0.8);
       }
@@ -407,8 +559,7 @@
       width: 100%;
       overflow: visible;
       margin: 0 0 0 spacing-multiply($DEFAULT-SPACING, 5rem);
-      padding: spacing-multiply($DEFAULT-SPACING, 2rem)
-        spacing-multiply($DEFAULT-SPACING, 3rem);
+      padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
 
       &:focus {
         outline: 0;
@@ -448,20 +599,23 @@
       .pagination__arrow {
         width: 30px;
         height: 30px;
+
         &.previous {
           margin: 0 spacing-multiply($DEFAULT-SPACING, 3rem) 0 0;
         }
+
         &.next {
           margin: 0 0 0 spacing-multiply($DEFAULT-SPACING, 3rem);
         }
       }
+
       .pagination__list {
         display: flex;
 
         .pagination__list-item {
           background-color: transparent;
           font-size: fontSize(meta);
-          color: colors(rich-black-75);
+          color: colors(rich-black-50);
           // padding: spacing-multiply($DEFAULT-SPACING, 1rem)
           //   spacing-multiply($DEFAULT-SPACING, 2rem);
           border: 1px solid transparent;
@@ -481,8 +635,10 @@
           }
 
           &.active {
-            border: 1px solid colors(rich-black);
-            color: colors(rich-black);
+            // border: 2px solid colors(rich-black);
+            color: colors(coconut);
+            background-color: colors(ocean-blue);
+            border-radius: 50%;
             font-weight: fontWeight(semibold);
           }
         }
@@ -490,6 +646,7 @@
     }
   }
 }
+
 // -----------------------------------------------------------------------------
 // Breadcrumb
 // -----------------------------------------------------------------------------
@@ -499,22 +656,73 @@
   font-size: fontSize(meta);
   text-transform: uppercase;
   font-weight: fontWeight(semibold);
+
   &__parent {
     color: colors(coconut);
+
     &:hover {
       color: colors(ocean-blue);
     }
   }
+
   &__icon {
     width: auto;
     height: 19px;
     margin-left: spacing-multiply($DEFAULT-SPACING, 3rem);
+
     &--color {
       stroke: colors(ocean-blue);
     }
   }
+
   &__child {
     color: colors(coconut);
     margin-left: spacing-multiply($DEFAULT-SPACING, 3rem);
+  }
+}
+
+// Icon
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1rem;
+  &--white {
+    color: colors(coconut);
+  }
+
+  &--smoke {
+    color: colors(white-smoke);
+  }
+
+  &--red {
+     color: colors(sizzling-red);
+  }
+  &--blue {
+    color: colors(ocean-blue);
+  }
+  &--black {
+    color: colors(rich-black);
+  }
+  &--bg {
+    &--transparent {
+      background-color: transparent;
+    }
+    &--white {
+      background-color: colors(rich-black);
+    }
+    &--smoke {
+      background-color: colors(sizzling-red);
+    }
+    &--red {
+      background-color: colors(rich-black);
+    }
+    &--blue {
+      background-color: colors(white-smoke);
+    }
+    &--black {
+      background-color: transparent;
+    }
   }
 }
