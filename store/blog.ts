@@ -85,8 +85,11 @@ export const mutations: MutationTree<RootState> = {
 export const actions: ActionTree<RootState, RootState> = {
   fetchBlogPosts: async ({ commit, dispatch }) => {
     try {
-      const posts: [] = await getPosts()
+      const posts: [] | any = await getPosts()
       commit('SET_BLOG_POSTS', posts)
+      dispatch('pagination/setPagination', posts.meta.pagination, {
+        root: true
+      })
       dispatch('fetchFeaturedPost')
     } catch (error) {
       console.log({ error })

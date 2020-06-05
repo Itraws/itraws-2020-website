@@ -8,9 +8,16 @@
           class="pagination__arrow previous"
           i-type="fas"
           i-icon="chevron-left"
-          i-color="blue"
+          :i-color="
+            getPreviousPage !== null
+              ? 'blue'
+              : getPreviousPage == null
+              ? 'black25'
+              : ''
+          "
           i-background="false"
-          @click="previousPage()"
+          :style="getPreviousPage !== null ? 'cursor: pointer;' : ''"
+          @click="previousPage(getPreviousPage)"
         />
         <div class="pagination__list">
           <button
@@ -30,9 +37,12 @@
           class="pagination__arrow next"
           i-type="fas"
           i-icon="chevron-right"
-          i-color="blue"
+          :i-color="
+            getNextPage !== null ? 'blue' : getNextPage == null ? 'black25' : ''
+          "
           i-background="false"
-          @click="nextPage()"
+          :style="getNextPage !== null ? 'cursor: pointer;' : ''"
+          @click="nextPage(getNextPage)"
         />
       </div>
     </div>
@@ -57,11 +67,6 @@ export default Vue.extend({
     filterData: {
       type: String,
       default: ''
-    },
-    // Dictates the amount of items to show per page.
-    numberPerPage: {
-      type: Number,
-      default: 0
     }
   },
   data() {
@@ -71,20 +76,15 @@ export default Vue.extend({
   },
   computed: {
     ...mapGetters('blog', ['getFilteredPosts', 'getBlogPostsLength']),
-    ...mapGetters('pagination', ['getCurrentPage', 'getNumberOfPages'])
-  },
-  async created() {
-    await this.setNumberOfPages(
-      Math.ceil(this.getBlogPostsLength / this.numberPerPage)
-    )
+    ...mapGetters('pagination', [
+      'getCurrentPage',
+      'getNumberOfPages',
+      'getNextPage',
+      'getPreviousPage'
+    ])
   },
   methods: {
-    ...mapActions('pagination', [
-      'setCurrentPage',
-      'setNumberOfPages',
-      'nextPage',
-      'previousPage'
-    ])
+    ...mapActions('pagination', ['setCurrentPage', 'nextPage', 'previousPage'])
   }
 })
 </script>

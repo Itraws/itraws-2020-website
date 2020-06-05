@@ -62,7 +62,7 @@
             >
           </BlogCard>
         </div>
-        <Pagination :filter-data="search" :number-per-page="getNumberPerPage" />
+        <Pagination :filter-data="search" />
       </div>
     </section>
     <LayoutFooter />
@@ -72,7 +72,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
-import { getFeaturedPost } from '../../api/GhostApi'
 import BlogHeaderHero from '~/components/layout/BlogHeaderHero.vue'
 import FilterBar from '~/components/elements/FilterBar.vue'
 import BlogCard from '~/components/blog/BlogCard.vue'
@@ -94,21 +93,16 @@ export default Vue.extend({
   },
   data() {
     return {
-      search: '',
-      currentPage: 1
+      search: ''
     }
   },
   computed: {
-    ...mapGetters('blog', [
-      'getBlogPostsLength',
-      'getFeaturedPost',
-      'getNumberPerPage'
-    ]),
+    ...mapGetters('blog', ['getBlogPostsLength', 'getFeaturedPost']),
     ...mapGetters('blog', {
       blogPosts: 'getFilteredPosts',
       paginatedPosts: 'getFilteredPostsV2'
     }),
-    ...mapGetters('pagination', ['getCurrentPage']),
+    ...mapGetters('pagination', ['getCurrentPage', 'getNumberOfPages']),
     pageList(): [] {
       const begin: number = this.getCurrentPage
       const end: number = begin + this.getNumberPerPage

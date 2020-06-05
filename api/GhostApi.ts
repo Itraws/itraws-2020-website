@@ -9,7 +9,7 @@ const api = new GhostContentApi({
 export const getPosts = async () => {
   try {
     return await api.posts.browse({
-      limit: 'all',
+      limit: 4,
       include: 'authors,tags'
     })
   } catch (error) {

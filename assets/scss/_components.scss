@@ -27,6 +27,7 @@
   &--footer {
     width: 121px;
     height: 19px;
+
     g {
       fill: colors(coconut);
     }
@@ -688,6 +689,7 @@
   align-items: center;
   border-radius: 50%;
   font-size: 1rem;
+
   &--white {
     color: colors(coconut);
   }
@@ -697,30 +699,42 @@
   }
 
   &--red {
-     color: colors(sizzling-red);
+    color: colors(sizzling-red);
   }
+
   &--blue {
     color: colors(ocean-blue);
   }
+
   &--black {
     color: colors(rich-black);
   }
+
+  &--black25 {
+    color: colors(rich-black-25);
+  }
+
   &--bg {
     &--transparent {
       background-color: transparent;
     }
+
     &--white {
       background-color: colors(rich-black);
     }
+
     &--smoke {
       background-color: colors(sizzling-red);
     }
+
     &--red {
       background-color: colors(rich-black);
     }
+
     &--blue {
       background-color: colors(white-smoke);
     }
+
     &--black {
       background-color: transparent;
     }
