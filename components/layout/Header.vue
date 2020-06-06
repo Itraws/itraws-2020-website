@@ -21,18 +21,19 @@
         </div>
         <ul class="header-menu">
           <li
-            v-for="link in navigation"
-            :key="link.id"
+            v-for="(link, key, index) in webNavigation"
+            v-show="link.display && link.desktop && link.primaryLink"
+            :key="index"
             class="meta-typo header-menu__item"
           >
             <nuxt-link
-              :to="link.link"
+              :to="link.url"
               :class="{
-                'header-menu__item--active': page === link.name,
+                'header-menu__item--active': page === link.url,
                 'header-menu__item--blogpost':
                   page === 'blog-slug' && scrollPosition < 50
               }"
-              >{{ link.name }}</nuxt-link
+              >{{ key }}</nuxt-link
             >
           </li>
         </ul>
@@ -47,26 +48,28 @@
     >
       <ul class="mobile-menu__list">
         <li
-          v-for="link in navigation"
-          :key="link.id"
+          v-for="(link, key, index) in webNavigation"
+          v-show="link.display && link.mobile && link.primaryLink"
+          :key="index"
           class="mobile-menu__list__item"
         >
-          <nuxt-link :to="link.link" @click.native="hamburgerClickedActive()">{{
-            link.name
+          <nuxt-link :to="link.url" @click.native="hamburgerClickedActive()">{{
+            key
           }}</nuxt-link>
         </li>
       </ul>
       <div class="mobile-menu__sub">
         <ul class="mobile-menu__sub__list">
           <li
-            v-for="link in subNavigation"
-            :key="link.id"
+            v-for="(link, key, index) in webNavigation"
+            v-show="link.display && link.mobile && !link.primaryLink"
+            :key="index"
             class="mobile-menu__sub__list__item"
           >
             <nuxt-link
-              :to="link.link"
+              :to="link.url"
               @click.native="hamburgerClickedActive()"
-              >{{ link.name }}</nuxt-link
+              >{{ key }}</nuxt-link
             >
           </li>
         </ul>
@@ -90,6 +93,7 @@ import { mapState } from 'vuex'
 import ItrawsLogo from '~/components/branding/Logo.vue'
 import Icon from '~/components/elements/Icon.vue'
 import SocialLinks from '~/content/social.md'
+import NavigationM from '~/content/navigation.md'
 
 export default Vue.extend({
   components: {
@@ -113,7 +117,8 @@ export default Vue.extend({
   },
   computed: {
     ...mapState('pageAnimation', ['page']),
-    socialMedias: () => SocialLinks.attributes
+    socialMedias: () => SocialLinks.attributes,
+    webNavigation: () => NavigationM.attributes
   },
   mounted() {
     window.addEventListener('scroll', this.updateScroll)

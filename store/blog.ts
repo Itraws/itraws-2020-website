@@ -83,41 +83,25 @@ export const mutations: MutationTree<RootState> = {
 
 // Actions
 export const actions: ActionTree<RootState, RootState> = {
-  fetchBlogPosts: async ({ commit, dispatch }) => {
-    try {
-      const posts: [] | any = await getPosts()
-      commit('SET_BLOG_POSTS', posts)
-      dispatch('pagination/setPagination', posts.meta.pagination, {
-        root: true
-      })
-      dispatch('fetchFeaturedPost')
-    } catch (error) {
-      console.log({ error })
-    }
+  fetchBlogPosts: async ({ commit, dispatch }, currentPage: number = 1) => {
+    const posts: [] | any = await getPosts(currentPage)
+    commit('SET_BLOG_POSTS', posts)
+    dispatch('pagination/setPagination', posts.meta.pagination, {
+      root: true
+    })
+    dispatch('fetchFeaturedPost')
   },
   fetchFeaturedPost: async ({ commit }) => {
-    try {
-      const featured: [] = await getFeaturedPost()
-      commit('SET_FEATURED_POST', featured)
-    } catch (error) {
-      console.error({ error })
-    }
+    const featured: [] = await getFeaturedPost()
+    commit('SET_FEATURED_POST', featured)
   },
   fetchSinglePost: async ({ dispatch, commit }, slug: string) => {
-    try {
-      const post: [] = await getSinglePost(slug)
-      return post
-    } catch (error) {
-      console.log({ errorMessage: error })
-    }
+    const post: [] = await getSinglePost(slug)
+    return post
   },
   fetchLatestPosts: async ({ commit }, n: string) => {
-    try {
-      const posts: [] = await getLatestPosts(n)
-      commit('SET_LATEST_POSTS', posts)
-    } catch (error) {
-      console.log({ error })
-    }
+    const posts: [] = await getLatestPosts(n)
+    commit('SET_LATEST_POSTS', posts)
   },
   setActiveTab: ({ commit }, key: string) => {
     commit('SET_ACTIVE_TAB', key)

@@ -1,5 +1,11 @@
 <template>
-  <a :href="buttonTo" :type="buttonType" class="button hvr-grow" :class="`button--${buttonColor}`">{{ buttonValue }}</a>
+  <a
+    :href="buttonTo"
+    :type="buttonType"
+    class="button hvr-grow"
+    :class="`button--${buttonColor}`"
+    >{{ buttonValue }}</a
+  >
 </template>
 
 <script lang="ts">
@@ -15,7 +21,7 @@ export default Vue.extend({
     },
     buttonTo: {
       type: String,
-      required: true,
+      required: false,
       default: () => ''
     },
     buttonType: {

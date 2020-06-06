@@ -189,6 +189,12 @@
   display: flex;
   flex-wrap: wrap;
 
+  &__group {
+    display: inherit;
+    width: inherit;
+    flex-wrap: inherit;
+  }
+
   .blog-card {
     margin: spacing-multiply($DEFAULT-SPACING, 2em);
   }
@@ -596,6 +602,19 @@
       width: 100%;
       justify-content: center;
       align-items: center;
+
+      .pagination__button {
+        background-color: transparent;
+        border: none;
+
+        &--active {
+          cursor: pointer;
+        }
+
+        &--disabled {
+          cursor: initial;
+        }
+      }
 
       .pagination__arrow {
         width: 30px;

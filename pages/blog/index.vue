@@ -38,28 +38,26 @@
                 {{ post.tags[0].name }}
               </p>
             </template>
-            <template #postTag
-              ><p v-if="post.tags[1]" class="blog-card__posttype">
+            <template #postTag>
+              <p v-if="post.tags[1]" class="blog-card__posttype">
                 {{ post.tags[1].name }}
-              </p></template
-            >
-            <template #postTitle
-              ><h3 class="blog-card__title mg-bottom-2">
+              </p>
+            </template>
+            <template #postTitle>
+              <h3 class="blog-card__title mg-bottom-2">
                 <nuxt-link :to="{ path: `blog/${post.slug}` }">{{
                   post.title
                 }}</nuxt-link>
-              </h3></template
-            >
-            <template #postExcerp
-              ><p class="blog-card__excerp">
-                {{ post.excerpt }}
-              </p></template
-            >
-            <template #postDate
-              ><p class="blog-card__date">
+              </h3>
+            </template>
+            <template #postExcerp>
+              <p class="blog-card__excerp">{{ post.excerpt }}</p>
+            </template>
+            <template #postDate>
+              <p class="blog-card__date">
                 {{ $moment(post.created_at).format('MMM Do YYYY') }}
-              </p></template
-            >
+              </p>
+            </template>
           </BlogCard>
         </div>
         <Pagination :filter-data="search" />
@@ -84,6 +82,10 @@ interface filterInt {
 
 export default Vue.extend({
   name: 'BlogPage',
+  transition: {
+    name: 'bloglist',
+    mode: 'out-in'
+  },
   components: {
     FilterBar,
     BlogHeaderHero,
@@ -104,8 +106,8 @@ export default Vue.extend({
     }),
     ...mapGetters('pagination', ['getCurrentPage', 'getNumberOfPages']),
     pageList(): [] {
-      const begin: number = this.getCurrentPage
-      const end: number = begin + this.getNumberPerPage
+      // const begin: number = this.getCurrentPage
+      // const end: number = begin + this.getNumberOfPages
       return this.blogPosts(this.search)
     }
   },

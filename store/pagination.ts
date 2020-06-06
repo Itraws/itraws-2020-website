@@ -40,25 +40,20 @@ export const actions: ActionTree<RootState, RootState> = {
       console.log({ error })
     }
   },
-  setCurrentPage: ({ commit }, number: number) => {
-    try {
+  // changePage: ({ commit, dispatch, getters }, number: number) => {
+  //   try {
+  //     dispatch('blog/fetchBlogPosts', number, { root: true })
+  //     commit('SET_CURRENT_PAGE', number)
+  //   } catch (error) {
+  //     console.log({ error })
+  //   }
+  // },
+  changePage: ({ commit, dispatch, getters }, number: number) => {
+    // ca fonctionne, mais je ne sais pas pourquoi...
+    if (typeof number !== 'number') number = getters.getCurrentPage
+    if (typeof number === 'number') {
+      dispatch('blog/fetchBlogPosts', number, { root: true })
       commit('SET_CURRENT_PAGE', number)
-    } catch (error) {
-      console.log({ error })
-    }
-  },
-  nextPage: ({ commit }, number: number) => {
-    try {
-      commit('SET_CURRENT_PAGE', number)
-    } catch (error) {
-      console.log({ error })
-    }
-  },
-  previousPage: ({ commit }, number: number) => {
-    try {
-      commit('SET_CURRENT_PAGE', number)
-    } catch (error) {
-      console.log({ error })
     }
   }
 }

@@ -6,46 +6,31 @@ const api = new GhostContentApi({
   version: 'v3'
 })
 
-export const getPosts = async () => {
-  try {
-    return await api.posts.browse({
-      limit: 4,
-      include: 'authors,tags'
-    })
-  } catch (error) {
-    console.error({ error })
-  }
+export const getPosts = async (currentPage: number = 1) => {
+  return await api.posts.browse({
+    limit: 6,
+    page: currentPage,
+    include: 'authors,tags'
+  })
 }
 
 export const getFeaturedPost = async () => {
-  try {
-    return await api.posts.browse({
-      filter: 'featured:true'
-    })
-  } catch (error) {
-    console.error({ error })
-  }
+  return await api.posts.browse({
+    filter: 'featured:true'
+  })
 }
 
 export const getSinglePost = async (postSlug: string) => {
-  try {
-    return await api.posts.read({
-      slug: postSlug,
-      include: 'authors'
-    })
-  } catch (error) {
-    console.log(error)
-  }
+  return await api.posts.read({
+    slug: postSlug,
+    include: 'authors'
+  })
 }
 
 export const getLatestPosts = async (n: string) => {
-  try {
-    return await api.posts.browse({
-      limit: n,
-      include: 'tags',
-      order: 'published_at DESC'
-    })
-  } catch (error) {
-    console.error({ error })
-  }
+  return await api.posts.browse({
+    limit: n,
+    include: 'tags',
+    order: 'published_at DESC'
+  })
 }

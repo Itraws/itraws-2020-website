@@ -45,17 +45,36 @@
                 {{ content.cardTwo.text }}
               </h4>
               <div class="card-form mg-top-6">
-                <input
-                  class="newsletter mg-right-4"
-                  placeholder="Enter your email..."
-                  type="text"
-                />
-                <button-component
-                  button-to="/"
-                  :button-value="content.cardTwo.button"
-                  button-type="button"
-                  button-color="coconut"
-                />
+                <form
+                  id="mc-embedded-subscribe-form"
+                  :action="letterSignUp"
+                  name="mc-embedded-subscribe-form"
+                  class="validate"
+                  target="_blank"
+                  novalidate
+                >
+                  <input
+                    id="mce-EMAIL"
+                    class="newsletter mg-right-4 required email"
+                    placeholder="Enter your email..."
+                    type="email"
+                    :value="newsletterEmail"
+                    name="EMAIL"
+                  />
+                  <button-component
+                    id="mc-embedded-subscribe"
+                    type="submit"
+                    value="Subscribe"
+                    name="subscribe"
+                    :button-value="content.cardTwo.button"
+                    button-type="button"
+                    button-color="coconut"
+                  />
+                </form>
+                <script
+                  type="text/javascript"
+                  src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
+                ></script>
               </div>
             </div>
           </div>
@@ -85,8 +104,30 @@ export default Vue.extend({
     LayoutArticlesPreview,
     LayoutFooter
   },
+  data() {
+    return {
+      newsletterEmail: '',
+      error: '',
+      signUpResponse: ''
+    }
+  },
   computed: {
     content: () => content.attributes
+  },
+  methods: {
+    async letterSignUp() {
+      try {
+        const signup: any = await this.$axios.$post(
+          'https://itraws.us17.list-manage.com/subscribe/post?u=f57565c6062a47de5613bbb3a&amp;id=6ebd1999fb',
+          {
+            EMAIL: this.newsletterEmail
+          }
+        )
+        this.signUpResponse = signup.response.data
+      } catch (error) {
+        this.error = error
+      }
+    }
   }
 })
 </script>

@@ -86,7 +86,7 @@ export default Vue.extend({
   },
   computed: {
     ...mapGetters('blog', ['getActiveTab']),
-    searchInputLength() {
+    searchInputLength(): number {
       return this.search.length
     }
   },
@@ -97,11 +97,11 @@ export default Vue.extend({
   },
   methods: {
     ...mapActions('blog', ['setActiveTab']),
-    onFocus(event) {
+    onFocus(event: object | any) {
       event.target.select()
       this.searchInput.isFocused = true
     },
-    onBlur(event) {
+    onBlur(event: object | any) {
       if (this.searchInputLength <= 0) {
         this.searchInput.isFocused = false
       }

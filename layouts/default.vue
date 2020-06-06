@@ -1,13 +1,12 @@
 <template>
   <div class="body">
-    <nuxt keep-alive />
+    <nuxt />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
-import LayoutHeader from '~/components/layout/Header.vue'
 
 export default Vue.extend({
   name: 'LandingPageLayout',
@@ -15,15 +14,27 @@ export default Vue.extend({
     name: 'default',
     mode: 'out-in'
   },
-  components: {
-    LayoutHeader
-    // BlogHeaderHero
+  data() {
+    return {
+      error: '',
+      loading: false
+    }
   },
   computed: {
     ...mapState('pageAnimation', ['page'])
   },
-  created() {
-    this.fetchBlogPosts()
+  // created() {
+  //   this.fetchBlogPosts()
+  // },
+  async mounted() {
+    this.error = ''
+    this.loading = true
+    try {
+      await this.fetchBlogPosts()
+    } catch (error) {
+      this.error = error
+    }
+    this.loading = false
   },
   methods: {
     ...mapActions('blog', ['fetchBlogPosts'])
