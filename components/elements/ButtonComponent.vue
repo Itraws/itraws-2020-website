@@ -1,11 +1,22 @@
 <template>
-  <a
+  <button
+    v-if="buttonType === 'button'"
     :href="buttonTo"
     :type="buttonType"
     class="button hvr-grow"
     :class="`button--${buttonColor}`"
-    >{{ buttonValue }}</a
   >
+    {{ buttonValue }}
+  </button>
+  <a
+    v-else
+    :href="buttonTo"
+    :type="buttonType"
+    class="button hvr-grow"
+    :class="`button--${buttonColor}`"
+  >
+    {{ buttonValue }}
+  </a>
 </template>
 
 <script lang="ts">

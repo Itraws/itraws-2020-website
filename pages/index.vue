@@ -47,18 +47,32 @@
               <div class="card-form mg-top-6">
                 <form
                   id="mc-embedded-subscribe-form"
-                  :action="letterSignUp"
                   name="mc-embedded-subscribe-form"
                   class="validate"
-                  target="_blank"
-                  novalidate
+                  @submit.prevent="letterSignUp"
                 >
                   <input
                     id="mce-EMAIL"
+                    v-model="newsletterFname"
+                    class="newsletter mg-right-4 required email"
+                    placeholder="First name"
+                    type="text"
+                    name="FIRSTNAME"
+                  />
+                  <input
+                    id="mce-EMAIL"
+                    v-model="newsletterLname"
+                    class="newsletter mg-right-4 required email"
+                    placeholder="Last name"
+                    type="text"
+                    name="LASTNAME"
+                  />
+                  <input
+                    id="mce-EMAIL"
+                    v-model="newsletterEmail"
                     class="newsletter mg-right-4 required email"
                     placeholder="Enter your email..."
                     type="email"
-                    :value="newsletterEmail"
                     name="EMAIL"
                   />
                   <button-component
@@ -71,10 +85,6 @@
                     button-color="coconut"
                   />
                 </form>
-                <script
-                  type="text/javascript"
-                  src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"
-                ></script>
               </div>
             </div>
           </div>
@@ -88,6 +98,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapActions } from 'vuex'
 import HeaderHero from '~/components/layout/HeaderHero.vue'
 import LayoutArticlesPreview from '~/components/layout/ArticlesPreview.vue'
 import LayoutFooter from '~/components/layout/Footer.vue'
@@ -106,6 +117,8 @@ export default Vue.extend({
   },
   data() {
     return {
+      newsletterFname: '',
+      newsletterLname: '',
       newsletterEmail: '',
       error: '',
       signUpResponse: ''
@@ -115,16 +128,35 @@ export default Vue.extend({
     content: () => content.attributes
   },
   methods: {
-    async letterSignUp() {
+    ...mapActions('modal', ['setError']),
+    async letterSignUp(evt) {
+      evt.preventDefault()
       try {
-        const signup: any = await this.$axios.$post(
-          'https://itraws.us17.list-manage.com/subscribe/post?u=f57565c6062a47de5613bbb3a&amp;id=6ebd1999fb',
-          {
-            EMAIL: this.newsletterEmail
-          }
-        )
+        const mcData = {
+          members: [
+            {
+              email_address: this.newsletterEmail,
+              status: 'subscribed',
+              merge_fields: {
+                FNAME: this.newsletterFname,
+                LNAME: this.newsletterLname
+              }
+            }
+          ]
+        }
+        const mcPostData = JSON.stringify(mcData)
+        const signup = await this.$axios({
+          url: '/mailchimp',
+          method: 'post',
+          headers: {
+            Authorization: `apikey ${process.env.MAILCHIMP_AUTH}`
+          },
+          data: mcPostData
+        })
+        console.log(signup.response.data)
         this.signUpResponse = signup.response.data
       } catch (error) {
+        this.setError(error)
         this.error = error
       }
     }

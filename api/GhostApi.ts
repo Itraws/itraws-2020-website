@@ -10,7 +10,7 @@ export const getPosts = async (currentPage: number = 1) => {
   return await api.posts.browse({
     limit: 6,
     page: currentPage,
-    include: 'authors,tags'
+    include: ['authors', 'tags']
   })
 }
 

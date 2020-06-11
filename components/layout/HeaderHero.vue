@@ -48,7 +48,7 @@
             v-if="isHomePage"
             :button-to="homeContent.heroButton.url"
             :button-value="homeContent.heroButton.text"
-            button-type="button"
+            button-type="link"
             button-color="oceanBlue"
           />
         </div>

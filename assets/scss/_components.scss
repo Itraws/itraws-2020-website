@@ -759,3 +759,40 @@
     }
   }
 }
+
+// Modal
+.modal {
+  position: fixed;
+  top: spacing-multiply($DEFAULT-SPACING, 20rem);
+  left: 50%;
+  z-index: 99;
+
+  &__container {
+    position: relative;
+    left: -50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem 2rem;
+    border-radius: 5rem;
+    color: colors(coconut);
+
+  }
+
+  &--label {
+    font-weight: fontWeight(semibold);
+  }
+
+  &--message {
+    margin-left: spacing-multiply($DEFAULT-SPACING, 3rem);
+    text-transform: capitalize;
+  }
+
+  &--danger {
+    background-color: colors(sizzling-red);
+  }
+
+  &--success {
+    background-color: aquamarine;
+  }
+}
