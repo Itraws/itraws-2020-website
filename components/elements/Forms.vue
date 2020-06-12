@@ -7,6 +7,7 @@
     data-netlify-honeypot="bot-field"
     @submit.prevent="handleSubmit"
   >
+    <p>Is it working?</p>
     <input type="hidden" name="form-name" value="subscription-form" />
     <input
       v-model="newsletterFname"
