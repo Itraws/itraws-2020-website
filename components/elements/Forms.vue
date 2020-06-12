@@ -91,21 +91,21 @@ export default Vue.extend({
     async handleSubmit(e: modalState) {
       try {
         e.preventDefault()
-        const formSubmit = await fetch('/', {
-          method: 'POST',
-          body: this.encode({
-            'form-name': 'subscription-form',
-            ...this.form
-          })
-        })
-        // const axiosConfig = {
-        //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        // }
-        // await this.$axios.$post(
-        //   '/',
-        //   this.encode({ 'form-name': 'subscription-form', ...this.form }),
-        //   axiosConfig
-        // )
+        // const formSubmit = await fetch('/', {
+        //   method: 'POST',
+        //   body: this.encode({
+        //     'form-name': 'subscription-form',
+        //     ...this.form
+        //   })
+        // })
+        const axiosConfig = {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }
+        const formSubmit = await this.$axios.$post(
+          '/',
+          this.encode({ 'form-name': 'subscription-form', ...this.form }),
+          axiosConfig
+        )
         this.setSuccess({
           label: 'Newsletter',
           message: 'Thank you for subscribing.',
