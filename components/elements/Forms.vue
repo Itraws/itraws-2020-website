@@ -5,7 +5,7 @@
     method="post"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
-    @submit="handleSubmit"
+    @submit.prevent="handleSubmit"
   >
     <input type="hidden" name="form-name" value="subscription-form" />
     <input
@@ -93,6 +93,7 @@ export default Vue.extend({
         // })
         const formSubmit = await fetch('/', {
           method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: this.encode({
             'form-name': form.getAttribute('name'),
             firstName: form.FIRSTNAME.value,
@@ -108,6 +109,7 @@ export default Vue.extend({
         //   this.encode({ 'form-name': 'subscription-form', ...this.form }),
         //   axiosConfig
         // )
+        console.log(formSubmit)
         this.setSuccess({
           label: 'Newsletter',
           message: 'Thank you for subscribing.',
