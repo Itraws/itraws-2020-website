@@ -74,10 +74,6 @@ import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import Icon from '~/components/elements/Icon.vue'
 
-interface filterInt {
-  [key: string]: any | {}
-}
-
 export default Vue.extend({
   name: 'Pagination',
   components: {

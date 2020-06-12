@@ -17,24 +17,24 @@ module.exports = {
   plugins: ['prettier'],
   // add your custom rules here
   rules: {
-    // "no-console": process.env.NODE_ENV === "production" ? "warn",
-    // "no-debugger": process.env.NODE_ENV === "production" ? "warn",
-    // "vue/html-self-closing": [
-    //   "error",
-    //   {
-    //     "html": {
-    //       "void": "any"
-    //     }
-    //   }
-    // ]
-    // semi: [2, 'never'],
-    // 'no-console': 'off',
-    // 'vue/max-attributes-per-line': 'off',
-    // 'prettier/prettier': [
-    //   'error',
-    //   {
-    //     semi: false
-    //   }
-    // ]
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : '',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : '',
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'any'
+        }
+      }
+    ],
+    semi: [2, 'never'],
+    'no-console': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        semi: false
+      }
+    ]
   }
 }
