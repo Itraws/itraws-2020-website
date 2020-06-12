@@ -7,7 +7,6 @@
     data-netlify-honeypot="bot-field"
     @submit.prevent="handleSubmit"
   >
-    <p>Is it working?</p>
     <input type="hidden" name="form-name" value="subscription-form" />
     <input
       v-model="newsletterFname"
@@ -88,9 +87,12 @@ export default Vue.extend({
         )
         .join('&')
     },
-    async handleSubmit(e: modalState) {
+    handleSubmit(e: modalState) {
       try {
         e.preventDefault()
+        const formSubmit = fetch('./ntfunctions/node-fetch', {
+          headers: { accept: 'Accept: application/json' }
+        })
         // const formSubmit = await fetch('/', {
         //   method: 'POST',
         //   body: this.encode({
@@ -98,14 +100,14 @@ export default Vue.extend({
         //     ...this.form
         //   })
         // })
-        const axiosConfig = {
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }
-        const formSubmit = await this.$axios.$post(
-          '/',
-          this.encode({ 'form-name': 'subscription-form', ...this.form }),
-          axiosConfig
-        )
+        // const axiosConfig = {
+        //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        // }
+        // const formSubmit = await this.$axios.$post(
+        //   '/',
+        //   this.encode({ 'form-name': 'subscription-form', ...this.form }),
+        //   axiosConfig
+        // )
         this.setSuccess({
           label: 'Newsletter',
           message: 'Thank you for subscribing.',

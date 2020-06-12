@@ -55,8 +55,7 @@
   letter-spacing: $DEFAULT-LETTER-SPACING;
   text-transform: uppercase;
   cursor: pointer;
-  padding: spacing-multiply($DEFAULT-SPACING, 2rem)
-    spacing-multiply($DEFAULT-SPACING, 4rem);
+  padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 4rem);
   border-radius: $DEFAULT-SPACING;
   border: none;
   transition: background-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -156,8 +155,7 @@
     text-transform: capitalize;
     border: 0;
     border-bottom: 1px solid colors(coconut);
-    padding: spacing-multiply($DEFAULT-SPACING, 2rem)
-      spacing-multiply($DEFAULT-SPACING, 3rem);
+    padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
     margin-bottom: spacing-multiply($DEFAULT-SPACING, 2rem);
 
     &:nth-last-of-type(1) {
@@ -525,8 +523,7 @@
       font-size: fontSize(small);
       text-transform: uppercase;
       color: colors(rich-black-75);
-      padding: spacing-multiply($DEFAULT-SPACING, 2rem)
-        spacing-multiply($DEFAULT-SPACING, 3rem);
+      padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
       cursor: pointer;
       border-bottom: none;
       transition: border-bottom 0.2s ease;
@@ -580,8 +577,7 @@
       width: 100%;
       overflow: visible;
       margin: 0 0 0 spacing-multiply($DEFAULT-SPACING, 5rem);
-      padding: spacing-multiply($DEFAULT-SPACING, 2rem)
-        spacing-multiply($DEFAULT-SPACING, 3rem);
+      padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
 
       &:focus {
         outline: 0;
@@ -790,7 +786,8 @@
     align-items: center;
     padding: 0.5rem 2rem;
     border-radius: 5rem;
-    color: colors(coconut);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(5, 6, 9, 0.1);
   }
 
   &--label {
@@ -803,10 +800,12 @@
   }
 
   &--danger {
+    color: colors(coconut);
     background-color: colors(sizzling-red);
   }
 
   &--success {
-    background-color: aquamarine;
+    color: colors(ocean-blue);
+    background-color: colors(white-smoke);
   }
 }

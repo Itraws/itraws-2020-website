@@ -6,8 +6,14 @@ interface modalState {
 export const state = () =>
   ({
     display: false,
-    error: {},
-    success: {}
+    error: {
+      isActive: false,
+      data: {}
+    },
+    success: {
+      isActive: false,
+      data: {}
+    }
   } as modalState)
 // RootState
 export type RootState = ReturnType<typeof state>
@@ -24,10 +30,12 @@ export const mutations: MutationTree<RootState> = {
     state.display = status
   },
   SET_ERROR: (state, error) => {
-    state.error = error
+    state.error.isActive = true
+    state.error.data = error
   },
   SET_SUCCESS: (state, message) => {
-    state.success = message
+    state.success.isActive = true
+    state.success.data = message
   }
 }
 

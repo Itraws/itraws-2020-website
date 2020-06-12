@@ -2,13 +2,18 @@
   <div class="modal">
     <div
       class="modal__container"
-      :class="{ 'modal--success': !getError, 'modal--danger': getError }"
+      :class="{
+        'modal--success': getSuccess.isActive,
+        'modal--danger': getError.isActive
+      }"
     >
       <span class="modal--label">{{
-        !getError ? `${getSuccess.label}: ` : 'Error: '
+        !getError.isActive ? `${getSuccess.data.label}: ` : 'Error: '
       }}</span>
       <p class="modal--message">
-        {{ !getError ? getSuccess.message : getError.message }}
+        {{
+          !getError.isActive ? getSuccess.data.message : getError.data.message
+        }}
       </p>
     </div>
   </div>
