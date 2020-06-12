@@ -37,18 +37,17 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/fontawesome.js', '~/api/mailChimp'],
+  plugins: ['~/plugins/fontawesome.js'],
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/moment', '@nuxtjs/dotenv'],
+  buildModules: ['@nuxt/typescript-build', '@nuxtjs/moment'],
   /*
    ** Nuxt.js modules
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/proxy',
     'vue-social-sharing/nuxt'
   ],
   /*
@@ -56,13 +55,9 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    proxy: true
+    proxy: false
   },
-  proxy: {
-    '/mailchimp': {
-      target: 'https://us17.api.mailchimp.com/3.0/lists/13b05b8a03'
-    }
-  },
+  proxy: {},
   /*
    ** Build configuration
    */
