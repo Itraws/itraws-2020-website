@@ -1,7 +1,7 @@
 <template>
   <article class="product-item">
     <img
-      src="~/assets/UI/Branding/product-logo.png"
+      src="https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/UI/Branding/product-logo.png"
       alt="Victoria Analytica"
       class="product-logo"
     />
