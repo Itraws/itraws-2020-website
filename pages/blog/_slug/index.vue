@@ -18,9 +18,7 @@
     <section class="section">
       <div class="section__inner">
         <section class="blog-container">
-          <article class="blog-post">
-            {{ data.html }}
-          </article>
+          <article class="blog-post" v-html="data.html" />
         </section>
       </div>
     </section>
