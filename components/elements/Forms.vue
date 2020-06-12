@@ -5,6 +5,7 @@
     method="post"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
+    @submit.prevent="handleSubmit"
   >
     <input type="hidden" name="form-name" value="subscription-form" />
     <input
@@ -44,8 +45,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapActions } from 'vuex'
 import ButtonComponent from '~/components/elements/ButtonComponent.vue'
 const content = require('~/content/home.md')
+
+interface modalState {
+  [key: string]: any | []
+}
 
 export default Vue.extend({
   components: {
@@ -63,11 +69,42 @@ export default Vue.extend({
       newsletterLname: '',
       newsletterEmail: '',
       error: '',
-      signUpResponse: ''
+      signUpResponse: '',
+      form: {
+        'subscription-form': ''
+      }
     }
   },
   computed: {
     content: () => content.attributes
+  },
+  methods: {
+    ...mapActions('modal', ['setSuccess', 'setError']),
+    encode(data: modalState) {
+      return Object.keys(data)
+        .map(
+          (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join('&')
+    },
+    async handleSubmit() {
+      try {
+        const axiosConfig = {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }
+        await this.$axios.$post(
+          '/',
+          this.encode({ 'form-name': 'subscription-form', ...this.form }),
+          axiosConfig
+        )
+        this.setSuccess({
+          label: 'Newsletter',
+          message: 'Thank you for subscribing.'
+        })
+      } catch (error) {
+        this.setError(error)
+      }
+    }
   }
 })
 </script>
