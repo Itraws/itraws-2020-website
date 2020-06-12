@@ -65,6 +65,11 @@ export default {
     /*
      ** You can extend webpack config here
      */
+    hotMiddleware: {
+      client: {
+        overlay: false
+      }
+    },
     analyze: true,
     extend(config) {
       // add frontmatter-markdown-loader

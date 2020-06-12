@@ -33,6 +33,7 @@ import BlogPostHeaderHero from '~/components/layout/BlogPostHeaderHero.vue'
 import PostMetaBar from '~/components/elements/PostMetaBar.vue'
 import ArticlesPreview from '~/components/layout/ArticlesPreview.vue'
 import LayoutFooter from '~/components/layout/Footer.vue'
+import { getSinglePost } from '~/api/GhostApi'
 
 export default Vue.extend({
   name: 'BlogPostPage',
@@ -42,8 +43,8 @@ export default Vue.extend({
     ArticlesPreview,
     LayoutFooter
   },
-  async asyncData({ store, params }) {
-    const post = await store.dispatch('blog/fetchSinglePost', params.slug)
+  async asyncData({ params }) {
+    const post = await getSinglePost(params.slug)
     return { data: post }
   },
   computed: {

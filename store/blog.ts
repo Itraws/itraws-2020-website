@@ -1,10 +1,5 @@
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
-import {
-  getPosts,
-  getFeaturedPost,
-  getSinglePost,
-  getLatestPosts
-} from '~/api/GhostApi'
+import { getPosts, getFeaturedPost, getLatestPosts } from '~/api/GhostApi'
 interface BlogState {
   [key: string]: any | []
 }
@@ -95,10 +90,10 @@ export const actions: ActionTree<RootState, RootState> = {
     const featured = await getFeaturedPost()
     commit('SET_FEATURED_POST', featured)
   },
-  fetchSinglePost: async ({ dispatch, commit }, slug: string) => {
-    const post = await getSinglePost(slug)
-    return post
-  },
+  // fetchSinglePost: async ({ dispatch, commit }, slug: string) => {
+  //   const post = await getSinglePost(slug)
+  //   return post
+  // },
   fetchLatestPosts: async ({ commit }, n: string) => {
     const posts = await getLatestPosts(n)
     commit('SET_LATEST_POSTS', posts)

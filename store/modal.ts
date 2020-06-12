@@ -3,14 +3,13 @@ interface errorState {
   [key: string]: any | []
 }
 
-export type RootState = ReturnType<typeof state>
-
 export const state = () =>
   ({
     display: false,
     error: {}
   } as errorState)
-
+// RootState
+export type RootState = ReturnType<typeof state>
 // Getters
 export const getters: GetterTree<RootState, RootState> = {
   getModalStatus: (state) => state.display,

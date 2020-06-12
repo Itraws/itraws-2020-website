@@ -34,11 +34,7 @@ export const mutations: MutationTree<RootState> = {
 // Actions
 export const actions: ActionTree<RootState, RootState> = {
   setPagination: ({ commit }, pagination: {}) => {
-    try {
-      commit('SET_PAGINATION', pagination)
-    } catch (error) {
-      console.log({ error })
-    }
+    commit('SET_PAGINATION', pagination)
   },
   // changePage: ({ commit, dispatch, getters }, number: number) => {
   //   try {
