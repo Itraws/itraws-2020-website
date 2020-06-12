@@ -69,10 +69,7 @@ export default Vue.extend({
       newsletterLname: '',
       newsletterEmail: '',
       error: '',
-      signUpResponse: '',
-      form: {
-        'subscription-form': ''
-      }
+      signUpResponse: ''
     }
   },
   computed: {
@@ -87,19 +84,22 @@ export default Vue.extend({
         )
         .join('&')
     },
-    handleSubmit(e: modalState) {
+    async handleSubmit(e: modalState) {
       try {
         e.preventDefault()
-        const formSubmit = fetch('./ntfunctions/node-fetch', {
-          headers: { accept: 'Accept: application/json' }
-        })
-        // const formSubmit = await fetch('/', {
-        //   method: 'POST',
-        //   body: this.encode({
-        //     'form-name': 'subscription-form',
-        //     ...this.form
-        //   })
+        const form = e.target
+        // const formSubmit = fetch('./ntfunctions/node-fetch', {
+        //   headers: { accept: 'Accept: application/json' }
         // })
+        const formSubmit = await fetch('/', {
+          method: 'POST',
+          body: this.encode({
+            'form-name': form.getAttribute('name'),
+            firstName: form.FIRSTNAME.value,
+            lastName: form.LASTNAME.value,
+            email: form.EMAIL.value
+          })
+        })
         // const axiosConfig = {
         //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         // }
