@@ -45,46 +45,7 @@
                 {{ content.cardTwo.text }}
               </h4>
               <div class="card-form mg-top-6">
-                <form
-                  id="mc-embedded-subscribe-form"
-                  name="mc-embedded-subscribe-form"
-                  class="validate"
-                  @submit.prevent=""
-                >
-                  <input
-                    id="mce-EMAIL"
-                    v-model="newsletterFname"
-                    class="newsletter mg-right-4 required email"
-                    placeholder="First name"
-                    type="text"
-                    name="FIRSTNAME"
-                  />
-                  <input
-                    id="mce-EMAIL"
-                    v-model="newsletterLname"
-                    class="newsletter mg-right-4 required email"
-                    placeholder="Last name"
-                    type="text"
-                    name="LASTNAME"
-                  />
-                  <input
-                    id="mce-EMAIL"
-                    v-model="newsletterEmail"
-                    class="newsletter mg-right-4 required email"
-                    placeholder="Enter your email..."
-                    type="email"
-                    name="EMAIL"
-                  />
-                  <button-component
-                    id="mc-embedded-subscribe"
-                    type="submit"
-                    value="Subscribe"
-                    name="subscribe"
-                    :button-value="content.cardTwo.button"
-                    button-type="button"
-                    button-color="coconut"
-                  />
-                </form>
+                <FormComponent />
               </div>
             </div>
           </div>
@@ -103,7 +64,8 @@ import HeaderHero from '~/components/layout/HeaderHero.vue'
 import LayoutArticlesPreview from '~/components/layout/ArticlesPreview.vue'
 import LayoutFooter from '~/components/layout/Footer.vue'
 import Icon from '~/components/elements/Icon.vue'
-import ButtonComponent from '~/components/elements/ButtonComponent.vue'
+import FormComponent from '~/components/elements/Forms.vue'
+
 const content = require('~/content/home.md')
 
 export default Vue.extend({
@@ -111,18 +73,9 @@ export default Vue.extend({
   components: {
     HeaderHero,
     Icon,
-    ButtonComponent,
+    FormComponent,
     LayoutArticlesPreview,
     LayoutFooter
-  },
-  data() {
-    return {
-      newsletterFname: '',
-      newsletterLname: '',
-      newsletterEmail: '',
-      error: '',
-      signUpResponse: ''
-    }
   },
   computed: {
     content: () => content.attributes

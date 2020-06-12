@@ -143,14 +143,26 @@
 // Newsletter input Component properties
 // -----------------------------------------------------------------------------
 .newsletter {
-  min-width: 200px;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid colors(coconut);
-  padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
-  color: colors(coconut);
-  font-size: fontSize(button);
-  letter-spacing: 0.1rem;
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    min-width: 200px;
+    background: transparent;
+    font-size: fontSize(button);
+    color: colors(coconut);
+    letter-spacing: 0.1rem;
+    font-weight: fontWeight(semibold);
+    text-transform: uppercase;
+    border: 0;
+    border-bottom: 1px solid colors(coconut);
+    padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
+    margin-bottom: spacing-multiply($DEFAULT-SPACING, 2rem);
+
+    &:nth-last-of-type(1) {
+      margin-bottom: spacing-multiply($DEFAULT-SPACING, 5rem);
+    }
+  }
 
   &::placeholder {
     font-family: $text-poppins;
