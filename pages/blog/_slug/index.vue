@@ -18,7 +18,9 @@
     <section class="section">
       <div class="section__inner">
         <section class="blog-container">
-          <article class="blog-post" :html="data.html" />
+          <article class="blog-post">
+            {{ data.html }}
+          </article>
         </section>
       </div>
     </section>
@@ -49,7 +51,7 @@ export default Vue.extend({
   },
   computed: {
     fullPageUrl(): string {
-      return '/' + this.$route.path
+      return location.href
     }
   }
 })
