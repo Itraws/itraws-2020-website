@@ -70,7 +70,6 @@ export default {
         overlay: false
       }
     },
-    analyze: true,
     extend(config) {
       // add frontmatter-markdown-loader
       config.module.rules.push({
