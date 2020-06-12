@@ -16,7 +16,7 @@
             <div class="about-section__image--1">
               <img
                 class="about-section__image--1"
-                src="~/assets/img/about-image-1.png"
+                src="https://itrawsorigin.s3.ca-central-1.amazonaws.com/about-image-1.png"
                 alt="image 1"
               />
             </div>
@@ -25,7 +25,7 @@
             <div class="about-section__image--2">
               <img
                 class="about-section__image--2"
-                src="~/assets/img/about-image-2.png"
+                src="https://itrawsorigin.s3.ca-central-1.amazonaws.com/about-image-2.png"
                 alt="image 2"
               />
             </div>
