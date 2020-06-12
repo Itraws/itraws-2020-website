@@ -1,8 +1,13 @@
 [build]
 command = "npm run generate"
 publish = "dist"
+
+[dev]
+command = "npm run dev"
+# functions = "ntfunctions"
+
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
-  for = "/*"
+  for = "/"
     [headers.values]
     Access-Control-Allow-Origin = "*"
