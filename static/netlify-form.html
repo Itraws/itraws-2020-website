@@ -1,3 +1,6 @@
-<form name="subscription-form" action="/form/success" netlify>
+<form name="subscription-form" action="/form/success" netlify netlify-honeypot="bot-field" hidden>
   <!-- form controls here -->
+  <input type="text" name="FIRSTNAME" />
+  <input type="text" name="LASTNAME" />
+  <input type="text" name="EMAIL" />
 </form>

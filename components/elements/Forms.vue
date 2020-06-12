@@ -5,6 +5,7 @@
     method="post"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
+    @submit.prevent
   >
     <input type="hidden" name="form-name" value="subscription-form" />
     <input
@@ -13,6 +14,7 @@
       placeholder="First name"
       type="text"
       name="FIRSTNAME"
+      required
     />
     <input
       v-model="newsletterLname"
@@ -20,6 +22,7 @@
       placeholder="Last name"
       type="text"
       name="LASTNAME"
+      required
     />
     <input
       v-model="newsletterEmail"
@@ -27,6 +30,7 @@
       placeholder="Enter your email..."
       type="email"
       name="EMAIL"
+      required
     />
     <button-component
       type="submit"
@@ -47,6 +51,12 @@ const content = require('~/content/home.md')
 export default Vue.extend({
   components: {
     ButtonComponent
+  },
+  props: {
+    value: {
+      type: String,
+      default: () => ''
+    }
   },
   data() {
     return {

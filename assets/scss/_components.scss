@@ -55,7 +55,8 @@
   letter-spacing: $DEFAULT-LETTER-SPACING;
   text-transform: uppercase;
   cursor: pointer;
-  padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 4rem);
+  padding: spacing-multiply($DEFAULT-SPACING, 2rem)
+    spacing-multiply($DEFAULT-SPACING, 4rem);
   border-radius: $DEFAULT-SPACING;
   border: none;
   transition: background-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -152,11 +153,11 @@
     font-size: fontSize(button);
     color: colors(coconut);
     letter-spacing: 0.1rem;
-    font-weight: fontWeight(semibold);
-    text-transform: uppercase;
+    text-transform: capitalize;
     border: 0;
     border-bottom: 1px solid colors(coconut);
-    padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
+    padding: spacing-multiply($DEFAULT-SPACING, 2rem)
+      spacing-multiply($DEFAULT-SPACING, 3rem);
     margin-bottom: spacing-multiply($DEFAULT-SPACING, 2rem);
 
     &:nth-last-of-type(1) {
@@ -524,7 +525,8 @@
       font-size: fontSize(small);
       text-transform: uppercase;
       color: colors(rich-black-75);
-      padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
+      padding: spacing-multiply($DEFAULT-SPACING, 2rem)
+        spacing-multiply($DEFAULT-SPACING, 3rem);
       cursor: pointer;
       border-bottom: none;
       transition: border-bottom 0.2s ease;
@@ -578,7 +580,8 @@
       width: 100%;
       overflow: visible;
       margin: 0 0 0 spacing-multiply($DEFAULT-SPACING, 5rem);
-      padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
+      padding: spacing-multiply($DEFAULT-SPACING, 2rem)
+        spacing-multiply($DEFAULT-SPACING, 3rem);
 
       &:focus {
         outline: 0;
@@ -785,10 +788,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
     border-radius: 5rem;
     color: colors(coconut);
-
   }
 
   &--label {
