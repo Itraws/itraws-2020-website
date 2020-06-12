@@ -72,7 +72,8 @@
 import Vue from 'vue'
 import HeaderHero from '~/components/layout/HeaderHero.vue'
 import LayoutFooter from '~/components/layout/Footer.vue'
-import content from '~/content/about.md'
+// import content from '~/content/about.md'
+const content = require('~/content/about.md')
 
 export default Vue.extend({
   name: 'AboutPage',

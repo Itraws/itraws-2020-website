@@ -58,11 +58,6 @@ import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import Icon from '~/components/elements/Icon.vue'
 
-interface searchInput {
-  field: string
-  isFocused: boolean
-}
-
 export default Vue.extend({
   name: 'FilterBar',
   components: {
@@ -97,11 +92,11 @@ export default Vue.extend({
   },
   methods: {
     ...mapActions('blog', ['setActiveTab']),
-    onFocus(event: object | any) {
+    onFocus(event: {} | any) {
       event.target.select()
       this.searchInput.isFocused = true
     },
-    onBlur(event: object | any) {
+    onBlur() {
       if (this.searchInputLength <= 0) {
         this.searchInput.isFocused = false
       }

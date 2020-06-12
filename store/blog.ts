@@ -92,15 +92,15 @@ export const actions: ActionTree<RootState, RootState> = {
     dispatch('fetchFeaturedPost')
   },
   fetchFeaturedPost: async ({ commit }) => {
-    const featured: [] = await getFeaturedPost()
+    const featured = await getFeaturedPost()
     commit('SET_FEATURED_POST', featured)
   },
   fetchSinglePost: async ({ dispatch, commit }, slug: string) => {
-    const post: [] = await getSinglePost(slug)
+    const post = await getSinglePost(slug)
     return post
   },
   fetchLatestPosts: async ({ commit }, n: string) => {
-    const posts: [] = await getLatestPosts(n)
+    const posts = await getLatestPosts(n)
     commit('SET_LATEST_POSTS', posts)
   },
   setActiveTab: ({ commit }, key: string) => {

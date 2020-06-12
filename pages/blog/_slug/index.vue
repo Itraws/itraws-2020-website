@@ -18,7 +18,7 @@
     <section class="section">
       <div class="section__inner">
         <section class="blog-container">
-          <article class="blog-post" v-html="data.html" />
+          <article class="blog-post" :html="data.html" />
         </section>
       </div>
     </section>
@@ -43,16 +43,12 @@ export default Vue.extend({
     LayoutFooter
   },
   async asyncData({ store, params }) {
-    try {
-      const post = await store.dispatch('blog/fetchSinglePost', params.slug)
-      return { data: post }
-    } catch (error) {
-      console.log({ error })
-    }
+    const post = await store.dispatch('blog/fetchSinglePost', params.slug)
+    return { data: post }
   },
   computed: {
     fullPageUrl(): string {
-      return 'http://localhost' + this.$route.path
+      return '/' + this.$route.path
     }
   }
 })

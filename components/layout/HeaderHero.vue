@@ -63,9 +63,9 @@
 import Vue from 'vue'
 import ButtonComponent from '~/components/elements/ButtonComponent.vue'
 import LayoutHeader from '~/components/layout/Header.vue'
-import homeContent from '~/content/home.md'
-import aboutContent from '~/content/about.md'
-import productsContent from '~/content/products.md'
+const homeContent = require('~/content/home.md')
+const aboutContent = require('~/content/about.md')
+const productsContent = require('~/content/products.md')
 
 export default Vue.extend({
   name: 'HeaderHero',

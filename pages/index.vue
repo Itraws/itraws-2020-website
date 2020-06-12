@@ -49,7 +49,7 @@
                   id="mc-embedded-subscribe-form"
                   name="mc-embedded-subscribe-form"
                   class="validate"
-                  @submit.prevent="letterSignUp"
+                  @submit.prevent=""
                 >
                   <input
                     id="mce-EMAIL"
@@ -104,7 +104,7 @@ import LayoutArticlesPreview from '~/components/layout/ArticlesPreview.vue'
 import LayoutFooter from '~/components/layout/Footer.vue'
 import Icon from '~/components/elements/Icon.vue'
 import ButtonComponent from '~/components/elements/ButtonComponent.vue'
-import content from '~/content/home.md'
+const content = require('~/content/home.md')
 
 export default Vue.extend({
   name: 'HomePage',
@@ -128,38 +128,7 @@ export default Vue.extend({
     content: () => content.attributes
   },
   methods: {
-    ...mapActions('modal', ['setError']),
-    async letterSignUp(evt) {
-      evt.preventDefault()
-      try {
-        const mcData = {
-          members: [
-            {
-              email_address: this.newsletterEmail,
-              status: 'subscribed',
-              merge_fields: {
-                FNAME: this.newsletterFname,
-                LNAME: this.newsletterLname
-              }
-            }
-          ]
-        }
-        const mcPostData = JSON.stringify(mcData)
-        const signup = await this.$axios({
-          url: '/mailchimp',
-          method: 'post',
-          headers: {
-            Authorization: `apikey ${process.env.MAILCHIMP_AUTH}`
-          },
-          data: mcPostData
-        })
-        console.log(signup.response.data)
-        this.signUpResponse = signup.response.data
-      } catch (error) {
-        this.setError(error)
-        this.error = error
-      }
-    }
+    ...mapActions('modal', ['setError'])
   }
 })
 </script>

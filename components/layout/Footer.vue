@@ -31,7 +31,7 @@
 import Vue from 'vue'
 import ItrawsLogo from '~/components/branding/Logo.vue'
 import Icon from '~/components/elements/Icon.vue'
-import SocialLinks from '~/content/social.md'
+const SocialLinks = require('~/content/social.md')
 
 export default Vue.extend({
   components: {

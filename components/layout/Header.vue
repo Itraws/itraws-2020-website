@@ -92,8 +92,8 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 import ItrawsLogo from '~/components/branding/Logo.vue'
 import Icon from '~/components/elements/Icon.vue'
-import SocialLinks from '~/content/social.md'
-import NavigationM from '~/content/navigation.md'
+const SocialLinks = require('~/content/social.md')
+const NavigationM = require('~/content/navigation.md')
 
 export default Vue.extend({
   components: {

@@ -70,7 +70,8 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {
+    analyze: true,
+    extend(config) {
       // add frontmatter-markdown-loader
       config.module.rules.push({
         test: /\.md$/,

@@ -76,10 +76,6 @@ import BlogCard from '~/components/blog/BlogCard.vue'
 import Pagination from '~/components/elements/Pagination.vue'
 import LayoutFooter from '~/components/layout/Footer.vue'
 
-interface filterInt {
-  [key: string]: any | {}
-}
-
 export default Vue.extend({
   name: 'BlogPage',
   transition: {
