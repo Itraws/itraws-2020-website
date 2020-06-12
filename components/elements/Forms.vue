@@ -8,7 +8,7 @@
     @submit.prevent="handleSubmit"
   >
     <p>Is it working?</p>
-    <input type="hidden" name="bot-field" value="subscription-form" />
+    <input type="hidden" name="form-name" value="subscription-form" />
     <input
       v-model="newsletterFname"
       class="newsletter__input"
@@ -88,8 +88,16 @@ export default Vue.extend({
         )
         .join('&')
     },
-    handleSubmit() {
+    async handleSubmit(e: modalState) {
       try {
+        e.preventDefault()
+        const formSubmit = await fetch('/', {
+          method: 'POST',
+          body: this.encode({
+            'form-name': 'subscription-form',
+            ...this.form
+          })
+        })
         // const axiosConfig = {
         //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         // }
@@ -100,7 +108,8 @@ export default Vue.extend({
         // )
         this.setSuccess({
           label: 'Newsletter',
-          message: 'Thank you for subscribing.'
+          message: 'Thank you for subscribing.',
+          fdata: formSubmit
         })
       } catch (error) {
         this.setError(error)
