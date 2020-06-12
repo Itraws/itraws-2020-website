@@ -96,9 +96,9 @@ export default Vue.extend({
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: this.encode({
             'form-name': form.getAttribute('name'),
-            firstName: form.FIRSTNAME.value,
-            lastName: form.LASTNAME.value,
-            email: form.EMAIL.value
+            FIRSTNAME: form.FIRSTNAME.value,
+            LASTNAME: form.LASTNAME.value,
+            EMAIL: form.EMAIL.value
           })
         })
         // const axiosConfig = {
