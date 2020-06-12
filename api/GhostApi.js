@@ -6,7 +6,7 @@ const api = new GhostContentApi({
   version: 'v3'
 })
 
-export const getPosts = async (currentPage: number = 1) => {
+export const getPosts = async (currentPage = 1) => {
   return await api.posts.browse({
     limit: 6,
     page: currentPage,
@@ -20,14 +20,14 @@ export const getFeaturedPost = async () => {
   })
 }
 
-export const getSinglePost = async (postSlug: string) => {
+export const getSinglePost = async (postSlug) => {
   return await api.posts.read({
     slug: postSlug,
     include: 'authors'
   })
 }
 
-export const getLatestPosts = async (n: string) => {
+export const getLatestPosts = async (n) => {
   return await api.posts.browse({
     limit: n,
     include: 'tags',
