@@ -5,7 +5,6 @@
     method="post"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
-    @submit.prevent
   >
     <input type="hidden" name="form-name" value="subscription-form" />
     <input
