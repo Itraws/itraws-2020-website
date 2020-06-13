@@ -70,16 +70,11 @@ export default Vue.extend({
   methods: {
     ...mapActions('modal', ['setSuccess', 'setError']),
     encode(data: modalState) {
-      // return Object.keys(data)
-      //   .map(
-      //     (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-      //   )
-      //   .join('&')
-      const formData = new FormData()
-      for (const key of Object.keys(data)) {
-        formData.append(key, data[key])
-      }
-      return formData
+      return Object.keys(data)
+        .map(
+          (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join('&')
     },
     async handleSubmit(e: modalState) {
       try {
