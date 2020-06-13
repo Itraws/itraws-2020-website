@@ -2,7 +2,7 @@
   <form
     name="subscription-form"
     class="newsletter"
-    method="post"
+    method="POST"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     @submit.prevent="handleSubmit"
@@ -11,17 +11,9 @@
     <input
       v-model="newsletterFname"
       class="newsletter__input"
-      placeholder="First name"
+      placeholder="Enter name"
       type="text"
-      name="FIRSTNAME"
-      required
-    />
-    <input
-      v-model="newsletterLname"
-      class="newsletter__input"
-      placeholder="Last name"
-      type="text"
-      name="LASTNAME"
+      name="name"
       required
     />
     <input
@@ -29,7 +21,7 @@
       class="newsletter__input"
       placeholder="Enter your email..."
       type="email"
-      name="EMAIL"
+      name="email"
       required
     />
     <button-component
@@ -69,10 +61,7 @@ export default Vue.extend({
       newsletterLname: '',
       newsletterEmail: '',
       error: '',
-      signUpResponse: '',
-      form: {
-        'subscription-form': ''
-      }
+      signUpResponse: ''
     }
   },
   computed: {
@@ -87,19 +76,34 @@ export default Vue.extend({
         )
         .join('&')
     },
-    async handleSubmit() {
+    async handleSubmit(e: modalState) {
       try {
-        const axiosConfig = {
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }
-        await this.$axios.$post(
-          '/',
-          this.encode({ 'form-name': 'subscription-form', ...this.form }),
-          axiosConfig
-        )
+        e.preventDefault()
+        const form = e.target
+        // const formSubmit = fetch('./ntfunctions/node-fetch', {
+        //   headers: { accept: 'Accept: application/json' }
+        // })
+        const formSubmit = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: this.encode({
+            'form-name': form.getAttribute('name'),
+            name: form.name.value,
+            email: form.email.value
+          })
+        })
+        // const axiosConfig = {
+        //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        // }
+        // const formSubmit = await this.$axios.$post(
+        //   '/',
+        //   this.encode({ 'form-name': 'subscription-form', ...this.form }),
+        //   axiosConfig
+        // )
         this.setSuccess({
           label: 'Newsletter',
-          message: 'Thank you for subscribing.'
+          message: 'Thank you for subscribing.',
+          fdata: formSubmit
         })
       } catch (error) {
         this.setError(error)
