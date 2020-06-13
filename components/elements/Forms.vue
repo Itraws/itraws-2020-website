@@ -2,7 +2,7 @@
   <form
     name="subscription-form"
     class="newsletter"
-    method="post"
+    method="POST"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     @submit.prevent="handleSubmit"
@@ -11,17 +11,9 @@
     <input
       v-model="newsletterFname"
       class="newsletter__input"
-      placeholder="First name"
+      placeholder="Enter name"
       type="text"
-      name="Firstname"
-      required
-    />
-    <input
-      v-model="newsletterLname"
-      class="newsletter__input"
-      placeholder="Last name"
-      type="text"
-      name="Lastname"
+      name="name"
       required
     />
     <input
@@ -29,7 +21,7 @@
       class="newsletter__input"
       placeholder="Enter your email..."
       type="email"
-      name="Email"
+      name="email"
       required
     />
     <button-component
@@ -98,11 +90,11 @@ export default Vue.extend({
         // })
         const formSubmit = await fetch('/', {
           method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: this.encode({
             'form-name': form.getAttribute('name'),
-            Firstname: form.FIRSTNAME.value,
-            Lastname: form.LASTNAME.value,
-            Email: form.EMAIL.value
+            name: form.name.value,
+            email: form.email.value
           })
         })
         // const axiosConfig = {
