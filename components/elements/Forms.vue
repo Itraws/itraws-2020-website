@@ -13,7 +13,7 @@
       class="newsletter__input"
       placeholder="First name"
       type="text"
-      name="FIRSTNAME"
+      name="Firstname"
       required
     />
     <input
@@ -21,7 +21,7 @@
       class="newsletter__input"
       placeholder="Last name"
       type="text"
-      name="LASTNAME"
+      name="Lastname"
       required
     />
     <input
@@ -29,7 +29,7 @@
       class="newsletter__input"
       placeholder="Enter your email..."
       type="email"
-      name="EMAIL"
+      name="Email"
       required
     />
     <button-component
@@ -100,9 +100,9 @@ export default Vue.extend({
           method: 'POST',
           body: this.encode({
             'form-name': form.getAttribute('name'),
-            firstName: form.FIRSTNAME.value,
-            lastName: form.LASTNAME.value,
-            email: form.EMAIL.value
+            Firstname: form.FIRSTNAME.value,
+            Lastname: form.LASTNAME.value,
+            Email: form.EMAIL.value
           })
         })
         // const axiosConfig = {
