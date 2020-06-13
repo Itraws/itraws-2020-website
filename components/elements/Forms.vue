@@ -78,11 +78,16 @@ export default Vue.extend({
   methods: {
     ...mapActions('modal', ['setSuccess', 'setError']),
     encode(data: modalState) {
-      return Object.keys(data)
-        .map(
-          (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-        )
-        .join('&')
+      // return Object.keys(data)
+      //   .map(
+      //     (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+      //   )
+      //   .join('&')
+      const formData = new FormData()
+      for (const key of Object.keys(data)) {
+        formData.append(key, data[key])
+      }
+      return formData
     },
     async handleSubmit(e: modalState) {
       try {
@@ -93,12 +98,11 @@ export default Vue.extend({
         // })
         const formSubmit = await fetch('/', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: this.encode({
             'form-name': form.getAttribute('name'),
-            FIRSTNAME: form.FIRSTNAME.value,
-            LASTNAME: form.LASTNAME.value,
-            EMAIL: form.EMAIL.value
+            firstName: form.FIRSTNAME.value,
+            lastName: form.LASTNAME.value,
+            email: form.EMAIL.value
           })
         })
         // const axiosConfig = {
@@ -109,7 +113,6 @@ export default Vue.extend({
         //   this.encode({ 'form-name': 'subscription-form', ...this.form }),
         //   axiosConfig
         // )
-        console.log(formSubmit)
         this.setSuccess({
           label: 'Newsletter',
           message: 'Thank you for subscribing.',
