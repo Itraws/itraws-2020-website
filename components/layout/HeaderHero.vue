@@ -16,7 +16,7 @@
           class="hero"
           :class="isHomePage ? 'hero--homePage' : 'hero--altPage'"
         >
-          <span class="pattern pattern--dot-vertical" />
+          <!-- <span class="pattern pattern--dot-vertical" /> -->
           <h1
             class="hero__headline text-bold"
             :class="isHomePage ? 'display-typo mg-bottom-5' : 'mg-bottom-3'"
