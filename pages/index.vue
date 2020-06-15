@@ -5,8 +5,8 @@
       <section class="section">
         <div class="section__grid">
           <div class="card">
+            <span class="pattern pattern--dot-rectangle" />
             <div class="card__content">
-              <span class="pattern pattern--dot-rectangle" />
               <h1 class="text-coconut text-bold mg-right-">
                 {{ content.cardOne.headline }}
               </h1>
@@ -35,9 +35,9 @@
             </div>
           </div>
           <div class="card">
+            <span class="shape-red--3" />
+            <span class="shape-white" />
             <div class="card__content">
-              <span class="shape-red--3" />
-              <span class="shape-white" />
               <h1 class="text-coconut text-bold mg-bottom-1">
                 {{ content.cardTwo.headline }}
               </h1>

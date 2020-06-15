@@ -88,12 +88,17 @@
   width: 100%;
   height: 100%;
   background-color: colors(rich-black);
+  z-index: 0;
+  position: relative;
 
   &:last-child {
     background-color: colors(ocean-blue);
   }
 
   .card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 100%;
     padding: spacing-multiply($DEFAULT-SPACING, 15rem) 8.5rem;
@@ -161,13 +166,14 @@
     &:nth-last-of-type(1) {
       margin-bottom: spacing-multiply($DEFAULT-SPACING, 5rem);
     }
-  }
 
-  &::placeholder {
-    font-family: $text-poppins;
-    font-size: fontSize(button);
-    text-transform: uppercase;
-    opacity: 1;
+    &::placeholder {
+      font-family: $text-poppins;
+      font-size: fontSize(button);
+      color: colors(coconut-75);
+      text-transform: uppercase;
+      opacity: 1;
+    }
   }
 }
 
@@ -396,21 +402,7 @@
     width: 15.75rem;
     height: 15.75rem;
     background-color: transparent;
-    border-left: 1px solid rgba(86, 88, 87, 0.1);
-    border-bottom: 1px solid rgba(86, 88, 87, 0.1);
 
-    &:first-of-type {
-      border-left: none;
-      border-bottom: 1px solid rgba(86, 88, 87, 0.1) !important;
-    }
-
-    &:nth-child(4n + 1) {
-      border-left: none;
-    }
-
-    &:last-of-type {
-      border-right: 1px solid rgba(86, 88, 87, 0.1);
-    }
 
     .product-logo {
       width: 12.963rem;
