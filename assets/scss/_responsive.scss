@@ -431,7 +431,7 @@
 
 // floafing icons tablet 600px
 @include media-context(('custom': 600px)) {
-  @include media('>=600px', '<=custom') {
+  @include media('≥600px', '≤custom') {
     .pattern--dot-rectangle {
       right: 0;
       bottom: 0;
@@ -454,7 +454,7 @@
   }
 }
 
-@include media('≥phone', '<=600px') {
+@include media('≥phone', '≤600px') {
   .shape-red--alt {
     top: 4rem;
     right: 19rem;
@@ -465,8 +465,33 @@
 
 
 // Blog post page phone and tablet <=600px
-@include media('≥phone', '<=600px') {
+@include media('≥phone', '≤600px') {
   .blog-container {
     padding: 0;
+  }
+}
+
+@include media('≥1280px', '≤1440px') {
+  .shape-white {
+    left: auto;
+    right: 5rem;
+  }
+
+  .shape-red--3 {
+    right: auto;
+    left: 5rem;
+  }
+}
+
+
+@include media('>1440px', '≥1920px') {
+  .shape-white {
+    left: auto;
+    right: 10rem;
+  }
+
+  .shape-red--3 {
+    right: auto;
+    left: 10rem;
   }
 }
