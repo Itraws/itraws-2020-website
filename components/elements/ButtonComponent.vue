@@ -8,15 +8,15 @@
   >
     {{ buttonValue }}
   </button>
-  <a
+  <nuxt-link
     v-else
-    :href="buttonTo"
+    :to="buttonTo"
     :type="buttonType"
     class="button hvr-grow"
     :class="`button--${buttonColor}`"
   >
     {{ buttonValue }}
-  </a>
+  </nuxt-link>
 </template>
 
 <script lang="ts">
