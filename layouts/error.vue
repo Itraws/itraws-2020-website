@@ -53,13 +53,13 @@ export default Vue.extend({
     statusCode() {
       return (this.error && this.error.statusCode) || 500
     },
-    message(): string {
+    message() {
       return this.error.message
     }
   },
   head() {
     return {
-      title: this.message
+      title: 'Itraws - Something went wrong.'
     }
   }
 })
