@@ -1,6 +1,5 @@
 [build]
 command = "npm run generate"
-functions = "ntfunctions"
 publish = "dist"
 
 [dev]
