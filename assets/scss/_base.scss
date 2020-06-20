@@ -90,6 +90,7 @@ $colors: (rich-black: rgba(5, 6, 9, 1),
   coconut-25: rgba(255, 255, 255, 0.25),
   coconut-10: rgba(255, 255, 255, 0.1),
   ocean-blue: rgba(61, 68, 190, 1),
+  persian-blue: rgba(55, 61, 169, 1),
   sizzling-red: rgba(243, 57, 80, 1)) !default;
 
 /// Font Size
@@ -272,6 +273,10 @@ small {
 
 .text-ocean-blue {
   color: colors(ocean-blue);
+}
+
+.text-persian-blue {
+  color: colors(persian-blue);
 }
 
 .text-sizzeling-red {
