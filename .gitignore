@@ -38,6 +38,12 @@ build/Release
 node_modules/
 jspm_packages/
 
+#assets img
+assets/branding/
+assets/icons/
+assets/img/
+assets/UI/
+
 # TypeScript v1 declaration files
 typings/
 
@@ -88,3 +94,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Local Netlify folder
+.netlify

@@ -13,8 +13,8 @@
   &--circle {
     width: 66.5rem;
     height: 60rem;
-    opacity: 10%;
-    background: url(../img/pattern-circle-dots.svg);
+    opacity: 0.1;
+    background: url(https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/img/pattern-circle-dots.svg);
     background-repeat: no-repeat;
     background-position: top right;
     z-index: -3;
@@ -22,13 +22,14 @@
     right: -5vw;
     bottom: 0;
     left: auto;
+
   }
 
   &--circle-alt {
     width: 56rem;
     height: auto;
-    opacity: 10%;
-    background: url(../img/pattern-circle-dots.svg);
+    opacity: 0.1;
+    background: url(https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/img/pattern-circle-dots.svg);
     background-repeat: no-repeat;
     background-position: bottom right;
     z-index: -3;
@@ -41,10 +42,10 @@
   &--dot-vertical {
     width: 12rem;
     height: auto;
-    background: url(../img/pattern-dot-vertical.svg);
+    background: url(https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/img/pattern-dot-vertical.svg);
     background-repeat: no-repeat;
     background-position: top right;
-    opacity: 30%;
+    opacity: 0.3;
     z-index: -3;
     top: 1vh;
     right: 3vw;
@@ -55,7 +56,7 @@
   &--dot-rectangle {
     width: 12rem;
     height: auto;
-    background: url(../img/pattern-dot-rectangle.svg);
+    background: url(https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/img/pattern-dot-rectangle.svg);
     background-repeat: no-repeat;
     background-position: top left;
     opacity: 1;
@@ -69,7 +70,7 @@
   &--dot-rectangle-blog-post {
     width: 12rem;
     height: auto;
-    background: url(../img/dot-rectangle-light-gray.svg);
+    background: url(https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/img/dot-rectangle-light-gray.svg);
     background-repeat: no-repeat;
     background-position: top right;
     opacity: 1;
@@ -150,7 +151,7 @@
 // Header properties
 // -----------------------------------------------------------------------------
 .header-bg {
-  background: url(../img/mountain-graphic.svg);
+  background: url(https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/img/mountain-graphic.svg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left bottom;
@@ -166,7 +167,7 @@
   position: fixed;
   background-color: transparent;
   transition: background-color 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
-  
+
   &__scroll {
     background-color: colors(coconut);
     opacity: 1;
@@ -285,6 +286,7 @@
 
       &--blogpost {
         color: colors(coconut) !important;
+
         &:hover {
           color: colors(ocean-blue) !important;
         }
@@ -296,7 +298,7 @@
         color: colors(rich-black-75);
         font-weight: fontWeight(semibold);
         text-decoration: none;
-        
+
 
         &:hover {
           color: colors(ocean-blue);
@@ -519,10 +521,11 @@
     width: 100%;
     color: colors(coconut);
     margin-top: spacing-multiply($DEFAULT-SPACING, 5em);
-    
+
     a {
       color: colors(white-smoke);
       font-weight: fontWeight(semibold);
+
       &:hover {
         color: colors(ocean-blue);
       }

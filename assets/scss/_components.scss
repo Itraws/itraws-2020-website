@@ -27,6 +27,7 @@
   &--footer {
     width: 121px;
     height: 19px;
+
     g {
       fill: colors(coconut);
     }
@@ -58,6 +59,7 @@
   border-radius: $DEFAULT-SPACING;
   border: none;
   transition: background-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.05) !important;
 
   &--oceanBlue {
     background-color: colors(ocean-blue);
@@ -87,12 +89,17 @@
   width: 100%;
   height: 100%;
   background-color: colors(rich-black);
+  z-index: 0;
+  position: relative;
 
   &:last-child {
     background-color: colors(ocean-blue);
   }
 
   .card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 100%;
     padding: spacing-multiply($DEFAULT-SPACING, 15rem) 8.5rem;
@@ -142,20 +149,32 @@
 // Newsletter input Component properties
 // -----------------------------------------------------------------------------
 .newsletter {
-  min-width: 200px;
-  background: transparent;
-  border: 0;
-  border-bottom: 1px solid colors(coconut);
-  padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
-  color: colors(coconut);
-  font-size: fontSize(button);
-  letter-spacing: 0.1rem;
+  display: flex;
+  flex-direction: column;
 
-  &::placeholder {
-    font-family: $text-poppins;
+  &__input {
+    min-width: 200px;
+    background: transparent;
     font-size: fontSize(button);
-    text-transform: uppercase;
-    opacity: 1;
+    color: colors(coconut);
+    letter-spacing: 0.1rem;
+    text-transform: capitalize;
+    border: 0;
+    border-bottom: 1px solid colors(coconut);
+    padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
+    margin-bottom: spacing-multiply($DEFAULT-SPACING, 2rem);
+
+    &:nth-last-of-type(1) {
+      margin-bottom: spacing-multiply($DEFAULT-SPACING, 5rem);
+    }
+
+    &::placeholder {
+      font-family: $text-poppins;
+      font-size: fontSize(button);
+      color: colors(coconut-75);
+      text-transform: uppercase;
+      opacity: 1;
+    }
   }
 }
 
@@ -188,6 +207,12 @@
   display: flex;
   flex-wrap: wrap;
 
+  &__group {
+    display: inherit;
+    width: inherit;
+    flex-wrap: inherit;
+  }
+
   .blog-card {
     margin: spacing-multiply($DEFAULT-SPACING, 2em);
   }
@@ -202,6 +227,7 @@
   padding: spacing-multiply($DEFAULT-SPACING, 3em);
   flex-direction: column;
   justify-content: flex-start;
+  box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.05) !important;
 
   &--white {
     background: colors(coconut);
@@ -229,7 +255,7 @@
       color: colors(ocean-blue);
 
       &:hover {
-        color: colors(white-smoke);
+        color: colors(ocean-blue);
       }
     }
   }
@@ -264,7 +290,7 @@
       color: colors(white-smoke);
 
       &:hover {
-        color: colors(ocean-blue);
+        color: colors(coconut);
       }
     }
   }
@@ -378,21 +404,7 @@
     width: 15.75rem;
     height: 15.75rem;
     background-color: transparent;
-    border-left: 1px solid rgba(86, 88, 87, 0.1);
-    border-bottom: 1px solid rgba(86, 88, 87, 0.1);
 
-    &:first-of-type {
-      border-left: none;
-      border-bottom: 1px solid rgba(86, 88, 87, 0.1) !important;
-    }
-
-    &:nth-child(4n + 1) {
-      border-left: none;
-    }
-
-    &:last-of-type {
-      border-right: 1px solid rgba(86, 88, 87, 0.1);
-    }
 
     .product-logo {
       width: 12.963rem;
@@ -596,6 +608,19 @@
       justify-content: center;
       align-items: center;
 
+      .pagination__button {
+        background-color: transparent;
+        border: none;
+
+        &--active {
+          cursor: pointer;
+        }
+
+        &--disabled {
+          cursor: initial;
+        }
+      }
+
       .pagination__arrow {
         width: 30px;
         height: 30px;
@@ -688,6 +713,7 @@
   align-items: center;
   border-radius: 50%;
   font-size: 1rem;
+
   &--white {
     color: colors(coconut);
   }
@@ -697,32 +723,83 @@
   }
 
   &--red {
-     color: colors(sizzling-red);
+    color: colors(sizzling-red);
   }
+
   &--blue {
     color: colors(ocean-blue);
   }
+
   &--black {
     color: colors(rich-black);
   }
+
+  &--black25 {
+    color: colors(rich-black-25);
+  }
+
   &--bg {
     &--transparent {
       background-color: transparent;
     }
+
     &--white {
       background-color: colors(rich-black);
     }
+
     &--smoke {
       background-color: colors(sizzling-red);
     }
+
     &--red {
       background-color: colors(rich-black);
     }
+
     &--blue {
       background-color: colors(white-smoke);
     }
+
     &--black {
       background-color: transparent;
     }
+  }
+}
+
+// Modal
+.modal {
+  position: fixed;
+  top: spacing-multiply($DEFAULT-SPACING, 20rem);
+  left: 50%;
+  z-index: 99;
+
+  &__container {
+    position: relative;
+    left: -50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 2rem;
+    border-radius: 5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(5, 6, 9, 0.1);
+  }
+
+  &--label {
+    font-weight: fontWeight(semibold);
+  }
+
+  &--message {
+    margin-left: spacing-multiply($DEFAULT-SPACING, 3rem);
+    text-transform: capitalize;
+  }
+
+  &--danger {
+    color: colors(coconut);
+    background-color: colors(sizzling-red);
+  }
+
+  &--success {
+    color: colors(ocean-blue);
+    background-color: colors(white-smoke);
   }
 }

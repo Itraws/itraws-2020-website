@@ -47,7 +47,7 @@
   width: $width + rem;
   height: auto;
   position: absolute;
-  background: url(../img/shape-#{$color}.svg);
+  background: url(https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/img/shape-#{$color}.svg);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top left;
@@ -90,6 +90,7 @@ $colors: (rich-black: rgba(5, 6, 9, 1),
   coconut-25: rgba(255, 255, 255, 0.25),
   coconut-10: rgba(255, 255, 255, 0.1),
   ocean-blue: rgba(61, 68, 190, 1),
+  persian-blue: rgba(55, 61, 169, 1),
   sizzling-red: rgba(243, 57, 80, 1)) !default;
 
 /// Font Size
@@ -223,6 +224,10 @@ small {
   text-transform: uppercase;
 }
 
+.text-center {
+  text-align: center;
+}
+
 // -----------------------------------------------------------------------------
 // Typography Color properties
 // -----------------------------------------------------------------------------
@@ -268,6 +273,14 @@ small {
 
 .text-ocean-blue {
   color: colors(ocean-blue);
+}
+
+.text-persian-blue {
+  color: colors(persian-blue);
+}
+
+.text-sizzeling-red {
+  color: colors(sizzling-red);
 }
 
 // -----------------------------------------------------------------------------
@@ -408,25 +421,25 @@ body {
   height: 30px;
 
   &-arrow--branch-white-right {
-    background: url(../UI/Icons/Arrows/arrow-branch-right-white.svg);
+    background: url(https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/UI/Icons/Arrows/arrow-branch-right-white.svg);
     background-repeat: no-repeat;
     background-position: left center;
   }
 
   &-arrow--branch-red-right {
-    background: url(../UI/Icons/Arrows/arrow-branch-right-red.svg);
+    background: url(https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/UI/Icons/Arrows/arrow-branch-right-red.svg);
     background-repeat: no-repeat;
     background-position: left center;
   }
 
   &-arrow--circle-right {
-    background: url(../UI/Icons/Arrows/Arrow-circle-right.svg);
+    background: url(https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/UI/Icons/Arrows/Arrow-circle-right.svg);
     background-repeat: no-repeat;
     background-position: center;
   }
 
   &-blog--post {
-    background: url(../UI/Blog/blogpost-icon.svg);
+    background: url(https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/UI/Blog/blogpost-icon.svg);
     background-repeat: no-repeat;
     background-position: left center;
   }

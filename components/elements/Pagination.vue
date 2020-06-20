@@ -2,16 +2,31 @@
   <section class="pagination-section">
     <div class="pagination-section__inner">
       <div class="pagination">
-        <Icon
-          id="previous"
-          alt="Previous"
-          class="pagination__arrow previous"
-          i-type="fas"
-          i-icon="chevron-left"
-          i-color="blue"
-          i-background="false"
-          @click="previousPage()"
-        />
+        <button
+          class="pagination__button"
+          :class="
+            getPreviousPage !== null
+              ? 'pagination__button--active'
+              : 'pagination__button--disabled'
+          "
+          @click="changePage(getPreviousPage)"
+        >
+          <Icon
+            id="previous"
+            alt="Previous"
+            class="pagination__arrow previous"
+            i-type="fas"
+            i-icon="chevron-left"
+            :i-color="
+              getPreviousPage !== null
+                ? 'blue'
+                : getPreviousPage == null
+                ? 'black25'
+                : ''
+            "
+            i-background="false"
+          />
+        </button>
         <div class="pagination__list">
           <button
             v-for="page in getNumberOfPages"
@@ -19,21 +34,36 @@
             :class="page == getCurrentPage ? 'active' : ''"
             class="pagination__list-item"
             role="button"
-            @click="setCurrentPage(page)"
+            @click="changePage(page)"
           >
             <span>{{ page }}</span>
           </button>
         </div>
-        <Icon
-          id="next"
-          alt="Next"
-          class="pagination__arrow next"
-          i-type="fas"
-          i-icon="chevron-right"
-          i-color="blue"
-          i-background="false"
-          @click="nextPage()"
-        />
+        <button
+          class="pagination__button"
+          :class="
+            getNextPage !== null
+              ? 'pagination__button--active'
+              : 'pagination__button--disabled'
+          "
+          @click="changePage(getNextPage)"
+        >
+          <Icon
+            id="next"
+            alt="Next"
+            class="pagination__arrow next"
+            i-type="fas"
+            i-icon="chevron-right"
+            :i-color="
+              getNextPage !== null
+                ? 'blue'
+                : getNextPage == null
+                ? 'black25'
+                : ''
+            "
+            i-background="false"
+          />
+        </button>
       </div>
     </div>
   </section>
@@ -44,10 +74,6 @@ import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import Icon from '~/components/elements/Icon.vue'
 
-interface filterInt {
-  [key: string]: any | {}
-}
-
 export default Vue.extend({
   name: 'Pagination',
   components: {
@@ -57,11 +83,6 @@ export default Vue.extend({
     filterData: {
       type: String,
       default: ''
-    },
-    // Dictates the amount of items to show per page.
-    numberPerPage: {
-      type: Number,
-      default: 0
     }
   },
   data() {
@@ -71,20 +92,15 @@ export default Vue.extend({
   },
   computed: {
     ...mapGetters('blog', ['getFilteredPosts', 'getBlogPostsLength']),
-    ...mapGetters('pagination', ['getCurrentPage', 'getNumberOfPages'])
-  },
-  async created() {
-    await this.setNumberOfPages(
-      Math.ceil(this.getBlogPostsLength / this.numberPerPage)
-    )
+    ...mapGetters('pagination', [
+      'getCurrentPage',
+      'getNumberOfPages',
+      'getNextPage',
+      'getPreviousPage'
+    ])
   },
   methods: {
-    ...mapActions('pagination', [
-      'setCurrentPage',
-      'setNumberOfPages',
-      'nextPage',
-      'previousPage'
-    ])
+    ...mapActions('pagination', ['changePage'])
   }
 })
 </script>

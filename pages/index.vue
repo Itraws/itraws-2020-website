@@ -5,8 +5,8 @@
       <section class="section">
         <div class="section__grid">
           <div class="card">
+            <span class="pattern pattern--dot-rectangle" />
             <div class="card__content">
-              <span class="pattern pattern--dot-rectangle" />
               <h1 class="text-coconut text-bold mg-right-">
                 {{ content.cardOne.headline }}
               </h1>
@@ -35,9 +35,9 @@
             </div>
           </div>
           <div class="card">
+            <span class="shape-red--3" />
+            <span class="shape-white" />
             <div class="card__content">
-              <span class="shape-red--3" />
-              <span class="shape-white" />
               <h1 class="text-coconut text-bold mg-bottom-1">
                 {{ content.cardTwo.headline }}
               </h1>
@@ -45,17 +45,7 @@
                 {{ content.cardTwo.text }}
               </h4>
               <div class="card-form mg-top-6">
-                <input
-                  class="newsletter mg-right-4"
-                  placeholder="Enter your email..."
-                  type="text"
-                />
-                <button-component
-                  button-to="/"
-                  :button-value="content.cardTwo.button"
-                  button-type="button"
-                  button-color="coconut"
-                />
+                <FormComponent />
               </div>
             </div>
           </div>
@@ -69,24 +59,29 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { mapActions } from 'vuex'
 import HeaderHero from '~/components/layout/HeaderHero.vue'
 import LayoutArticlesPreview from '~/components/layout/ArticlesPreview.vue'
 import LayoutFooter from '~/components/layout/Footer.vue'
 import Icon from '~/components/elements/Icon.vue'
-import ButtonComponent from '~/components/elements/ButtonComponent.vue'
-import content from '~/content/home.md'
+import FormComponent from '~/components/elements/Forms.vue'
+
+const content = require('~/content/home.md')
 
 export default Vue.extend({
   name: 'HomePage',
   components: {
     HeaderHero,
     Icon,
-    ButtonComponent,
+    FormComponent,
     LayoutArticlesPreview,
     LayoutFooter
   },
   computed: {
     content: () => content.attributes
+  },
+  methods: {
+    ...mapActions('modal', ['setError'])
   }
 })
 </script>

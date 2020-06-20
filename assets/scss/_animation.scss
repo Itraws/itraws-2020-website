@@ -9,7 +9,7 @@
 
   &-leave {
     &-active {
-    transition: opacity 0.25s ease-in;
+      transition: opacity 0.25s ease-in;
     }
   }
 }
@@ -19,6 +19,27 @@
 .page-leave-active {
   opacity: 0;
   transform-origin: 50% 50%;
+}
+
+// Blog post group animation
+.bloglist-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.bloglist-enter-active,
+.bloglist-leave-active {
+  transition: all .5s;
+}
+
+.bloglist-enter,
+.bloglist-leave-to {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+
+.bloglist-move {
+  transition: all .5s;
 }
 
 

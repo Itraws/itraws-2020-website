@@ -6,46 +6,50 @@ interface paginationState {
 
 export const state = () =>
   ({
-    currentPage: 1,
-    totalNumberOfPages: 0
+    meta: {}
   } as paginationState)
 
 export type RootState = ReturnType<typeof state>
 
 // Getters
 export const getters: GetterTree<RootState, RootState> = {
-  getCurrentPage: (state) => state.currentPage,
-  getNumberOfPages: (state) => state.totalNumberOfPages
+  getPagination: (state) => state.meta,
+  getNextPage: (state) => state.meta.next,
+  getCurrentPage: (state) => state.meta.page,
+  getNumberOfPages: (state) => state.meta.pages,
+  getPreviousPage: (state) => state.meta.prev,
+  getTotalPostsNumber: (state) => state.meta.total
 }
 
 // Mutations
 export const mutations: MutationTree<RootState> = {
-  SET_CURRENT_PAGE: (state, value: number) => {
-    state.currentPage = value
+  SET_PAGINATION: (state, data: {}) => {
+    state.meta = data
   },
-  SET_NUMBER_OF_PAGES: (state, value: number) => {
-    state.totalNumberOfPages = value
-  },
-  SET_NEXT_PAGE: (state) => {
-    state.currentPage += 1
-  },
-  SET_PREVIOUS_PAGE: (state) => {
-    state.currentPage -= 1
+  SET_CURRENT_PAGE: (state, number: number) => {
+    state.meta.page = number
   }
 }
 
 // Actions
 export const actions: ActionTree<RootState, RootState> = {
-  setCurrentPage: ({ commit }, value: number) => {
-    commit('SET_CURRENT_PAGE', value)
+  setPagination: ({ commit }, pagination: {}) => {
+    commit('SET_PAGINATION', pagination)
   },
-  setNumberOfPages: ({ commit }, value: number) => {
-    commit('SET_NUMBER_OF_PAGES', value)
-  },
-  nextPage: ({ commit }) => {
-    commit('SET_NEXT_PAGE')
-  },
-  previousPage: ({ commit }) => {
-    commit('SET_PREVIOUS_PAGE')
+  // changePage: ({ commit, dispatch, getters }, number: number) => {
+  //   try {
+  //     dispatch('blog/fetchBlogPosts', number, { root: true })
+  //     commit('SET_CURRENT_PAGE', number)
+  //   } catch (error) {
+  //     console.log({ error })
+  //   }
+  // },
+  changePage: ({ commit, dispatch, getters }, number: number) => {
+    // ca fonctionne, mais je ne sais pas pourquoi...
+    if (typeof number !== 'number') number = getters.getCurrentPage
+    if (typeof number === 'number') {
+      dispatch('blog/fetchBlogPosts', number, { root: true })
+      commit('SET_CURRENT_PAGE', number)
+    }
   }
 }

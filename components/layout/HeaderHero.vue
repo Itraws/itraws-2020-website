@@ -16,7 +16,7 @@
           class="hero"
           :class="isHomePage ? 'hero--homePage' : 'hero--altPage'"
         >
-          <span class="pattern pattern--dot-vertical" />
+          <!-- <span class="pattern pattern--dot-vertical" /> -->
           <h1
             class="hero__headline text-bold"
             :class="isHomePage ? 'display-typo mg-bottom-5' : 'mg-bottom-3'"
@@ -48,7 +48,7 @@
             v-if="isHomePage"
             :button-to="homeContent.heroButton.url"
             :button-value="homeContent.heroButton.text"
-            button-type="button"
+            button-type="link"
             button-color="oceanBlue"
           />
         </div>
@@ -63,9 +63,9 @@
 import Vue from 'vue'
 import ButtonComponent from '~/components/elements/ButtonComponent.vue'
 import LayoutHeader from '~/components/layout/Header.vue'
-import homeContent from '~/content/home.md'
-import aboutContent from '~/content/about.md'
-import productsContent from '~/content/products.md'
+const homeContent = require('~/content/home.md')
+const aboutContent = require('~/content/about.md')
+const productsContent = require('~/content/products.md')
 
 export default Vue.extend({
   name: 'HeaderHero',

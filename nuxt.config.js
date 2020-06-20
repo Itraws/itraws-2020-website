@@ -54,7 +54,10 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    proxy: false
+  },
+  proxy: {},
   /*
    ** Build configuration
    */
@@ -62,7 +65,12 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {
+    hotMiddleware: {
+      client: {
+        overlay: false
+      }
+    },
+    extend(config) {
       // add frontmatter-markdown-loader
       config.module.rules.push({
         test: /\.md$/,

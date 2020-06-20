@@ -1,5 +1,22 @@
 <template>
-  <a :href="buttonTo" :type="buttonType" class="button hvr-grow" :class="`button--${buttonColor}`">{{ buttonValue }}</a>
+  <button
+    v-if="buttonType === 'button'"
+    :href="buttonTo"
+    :type="buttonType"
+    class="button hvr-grow"
+    :class="`button--${buttonColor}`"
+  >
+    {{ buttonValue }}
+  </button>
+  <nuxt-link
+    v-else
+    :to="buttonTo"
+    :type="buttonType"
+    class="button hvr-grow"
+    :class="`button--${buttonColor}`"
+  >
+    {{ buttonValue }}
+  </nuxt-link>
 </template>
 
 <script lang="ts">
@@ -15,7 +32,7 @@ export default Vue.extend({
     },
     buttonTo: {
       type: String,
-      required: true,
+      required: false,
       default: () => ''
     },
     buttonType: {

@@ -1,13 +1,14 @@
 <template>
   <div class="body">
-    <nuxt keep-alive />
+    <modal-component v-if="getModalStatus" />
+    <nuxt />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapState, mapActions } from 'vuex'
-import LayoutHeader from '~/components/layout/Header.vue'
+import { mapState, mapActions, mapGetters } from 'vuex'
+import modalComponent from '~/components/elements/Modal.vue'
 
 export default Vue.extend({
   name: 'LandingPageLayout',
@@ -16,14 +17,30 @@ export default Vue.extend({
     mode: 'out-in'
   },
   components: {
-    LayoutHeader
-    // BlogHeaderHero
+    modalComponent
+  },
+  data() {
+    return {
+      error: '',
+      loading: false
+    }
   },
   computed: {
-    ...mapState('pageAnimation', ['page'])
+    ...mapState('pageAnimation', ['page']),
+    ...mapGetters('modal', ['getModalStatus'])
   },
-  created() {
-    this.fetchBlogPosts()
+  // created() {
+  //   this.fetchBlogPosts()
+  // },
+  async mounted() {
+    this.error = ''
+    this.loading = true
+    try {
+      await this.fetchBlogPosts()
+    } catch (error) {
+      this.error = error
+    }
+    this.loading = false
   },
   methods: {
     ...mapActions('blog', ['fetchBlogPosts'])
