@@ -4,67 +4,69 @@ backend:
 site_url: https://dev2020.itraws.com
 # This lines should *not* be indented
 publish_mode: editorial_workflow
-locale: 'en' # other languages, defaults to "en"
-media_folder: 'static/images/uploads' # Media files will be stored in the repo under images/uploads
-public_folder: '/images/uploads' # The src attribute for uploaded media will begin with /images/uploads
+locale: "en" # other languages, defaults to "en"
+media_folder: "static/images/uploads" # Media files will be stored in the repo under images/uploads
+public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 collections:
-  - name: 'Pages' # Used in the UI
-    label: 'pages' # Used in routes, e.g., /admin/collections/content
+  - name: "Pages" # Used in the UI
+    label: "pages" # Used in routes, e.g., /admin/collections/content
+    folder: "assets/content/page"
+    create: true
     fields:
-      - label: 'Content List'
-        name: 'content_list'
-        widget: 'list'
+      - label: "Content List"
+        name: "content_list"
+        widget: "list"
         types:
-          - label: 'Hero content'
-            name: 'hero_content'
-            widget: 'object'
+          - label: "Hero content"
+            name: "hero_content"
+            widget: "object"
             fields:
-              - { label: 'Headline', name: 'headline', widget: 'string' }
-              - { label: 'Text', name: 'text', widget: 'text' }
-              - { label: 'Button url', name: 'button_url', widget: 'string' }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Button url", name: "button_url", widget: "string" }
               - {
-                  label: 'Button value',
-                  name: 'button_value',
-                  widget: 'string',
+                  label: "Button value",
+                  name: "button_value",
+                  widget: "string",
                 }
               - {
-                  label: 'Button display',
-                  name: 'button_display',
-                  widget: 'boolean',
+                  label: "Button display",
+                  name: "button_display",
+                  widget: "boolean",
                 }
-          - label: 'Page content block'
-            name: 'page_content_block'
-            widget: 'object'
+          - label: "Page content block"
+            name: "page_content_block"
+            widget: "object"
             fields:
-              - { label: 'Headline', name: 'headline', widget: 'string' }
-              - { label: 'Text', name: 'text', widget: 'text' }
-              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
               - {
-                  label: 'Image display',
-                  name: 'image_display',
-                  widget: 'boolean',
+                  label: "Image display",
+                  name: "image_display",
+                  widget: "boolean",
                 }
-          - label: 'Page content block'
-            name: 'page_content_block'
-            widget: 'object'
+          - label: "Page content block"
+            name: "page_content_block"
+            widget: "object"
             fields:
-              - { label: 'Headline', name: 'headline', widget: 'string' }
-              - { label: 'Text', name: 'text', widget: 'text' }
-              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Image", name: "image", widget: "image" }
               - {
-                  label: 'Image display',
-                  name: 'image_display',
-                  widget: 'boolean',
+                  label: "Image display",
+                  name: "image_display",
+                  widget: "boolean",
                 }
-          - label: 'Products Content'
-            name: 'products'
-            widget: 'image'
+          - label: "Products Content"
+            name: "products"
+            widget: "image"
             fields:
-              - { label: 'Image', name: 'image', widget: 'image' }
-              - { label: 'Alt text', name: 'alt_text', widget: 'string' }
-              - { label: 'Image url', name: 'image_url', widget: 'string' }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt text", name: "alt_text", widget: "string" }
+              - { label: "Image url", name: "image_url", widget: "string" }
               - {
-                  label: 'Image Display',
-                  name: 'image_display',
-                  widget: 'boolean',
+                  label: "Image Display",
+                  name: "image_display",
+                  widget: "boolean",
                 }
