@@ -23,6 +23,7 @@
     "@tryghost/content-api": "^1.4.1",
     "frontmatter-markdown-loader": "^3.4.2",
     "nuxt": "2.12.2",
+    "nuxt-i18n": "^6.12.2",
     "vue-social-sharing": "^3.0.0-beta.10"
   },
   "devDependencies": {

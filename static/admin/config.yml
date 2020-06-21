@@ -3,17 +3,39 @@ backend:
   branch: dev # Branch to update (optional; defaults to master)
 # This lines should *not* be indented
 publish_mode: editorial_workflow
-media_folder: "static/images/uploads" # Media files will be stored in the repo under images/uploads
-public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
+locale: 'fr' # other languages, defaults to "en"
+media_folder: 'static/images/uploads' # Media files will be stored in the repo under images/uploads
+public_folder: '/images/uploads' # The src attribute for uploaded media will begin with /images/uploads
 collections:
-  - name: "page" # Used in routes, e.g., /admin/collections/content
-    label: "Page" # Used in the UI
-    format: "json" # important for consuming in nuxt
-    folder: "assets/content/page" # The path to the folder where the documents are stored
+  - label: 'Page in English' # Used in the UI
+    name: 'english_page' # Used in routes, e.g., /admin/collections/content
+    format: 'json' # important for consuming in nuxt
+    folder: 'assets/content/page' # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    filter: { field: 'language', value: 'en' }
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
-      - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Language", name: "language" }
+      - {
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['en', 'fr'],
+        }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Content', name: 'body', widget: 'markdown' }
+  - label: 'Page in Francais' # Used in the UI
+    name: 'francais_page' # Used in routes, e.g., /admin/collections/content
+    format: 'json' # important for consuming in nuxt
+    folder: 'assets/content/page' # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    filter: { field: 'language', value: 'fr' }
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}' # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['en', 'fr'],
+        }
+      - { label: 'Titre', name: 'title', widget: 'string' }
+      - { label: 'Contenu', name: 'body', widget: 'markdown' }
