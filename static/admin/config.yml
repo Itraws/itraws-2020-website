@@ -3,7 +3,7 @@ backend:
   branch: dev # Branch to update (optional; defaults to master)
 # This lines should *not* be indented
 publish_mode: editorial_workflow
-locale: 'fr' # other languages, defaults to "en"
+locale: 'en' # other languages, defaults to "en"
 media_folder: 'static/images/uploads' # Media files will be stored in the repo under images/uploads
 public_folder: '/images/uploads' # The src attribute for uploaded media will begin with /images/uploads
 collections:
