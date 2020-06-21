@@ -1,6 +1,9 @@
 <template>
   <div>
-    <HeaderHero />
+    <HeaderHero
+      :hero-headline="content.heroHeadline"
+      :hero-text="content.heroText"
+    />
     <div class="about-page">
       <section class="section section--white-smoke">
         <div class="section__inner">

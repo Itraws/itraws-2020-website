@@ -1,6 +1,12 @@
 <template>
   <div>
-    <HeaderHero />
+    <HeaderHero
+      page-title="home"
+      :hero-headline="content.heroHeadline"
+      :hero-text="content.heroText"
+      :hero-button-to="content.heroButton.url"
+      :hero-button-text="content.heroButton.text"
+    />
     <div class="home-page">
       <section class="section">
         <div class="section__grid">

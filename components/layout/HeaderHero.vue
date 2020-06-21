@@ -21,33 +21,19 @@
             class="hero__headline text-bold"
             :class="isHomePage ? 'display-typo mg-bottom-5' : 'mg-bottom-3'"
           >
-            {{
-              isHomePage
-                ? homeContent.heroHeadline
-                : isAboutPage
-                ? aboutContent.heroHeadline
-                : isProductsPage
-                ? productsContent.heroHeadline
-                : ''
-            }}
+            {{ heroHeadline }}
           </h1>
 
           <p v-if="isHomePage" class="hero__text text-regular">
-            {{ homeContent.heroText }}
+            {{ heroText }}
           </p>
           <h4 v-else class="text-regular text-rich-black-75">
-            {{
-              isAboutPage
-                ? aboutContent.heroText
-                : isProductsPage
-                ? productsContent.heroText
-                : ''
-            }}
+            {{ heroText }}
           </h4>
           <button-component
-            v-if="isHomePage"
-            :button-to="homeContent.heroButton.url"
-            :button-value="homeContent.heroButton.text"
+            v-if="heroButtonText"
+            :button-to="heroButtonTo"
+            :button-value="heroButtonText"
             button-type="link"
             button-color="oceanBlue"
           />
@@ -63,9 +49,6 @@
 import Vue from 'vue'
 import ButtonComponent from '~/components/elements/ButtonComponent.vue'
 import LayoutHeader from '~/components/layout/Header.vue'
-const homeContent = require('~/content/home.md')
-const aboutContent = require('~/content/about.md')
-const productsContent = require('~/content/products.md')
 
 export default Vue.extend({
   name: 'HeaderHero',
@@ -73,23 +56,39 @@ export default Vue.extend({
     ButtonComponent,
     LayoutHeader
   },
+  props: {
+    heroHeadline: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    heroText: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    heroButtonTo: {
+      type: String,
+      default: '',
+      required: false
+    },
+    heroButtonText: {
+      type: String,
+      default: '',
+      required: false
+    },
+    pageTitle: {
+      type: String,
+      required: false,
+      default: ''
+    }
+  },
 
   computed: {
     isHomePage() {
-      const indexName = this.$route.name
-      return indexName === 'index'
-    },
-    isAboutPage() {
-      const indexName = this.$route.name
-      return indexName === 'about'
-    },
-    isProductsPage() {
-      const indexName = this.$route.name
-      return indexName === 'products'
-    },
-    homeContent: () => homeContent.attributes,
-    aboutContent: () => aboutContent.attributes,
-    productsContent: () => productsContent.attributes
+      const indexName = this.pageTitle
+      return indexName === 'home'
+    }
   }
 })
 </script>
