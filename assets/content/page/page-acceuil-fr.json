@@ -18,12 +18,12 @@
         {
           "type": "link",
           "link_name": "Qui sommes-nous",
-          "link_url": "apropos"
+          "link_url": "about"
         },
         {
           "type": "link",
           "link_name": "ce que nous construisons",
-          "link_url": "produits"
+          "link_url": "products"
         }
       ]
     },
