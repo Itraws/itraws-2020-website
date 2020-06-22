@@ -1,0 +1,31 @@
+{
+  "language": "en",
+  "title": "home page",
+  "content_list": [
+    {
+      "type": "hero_content",
+      "headline": "Stillness. Firmness. Constancy.",
+      "text": "Every mountain top is within reach if you just keep climbing. ",
+      "button_url": "about",
+      "button_value": "know more",
+      "button_display": true
+    },
+    {
+      "type": "page_content_block_links",
+      "headline": "We stand tall",
+      "text": "Empowering Africain tech",
+      "section_links": [
+        {
+          "type": "link",
+          "link_name": "Who we are",
+          "link_url": "about"
+        },
+        {
+          "type": "link",
+          "link_name": "what we build",
+          "link_url": "products"
+        }
+      ]
+    }
+  ]
+}
