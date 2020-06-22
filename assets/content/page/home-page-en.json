@@ -26,6 +26,13 @@
           "link_url": "products"
         }
       ]
+    },
+    {
+      "type": "hero_content",
+      "headline": "We lead",
+      "text": "Stay up to date with our progress.",
+      "button_value": "subscribe",
+      "button_display": true
     }
   ]
 }
