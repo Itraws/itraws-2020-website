@@ -26,6 +26,13 @@
           "link_url": "produits"
         }
       ]
+    },
+    {
+      "type": "hero_content",
+      "text": "Restez au courant de nos progrès",
+      "headline": "Nous dirigeons",
+      "button_value": "S'abonner",
+      "button_display": true
     }
   ]
 }
