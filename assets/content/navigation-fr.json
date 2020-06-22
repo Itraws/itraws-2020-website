@@ -1,0 +1,30 @@
+{
+  "language": "fr",
+  "title": "navigation",
+  "navigation_list": [
+    {
+      "type": "link",
+      "link_name": "home",
+      "link_url": "/",
+      "link_display": true
+    },
+    {
+      "type": "link",
+      "link_name": "À propos",
+      "link_url": "apropos",
+      "link_display": true
+    },
+    {
+      "type": "link",
+      "link_name": "Produits",
+      "link_url": "produits",
+      "link_display": true
+    },
+    {
+      "type": "link",
+      "link_name": "Blog",
+      "link_url": "blog",
+      "link_display": true
+    }
+  ]
+}
