@@ -11,13 +11,13 @@
     {
       "type": "link",
       "link_name": "À propos",
-      "link_url": "apropos",
+      "link_url": "about",
       "link_display": true
     },
     {
       "type": "link",
       "link_name": "Produits",
-      "link_url": "produits",
+      "link_url": "products",
       "link_display": true
     },
     {
