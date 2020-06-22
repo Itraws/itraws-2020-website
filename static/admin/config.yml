@@ -8,8 +8,8 @@ locale: "en" # other languages, defaults to "en"
 media_folder: "static/images/uploads" # Media files will be stored in the repo under images/uploads
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 collections:
-  - name: "Pages" # Used in the UI
-    label: "pages" # Used in routes, e.g., /admin/collections/content
+  - name: "contentPages" # Used in the UI
+    label: "Content Pages" # Used in routes, e.g., /admin/collections/content
     folder: "assets/content/page"
     create: true
     fields:
@@ -46,20 +46,8 @@ collections:
                   name: "image_display",
                   widget: "boolean",
                 }
-          - label: "Page content block"
-            name: "page_content_block"
-            widget: "object"
-            fields:
-              - { label: "Headline", name: "headline", widget: "string" }
-              - { label: "Text", name: "text", widget: "text" }
-              - { label: "Image", name: "image", widget: "image" }
-              - {
-                  label: "Image display",
-                  name: "image_display",
-                  widget: "boolean",
-                }
           - label: "Products Content"
-            name: "products"
+            name: "products_content"
             widget: "image"
             fields:
               - { label: "Image", name: "image", widget: "image" }
