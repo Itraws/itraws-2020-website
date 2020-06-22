@@ -1,0 +1,13 @@
+{
+  "language": "en",
+  "title": "Our Products",
+  "content_list": [
+    {
+      "type": "products_content",
+      "image_url": "https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/UI/Branding/product-logo.png",
+      "image_display": true,
+      "alt_text": "Victoria Analytica",
+      "image": "/images/uploads/screenshot_2020-06-18-create-a-palette-coolors.png"
+    }
+  ]
+}
