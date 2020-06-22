@@ -10,8 +10,13 @@ public_folder: "/images/uploads" # The src attribute for uploaded media will beg
 collections:
   - name: "Navigation"
     label: "navigation"
+    description: "Site navigation"
+    delete: false # prevent users from deleting documents in this collection
+    editor:
+      preview: false
+    format: "json"
     folder: "assets/content"
-    created: true
+    create: true
     slug: "{{slug}}-{{language}}"
     fields:
       - {
@@ -38,6 +43,7 @@ collections:
                 }
   - name: "contentPages" # Used in the UI
     label: "Content Pages" # Used in routes, e.g., /admin/collections/content
+    format: "json"
     folder: "assets/content/page"
     create: true
     slug: "{{slug}}-{{language}}"
