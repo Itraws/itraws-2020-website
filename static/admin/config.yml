@@ -59,16 +59,23 @@ collections:
             fields:
               - { label: "Headline", name: "headline", widget: "string" }
               - { label: "Text", name: "text", widget: "text" }
-              - { label: "Button url", name: "button_url", widget: "string" }
+              - {
+                  label: "Button url",
+                  name: "button_url",
+                  widget: "string",
+                  required: false,
+                }
               - {
                   label: "Button value",
                   name: "button_value",
                   widget: "string",
+                  required: false,
                 }
               - {
                   label: "Button display",
                   name: "button_display",
                   widget: "boolean",
+                  required: false,
                 }
           - label: "Page content block"
             name: "page_content_block"
@@ -76,11 +83,23 @@ collections:
             fields:
               - { label: "Headline", name: "headline", widget: "string" }
               - { label: "Text", name: "text", widget: "text" }
-              - { label: "Image", name: "image", widget: "image" }
+              - {
+                  label: "Image URL",
+                  name: "image_url",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Image Upload",
+                  name: "image_upload",
+                  widget: "image",
+                  required: false,
+                }
               - {
                   label: "Image display",
                   name: "image_display",
                   widget: "boolean",
+                  required: false,
                 }
           - label: "Page content block with links"
             name: "page_content_block_links"
@@ -91,6 +110,7 @@ collections:
               - label: "Section Links"
                 name: "section_links"
                 widget: "list"
+                required: false
                 types:
                   - label: "Link"
                     name: "link"
@@ -122,4 +142,5 @@ collections:
           label: "Content Markdown",
           name: "content_markdown",
           widget: markdown,
+          required: false,
         }
