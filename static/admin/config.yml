@@ -8,11 +8,47 @@ locale: "en" # other languages, defaults to "en"
 media_folder: "static/images/uploads" # Media files will be stored in the repo under images/uploads
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 collections:
+  - name: "Navigation"
+    label: "navigation"
+    folder: "assets/content"
+    created: true
+    slug: "{{slug}}-{{language}}"
+    fields:
+      - {
+          label: "Language",
+          name: "language",
+          widget: "select",
+          options: ["en", "fr"],
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Navigation list"
+        name: "navigation_list"
+        widget: "list"
+        types:
+          - label: "Link"
+            name: "link"
+            widget: "object"
+            fields:
+              - { label: "Link Name", name: "link_name", widget: "string" }
+              - { label: "Link Url", name: "link_url", widget: "string" }
+              - {
+                  label: "Link Display",
+                  name: "link_display",
+                  widget: "boolean",
+                }
   - name: "contentPages" # Used in the UI
     label: "Content Pages" # Used in routes, e.g., /admin/collections/content
     folder: "assets/content/page"
     create: true
+    slug: "{{slug}}-{{language}}"
     fields:
+      - {
+          label: "Language",
+          name: "language",
+          widget: "select",
+          options: ["en", "fr"],
+        }
+      - { label: "Title", name: "title", widget: "string" }
       - label: "Content List"
         name: "content_list"
         widget: "list"
@@ -46,6 +82,30 @@ collections:
                   name: "image_display",
                   widget: "boolean",
                 }
+          - label: "Page content block with links"
+            name: "page_content_block_links"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - label: "Section Links"
+                name: "section_links"
+                widget: "list"
+                types:
+                  - label: "Link"
+                    name: "link"
+                    widget: "object"
+                    fields:
+                      - {
+                          label: "Link Name",
+                          name: "link_name",
+                          widget: "string",
+                        }
+                      - {
+                          label: "Link Url",
+                          name: "link_url",
+                          widget: "string",
+                        }
           - label: "Products Content"
             name: "products_content"
             widget: "image"
@@ -58,3 +118,8 @@ collections:
                   name: "image_display",
                   widget: "boolean",
                 }
+      - {
+          label: "Content Markdown",
+          name: "content_markdown",
+          widget: markdown,
+        }
