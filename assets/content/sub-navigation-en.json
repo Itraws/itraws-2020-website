@@ -1,0 +1,12 @@
+{
+  "language": "en",
+  "title": "Sub Navigation",
+  "navigation_list": [
+    {
+      "type": "link",
+      "link_name": "Policy",
+      "link_url": "policy",
+      "link_display": true
+    }
+  ]
+}
