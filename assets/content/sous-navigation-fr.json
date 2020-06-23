@@ -4,8 +4,8 @@
   "navigation_list": [
     {
       "type": "link",
-      "link_name": "Politique",
-      "link_url": "policy",
+      "link_name": "Politique de confidentialité",
+      "link_url": "privacy",
       "link_display": true
     }
   ]
