@@ -21,7 +21,7 @@
         </div>
         <ul class="header-menu">
           <li
-            v-for="(link, index) in contentCms.navigation_list"
+            v-for="(link, index) in contentCms[0].navigation_list"
             v-show="link.link_display"
             :key="index"
             class="meta-typo header-menu__item"
@@ -71,7 +71,7 @@
     >
       <ul class="mobile-menu__list">
         <li
-          v-for="(link, index) in contentCms.navigation_list"
+          v-for="(link, index) in contentCms[0].navigation_list"
           v-show="link.link_display"
           :key="index"
           class="mobile-menu__list__item"
@@ -105,15 +105,15 @@
       <div class="mobile-menu__sub">
         <ul class="mobile-menu__sub__list">
           <li
-            v-for="(link, key, index) in webNavigation"
-            v-show="link.display && link.mobile && !link.primaryLink"
+            v-for="(link, index) in contentCms[1].navigation_list"
+            v-show="link.link_display"
             :key="index"
             class="mobile-menu__sub__list__item"
           >
             <nuxt-link
-              :to="link.url"
+              :to="localePath(link.link_url)"
               @click.native="hamburgerClickedActive()"
-              >{{ key }}</nuxt-link
+              >{{ link.link_name }}</nuxt-link
             >
           </li>
         </ul>
@@ -137,12 +137,19 @@ import { mapState } from 'vuex'
 import ItrawsLogo from '~/components/branding/Logo.vue'
 import Icon from '~/components/elements/Icon.vue'
 const SocialLinks = require('~/content/social.md')
-const NavigationM = require('~/content/navigation.md')
 const contentCmsEn = require('~/assets/content/navigation-en.json')
 const contentCmsFr = require('~/assets/content/navigation-fr.json')
+const subNavigationEn = require('~/assets/content/sub-navigation-en.json')
+const subNavigationFr = require('~/assets/content/sous-navigation-fr.json')
 
 interface objectType {
   [key: string]: any | []
+}
+
+interface headerData {
+  hamburger: boolean
+  scrollPosition: number
+  subNavigation: Array<{}>
 }
 
 export default Vue.extend({
@@ -150,15 +157,10 @@ export default Vue.extend({
     ItrawsLogo,
     Icon
   },
-  data() {
+  data(): headerData {
     return {
       hamburger: false,
       scrollPosition: 0,
-      navigation: [
-        { link: '/about', name: 'about' },
-        { link: '/products', name: 'products' },
-        { link: '/blog', name: 'blog' }
-      ],
       subNavigation: [
         { link: '/press', name: 'press' },
         { link: '/privacy', name: 'privacy policy' }
@@ -168,17 +170,19 @@ export default Vue.extend({
   computed: {
     ...mapState('pageAnimation', ['page']),
     socialMedias: () => SocialLinks.attributes,
-    webNavigation: () => NavigationM.attributes,
-    availableLocales() {
+    availableLocales(): [] | any {
       const locales: objectType = this.$i18n.locales || { ok: '' }
       return locales.filter((i: objectType) => i.code !== this.$i18n.locale)
     },
-    contentCms() {
+    contentCms(): object | any {
       return this.$i18n.locale === 'en'
-        ? contentCmsEn
+        ? [contentCmsEn, subNavigationEn]
         : this.$i18n.locale === 'fr'
-        ? contentCmsFr
+        ? [contentCmsFr, subNavigationFr]
         : null
+    },
+    getHamburger(): boolean {
+      return this.hamburger
     }
   },
   mounted() {
@@ -186,14 +190,17 @@ export default Vue.extend({
   },
   methods: {
     hamburgerClickedActive() {
-      if (!this.hamburger) {
-        this.hamburger = true
+      if (!this.getHamburger) {
+        this.updateHamburger(true)
       } else {
-        this.hamburger = false
+        this.updateHamburger(false)
       }
     },
     updateScroll() {
       this.scrollPosition = window.scrollY
+    },
+    updateHamburger(value: boolean) {
+      this.hamburger = value
     }
   }
 })
