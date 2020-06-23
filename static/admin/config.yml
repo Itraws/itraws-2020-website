@@ -134,25 +134,29 @@ collections:
                         }
           - label: "Products Content"
             name: "products_content"
-            widget: "list"
-            types:
-              - label: "Product"
-                name: "product"
-                widget: "object"
-                fields:
-                  - {
+            widget: "object"
+            fields:
+              - label: "Products and Services"
+                name: "products"
+                widget: "list"
+                types:
+                  - label: "Product"
+                    name: "product"
+                    widget: "object"
+                    fields:
+                      - {
                       label: "Image",
                       name: "image",
                       widget: "image",
                       required: false,
-                    }
-                  - { label: "Alt text", name: "alt_text", widget: "string" }
-                  - { label: "Image url", name: "image_url", widget: "string" }
-                  - {
-                      label: "Image Display",
-                      name: "image_display",
-                      widget: "boolean",
-                    }
+                        }
+                      - { label: "Alt text", name: "alt_text", widget: "string" }
+                      - { label: "Image url", name: "image_url", widget: "string" }
+                      - {
+                          label: "Image Display",
+                          name: "image_display",
+                          widget: "boolean",
+                        }
       - {
           label: "Content Markdown",
           name: "content_markdown",
