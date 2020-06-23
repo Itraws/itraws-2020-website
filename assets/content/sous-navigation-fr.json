@@ -1,0 +1,12 @@
+{
+  "language": "fr",
+  "title": "Sous Navigation",
+  "navigation_list": [
+    {
+      "type": "link",
+      "link_name": "Politique",
+      "link_url": "policy",
+      "link_display": true
+    }
+  ]
+}
