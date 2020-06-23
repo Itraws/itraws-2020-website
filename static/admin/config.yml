@@ -145,13 +145,21 @@ collections:
                     widget: "object"
                     fields:
                       - {
-                      label: "Image",
-                      name: "image",
-                      widget: "image",
-                      required: false,
+                          label: "Image",
+                          name: "image",
+                          widget: "image",
+                          required: false,
                         }
-                      - { label: "Alt text", name: "alt_text", widget: "string" }
-                      - { label: "Image url", name: "image_url", widget: "string" }
+                      - {
+                          label: "Alt text",
+                          name: "alt_text",
+                          widget: "string",
+                        }
+                      - {
+                          label: "Image url",
+                          name: "image_url",
+                          widget: "string",
+                        }
                       - {
                           label: "Image Display",
                           name: "image_display",
