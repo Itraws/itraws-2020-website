@@ -1,20 +1,13 @@
 <template>
   <div>
     <HeaderHero
-      :hero-headline="content.heroHeadline"
-      :hero-text="content.heroText"
+      :hero-headline="contentCms.content_list[0].headline"
+      :hero-text="contentCms.content_list[0].text"
     />
     <div class="products-page">
       <section class="section">
         <div class="section__inner">
           <div class="product-list">
-            <ProductItem />
-            <ProductItem />
-            <ProductItem />
-            <ProductItem />
-            <ProductItem />
-            <ProductItem />
-            <ProductItem />
             <ProductItem />
           </div>
         </div>
@@ -31,7 +24,8 @@ import HeaderHero from '~/components/layout/HeaderHero.vue'
 import ArticlesPreview from '~/components/layout/ArticlesPreview.vue'
 import LayoutFooter from '~/components/layout/Footer.vue'
 import ProductItem from '~/components/elements/ProductItem.vue'
-const content = require('~/content/products.md')
+const contentCmsEn = require('~/assets/content/page/our-products-en.json')
+const contentCmsFr = require('~/assets/content/page/nos-produits-fr.json')
 
 export default Vue.extend({
   name: 'ProductsPage',
@@ -42,7 +36,13 @@ export default Vue.extend({
     LayoutFooter
   },
   computed: {
-    content: () => content.attributes
+    contentCms() {
+      return this.$i18n.locale === 'en'
+        ? contentCmsEn
+        : this.$i18n.locale === 'fr'
+        ? contentCmsFr
+        : null
+    }
   }
 })
 </script>

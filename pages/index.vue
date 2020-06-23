@@ -2,10 +2,10 @@
   <div>
     <HeaderHero
       page-title="home"
-      :hero-headline="content.heroHeadline"
-      :hero-text="content.heroText"
-      :hero-button-to="content.heroButton.url"
-      :hero-button-text="content.heroButton.text"
+      :hero-headline="contentCms.content_list[0].headline"
+      :hero-text="contentCms.content_list[0].text"
+      :hero-button-to="contentCms.content_list[0].button_url"
+      :hero-button-text="contentCms.content_list[0].button_value"
     />
     <div class="home-page">
       <section class="section">
@@ -14,20 +14,20 @@
             <span class="pattern pattern--dot-rectangle" />
             <div class="card__content">
               <h1 class="text-coconut text-bold mg-right-">
-                {{ content.cardOne.headline }}
+                {{ contentCms.content_list[1].headline }}
               </h1>
               <h4 class="text-coconut text-medium">
-                {{ content.cardOne.text }}
+                {{ contentCms.content_list[1].text }}
               </h4>
               <ul class="card-menu mg-top-6">
                 <li
-                  v-for="link in content.cardOne.links"
+                  v-for="link in contentCms.content_list[1].section_links"
                   :key="link.id"
                   class="card-menu__item"
                 >
                   <h3 class="h3-alt text-coconut text-semibold mg-right-1">
-                    <nuxt-link :to="{ path: link.url }"
-                      >{{ link.text }}
+                    <nuxt-link :to="localePath(link.link_url)"
+                      >{{ link.link_name }}
                       <Icon
                         i-type="fas"
                         i-icon="arrow-right"
@@ -45,13 +45,15 @@
             <span class="shape-white" />
             <div class="card__content">
               <h1 class="text-coconut text-bold mg-bottom-1">
-                {{ content.cardTwo.headline }}
+                {{ contentCms.content_list[2].headline }}
               </h1>
               <h4 class="text-coconut text-medium">
-                {{ content.cardTwo.text }}
+                {{ contentCms.content_list[2].text }}
               </h4>
               <div class="card-form mg-top-6">
-                <FormComponent />
+                <FormComponent
+                  :value="contentCms.content_list[2].button_value"
+                />
               </div>
             </div>
           </div>
@@ -72,7 +74,8 @@ import LayoutFooter from '~/components/layout/Footer.vue'
 import Icon from '~/components/elements/Icon.vue'
 import FormComponent from '~/components/elements/Forms.vue'
 
-const content = require('~/content/home.md')
+const contentCmsEn = require('~/assets/content/page/home-page-en.json')
+const contentCmsFr = require('~/assets/content/page/page-acceuil-fr.json')
 
 export default Vue.extend({
   name: 'HomePage',
@@ -84,7 +87,13 @@ export default Vue.extend({
     LayoutFooter
   },
   computed: {
-    content: () => content.attributes
+    contentCms() {
+      return this.$i18n.locale === 'en'
+        ? contentCmsEn
+        : this.$i18n.locale === 'fr'
+        ? contentCmsFr
+        : null
+    }
   },
   methods: {
     ...mapActions('modal', ['setError'])

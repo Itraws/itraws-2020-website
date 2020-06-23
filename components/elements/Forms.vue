@@ -28,7 +28,7 @@
       type="submit"
       value="Subscribe"
       name="subscribe"
-      :button-value="content.cardTwo.button"
+      :button-value="value"
       button-type="button"
       button-color="coconut"
     />
@@ -39,7 +39,6 @@
 import Vue from 'vue'
 import { mapActions } from 'vuex'
 import ButtonComponent from '~/components/elements/ButtonComponent.vue'
-const content = require('~/content/home.md')
 
 interface modalState {
   [key: string]: any | []
@@ -63,9 +62,6 @@ export default Vue.extend({
       error: '',
       signUpResponse: ''
     }
-  },
-  computed: {
-    content: () => content.attributes
   },
   methods: {
     ...mapActions('modal', ['setSuccess', 'setError']),

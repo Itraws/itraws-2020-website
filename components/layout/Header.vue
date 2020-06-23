@@ -21,19 +21,42 @@
         </div>
         <ul class="header-menu">
           <li
-            v-for="(link, key, index) in webNavigation"
-            v-show="link.display && link.desktop && link.primaryLink"
+            v-for="(link, index) in contentCms.navigation_list"
+            v-show="link.link_display"
             :key="index"
             class="meta-typo header-menu__item"
           >
             <nuxt-link
-              :to="link.url"
+              :to="localePath(link.link_url)"
               :class="{
-                'header-menu__item--active': page === link.url,
+                'header-menu__item--active': page === link.link_name,
+                'header-menu__item--blogpost':
+                  page === `blog-slug__${availableLocales.code}` &&
+                  scrollPosition < 50
+              }"
+              >{{ link.link_name }}</nuxt-link
+            >
+          </li>
+          <li
+            v-for="locale in availableLocales"
+            :key="locale.code"
+            class="meta-typo header-menu__item"
+          >
+            <nuxt-link
+              :to="switchLocalePath(locale.code)"
+              :class="{
                 'header-menu__item--blogpost':
                   page === 'blog-slug' && scrollPosition < 50
               }"
-              >{{ key }}</nuxt-link
+              class="header-menu__item--active"
+              ><Icon
+                i-type="fas"
+                i-icon="globe-africa"
+                i-color="blue"
+                i-background="false"
+                class="mg-right-1"
+              />
+              {{ locale.name }}</nuxt-link
             >
           </li>
         </ul>
@@ -48,14 +71,35 @@
     >
       <ul class="mobile-menu__list">
         <li
-          v-for="(link, key, index) in webNavigation"
-          v-show="link.display && link.mobile && link.primaryLink"
+          v-for="(link, index) in contentCms.navigation_list"
+          v-show="link.link_display"
           :key="index"
           class="mobile-menu__list__item"
         >
-          <nuxt-link :to="link.url" @click.native="hamburgerClickedActive()">{{
-            key
-          }}</nuxt-link>
+          <nuxt-link
+            :to="localePath(link.link_url)"
+            @click.native="hamburgerClickedActive()"
+            >{{ link.link_name }}</nuxt-link
+          >
+        </li>
+        <li
+          v-for="locale in availableLocales"
+          :key="locale.code"
+          class="mobile-menu__list__item mobile-menu__list__item--bgblue"
+        >
+          <nuxt-link
+            :to="switchLocalePath(locale.code)"
+            class="mobile-menu__lang"
+            @click.native="hamburgerClickedActive()"
+            ><Icon
+              i-type="fas"
+              i-icon="globe-africa"
+              i-color="white"
+              i-background="false"
+              class="mg-right-1"
+            />
+            {{ locale.name }}</nuxt-link
+          >
         </li>
       </ul>
       <div class="mobile-menu__sub">
@@ -94,6 +138,12 @@ import ItrawsLogo from '~/components/branding/Logo.vue'
 import Icon from '~/components/elements/Icon.vue'
 const SocialLinks = require('~/content/social.md')
 const NavigationM = require('~/content/navigation.md')
+const contentCmsEn = require('~/assets/content/navigation-en.json')
+const contentCmsFr = require('~/assets/content/navigation-fr.json')
+
+interface objectType {
+  [key: string]: any | []
+}
 
 export default Vue.extend({
   components: {
@@ -118,7 +168,18 @@ export default Vue.extend({
   computed: {
     ...mapState('pageAnimation', ['page']),
     socialMedias: () => SocialLinks.attributes,
-    webNavigation: () => NavigationM.attributes
+    webNavigation: () => NavigationM.attributes,
+    availableLocales() {
+      const locales: objectType = this.$i18n.locales || { ok: '' }
+      return locales.filter((i: objectType) => i.code !== this.$i18n.locale)
+    },
+    contentCms() {
+      return this.$i18n.locale === 'en'
+        ? contentCmsEn
+        : this.$i18n.locale === 'fr'
+        ? contentCmsFr
+        : null
+    }
   },
   mounted() {
     window.addEventListener('scroll', this.updateScroll)
