@@ -4,7 +4,7 @@
       <div class="articles-preview__link mg-bottom-5">
         <h4 class="text-rich-black text-semibold mg-right-4">
           <nuxt-link to="/blog"
-            >Read more on our blog
+            >{{ contentCms }}
             <Icon
               i-type="fas"
               i-icon="arrow-right"
@@ -87,6 +87,7 @@ import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import BlogCard from '~/components/blog/BlogCard.vue'
 import Icon from '~/components/elements/Icon.vue'
+const uiSettings = require('~/assets/site/uisettings.json')
 
 export default Vue.extend({
   name: 'BlogArticlesPreview',
@@ -95,7 +96,16 @@ export default Vue.extend({
     Icon
   },
   computed: {
-    ...mapGetters('blog', ['getLatestPosts'])
+    ...mapGetters('blog', ['getLatestPosts']),
+    contentCms() {
+      const contentArticlePreviewEn = uiSettings.articlePreviewEn
+      const contentArticlePreviewFr = uiSettings.articlePreviewFr
+      return this.$i18n.locale === 'en'
+        ? contentArticlePreviewEn
+        : this.$i18n.locale === 'fr'
+        ? contentArticlePreviewFr
+        : null
+    }
   },
   created() {
     this.fetchLatestPosts('3')

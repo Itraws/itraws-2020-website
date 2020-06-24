@@ -5,17 +5,17 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || 'Itraws - Empowering Africain tech.',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || ''
-      }
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    // title: process.env.npm_package_name || 'Itraws - Empowering Africain tech.',
+    // meta: [
+    //   { charset: 'utf-8' },
+    //   { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    //   {
+    //     hid: 'description',
+    //     name: 'description',
+    //     content: process.env.npm_package_description || ''
+    //   }
+    // ],
+    // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Customize the progress-bar color
@@ -52,14 +52,18 @@ export default {
     'nuxt-i18n'
   ],
   i18n: {
+    baseUrl: 'https://dev2020.itraws.com',
+    seo: true,
     locales: [
       {
         code: 'en',
-        name: 'English'
+        name: 'English',
+        iso: 'en-US'
       },
       {
         code: 'fr',
-        name: 'Francais'
+        name: 'Francais',
+        iso: 'fr-FR'
       }
     ],
     defaultLocale: 'en',

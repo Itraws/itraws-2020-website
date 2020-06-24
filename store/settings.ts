@@ -1,4 +1,5 @@
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
+const uiSettings = require('~/assets/site/uisettings.json')
 
 interface siteMetaSettings {
   description: string
@@ -9,6 +10,7 @@ interface pageSettings {
   title: string
   slogan: string
   meta: siteMetaSettings
+  uiSettings: object
 }
 
 export const state = () =>
@@ -18,7 +20,8 @@ export const state = () =>
     meta: {
       description: '',
       keywords: []
-    }
+    },
+    uiSettings: {}
   } as pageSettings)
 
 export type RootState = ReturnType<typeof state>
@@ -29,7 +32,8 @@ export const getters: GetterTree<RootState, RootState> = {
   getSlogan: (state) => state.slogan,
   getMeta: (state) => state.meta,
   getMetaDescription: (state) => state.meta.description,
-  getMetaKeywords: (state) => state.meta.keywords
+  getMetaKeywords: (state) => state.meta.keywords,
+  getUiSettings: (state) => state.uiSettings
 }
 
 // Mutations
@@ -42,12 +46,17 @@ export const mutations: MutationTree<RootState> = {
   },
   SET_SITE_META: (state, meta: siteMetaSettings) => {
     state.meta = meta
+  },
+  SET_UI_SETTINGS: (state, payload: {}) => {
+    state.uiSettings = payload
   }
 }
 
 // Actions
 export const actions: ActionTree<RootState, RootState> = {
-  // fetchSiteSetting: ({ commit }, payload: {}) => {
-  //   const data = payload
-  // }
+  // This should only be limited to component state.
+  fetchSiteSetting: ({ commit }) => {
+    const data = uiSettings
+    commit('SET_UI_SETTINGS', data)
+  }
 }

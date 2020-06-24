@@ -265,3 +265,9 @@ collections:
               widget: "string",
               description: "Define keywords for search engines",
             }
+          - {
+              label: "Meta image",
+              name: "metaImage",
+              widget: "string",
+              description: "Define meta image for social networks, e.g: Facebook and twitter.",
+            }

@@ -11,7 +11,7 @@
     <input
       v-model="newsletterFname"
       class="newsletter__input"
-      placeholder="Enter name"
+      :placeholder="contentCms.name"
       type="text"
       name="name"
       required
@@ -19,7 +19,7 @@
     <input
       v-model="newsletterEmail"
       class="newsletter__input"
-      placeholder="Enter your email..."
+      :placeholder="contentCms.email"
       type="email"
       name="email"
       required
@@ -61,6 +61,15 @@ export default Vue.extend({
       newsletterEmail: '',
       error: '',
       signUpResponse: ''
+    }
+  },
+  computed: {
+    contentCms() {
+      return this.$i18n.locale === 'en'
+        ? { name: 'Enter your Name', email: 'Enter Your Email...' }
+        : this.$i18n.locale === 'fr'
+        ? { name: 'Entrez votre nom', email: 'Entrez votre E-mail' }
+        : null
     }
   },
   methods: {
