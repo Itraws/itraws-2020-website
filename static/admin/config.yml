@@ -211,3 +211,57 @@ collections:
               widget: "string",
               hint: "Copyright text that appears at the footer of each pages. In French.",
             }
+      - name: "metaSettings"
+        label: "Meta Data Settings"
+        filte: "assets/site/settings/metasettings.json"
+        description: "Website meta Tags data for SEO Optomization"
+        widget: "list"
+        fields:
+          - {
+              label: "Site Title",
+              name: "title",
+              widget: "string",
+              description: "Define website title",
+            }
+          - {
+              label: "Site Slogan (En)",
+              name: "sloganEn",
+              widget: "string",
+              description: "Define website slogan",
+            }
+          - {
+              label: "Site Slogan (Fr)",
+              name: "sloganFr",
+              widget: "string",
+              description: "Define website slogan",
+            }
+          - {
+              label: "Description (En)",
+              name: "descriptionEn",
+              widget: "string",
+              description: "Define a description of web page",
+            }
+          - {
+              label: "Description (Fr)",
+              name: "descriptionFr",
+              widget: "string",
+              description: "Define a description of web page",
+            }
+          - {
+              label: "Author",
+              name: "author",
+              widget: "string",
+              description: "Define the author of the site",
+            }
+          - {
+              label: "keywords (En)",
+              name: "keywordsEn",
+              widget: "string",
+              description: "Define keywords for search engines",
+            }
+          - {
+              label: "keywords (Fr)",
+              name: "keywordsFr",
+              widget: "string",
+              description: "Define keywords for search engines",
+            }
