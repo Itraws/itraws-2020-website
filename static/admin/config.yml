@@ -171,3 +171,42 @@ collections:
           widget: markdown,
           required: false,
         }
+  - name: "settings"
+    label: "Settings"
+    description: "Set and config frontend settings of the website."
+    delete: false
+    editor:
+      preview: false
+    file: "assets/site/settings.json"
+    created: false
+    slug: "{{slug}}"
+    fields:
+      - name: "uiTextElements"
+        label: "UI Text Elements"
+        description: "Ui elements translations"
+        widget: "list"
+        fields:
+          - {
+              label: "Article Preview Text (English)",
+              name: "articlePreviewEn",
+              widget: "string",
+              hint: "The text string that appears above recent blog post entries in the acticle preview component.",
+            }
+          - {
+              label: "Article Preview Text (French)",
+              name: "articlePreviewFr",
+              widget: "string",
+              hint: "The text string that appears above recent blog post entries in the acticle preview component. In French.",
+            }
+          - {
+              label: "Copyright Text (English)",
+              name: "copyrightTextEn",
+              widget: "string",
+              hint: "Copyright text that appears at the footer of each pages.",
+            }
+          - {
+              label: "Copyright Text (French)",
+              name: "copyrightTextFr",
+              widget: "string",
+              hint: "Copyright text that appears at the footer of each pages. In French.",
+            }

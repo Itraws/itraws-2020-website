@@ -8,7 +8,14 @@
       <section class="section">
         <div class="section__inner">
           <div class="product-list">
-            <ProductItem />
+            <ProductItem
+              v-for="(product, index) in contentCms.content_list[1].products"
+              v-show="product.image_display"
+              :key="index"
+              :image-url="product.image_url"
+              :link-url="product.link_url"
+              :alt-value="product.alt_text"
+            />
           </div>
         </div>
       </section>
@@ -36,7 +43,7 @@ export default Vue.extend({
     LayoutFooter
   },
   computed: {
-    contentCms() {
+    contentCms(): object {
       return this.$i18n.locale === 'en'
         ? contentCmsEn
         : this.$i18n.locale === 'fr'
