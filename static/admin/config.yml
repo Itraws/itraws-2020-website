@@ -213,7 +213,7 @@ collections:
             }
       - name: "metaSettings"
         label: "Meta Data Settings"
-        filte: "assets/site/settings/metasettings.json"
+        file: "assets/site/settings/metasettings.json"
         description: "Website meta Tags data for SEO Optomization"
         widget: "list"
         fields:
