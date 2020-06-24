@@ -177,12 +177,13 @@ collections:
     delete: false
     editor:
       preview: false
-    file: "assets/site/settings.json"
     created: false
+    format: "json"
     slug: "{{slug}}"
-    fields:
+    files:
       - name: "uiTextElements"
         label: "UI Text Elements"
+        file: "assets/site/uisettings.json"
         description: "Ui elements translations"
         widget: "list"
         fields:
