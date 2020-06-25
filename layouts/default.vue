@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <modal-component v-if="getModalStatus" />
-    <nuxt />
+    <nuxt keep-alive />
   </div>
 </template>
 
@@ -23,7 +23,11 @@ export default Vue.extend({
   data() {
     return {
       error: '',
-      loading: false
+      loading: false,
+      structuredData: {
+        '@context': 'http://schema.org',
+        '@type': 'Internet'
+      }
     }
   },
   computed: {
@@ -50,17 +54,16 @@ export default Vue.extend({
           }
     }
   },
-  async mounted() {
-    this.error = ''
-    this.loading = true
-    try {
-      await metaSettings
-      await this.fetchBlogPosts()
-    } catch (error) {
-      this.setError(error)
-    }
-    this.loading = false
-  },
+  // async mounted() {
+  //   this.error = ''
+  //   this.loading = true
+  //   try {
+  //     await this.fetchBlogPosts()
+  //   } catch (error) {
+  //     this.setError(error)
+  //   }
+  //   this.loading = false
+  // },
   methods: {
     ...mapActions('blog', ['fetchBlogPosts']),
     ...mapActions('modal', ['setError'])
@@ -80,16 +83,19 @@ export default Vue.extend({
         { name: 'og:image:height', content: '600' },
         { name: 'og:site_name', content: this.metaSettings.title }, // website title
         { name: 'og:type', content: 'website' },
+        { property: 'og:type', content: 'website' },
         { property: 'og:title', content: this.metaSettings.title }, // website title
         { property: 'og:description', content: this.metaSettings.description }, // website description
         { property: 'og:image', content: this.metaSettings.metaImage }, // website image with logo
-        { property: 'og:url', content: '/' },
+        { property: 'og:url', content: 'https://dev2020.itraws.com' },
         // Twitter
         { name: 'twitter:title', content: this.metaSettings.title }, // website title
         { name: 'twitter:description', content: this.metaSettings.description }, // website description
         { name: 'twitter:image:src', content: this.metaSettings.metaImage }, // website image with logo
-        { name: 'twitter:site', content: '/' },
+        { name: 'twitter:image', content: this.metaSettings.metaImage }, // website image with logo
+        { name: 'twitter:site', content: 'https://dev2020.itraws.com' },
         { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:creator', content: '@itraws' },
         { name: 'twitter:creator', content: '@itraws' },
         {
           hid: 'description',
@@ -110,7 +116,8 @@ export default Vue.extend({
           href: '/apple-touch-icon.png'
         },
         ...i18nSeo.link
-      ]
+      ],
+      script: [{ type: 'application/ld+json', json: this.structuredData }]
     }
   }
 })

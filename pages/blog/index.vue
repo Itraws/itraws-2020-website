@@ -89,9 +89,21 @@ export default Vue.extend({
     Pagination,
     LayoutFooter
   },
+  async fetch() {
+    this.error = ''
+    this.loading = true
+    try {
+      await this.fetchBlogPosts()
+    } catch (error) {
+      this.setError(error)
+    }
+    this.loading = false
+  },
   data() {
     return {
-      search: ''
+      search: '',
+      loading: false,
+      error: ''
     }
   },
   computed: {
@@ -107,8 +119,15 @@ export default Vue.extend({
       return this.blogPosts(this.search)
     }
   },
+  activated() {
+    // call fetch again if last fetch more than 60 sec ago
+    if (this.$fetchState.timestamp <= Date.now() - 60000) {
+      this.$fetch()
+    }
+  },
   methods: {
-    ...mapActions('blog', ['setFilteredPosts']),
+    ...mapActions('blog', ['setFilteredPosts', 'fetchBlogPosts']),
+    ...mapActions('modal', ['setError']),
     updateSearchInput(input: string) {
       this.search = input
     }

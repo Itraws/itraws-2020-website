@@ -41,7 +41,11 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/moment'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/moment',
+    ['@nuxtjs/google-analytics', { id: 'UA-170813746-1' }]
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -49,8 +53,14 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     'vue-social-sharing/nuxt',
-    'nuxt-i18n'
+    'nuxt-i18n',
+    '@nuxtjs/sitemap'
   ],
+  sitemap: {
+    hostname: 'https://dev2020.itraws.com',
+    gzip: true,
+    exclude: ['/admin/**']
+  },
   i18n: {
     baseUrl: 'https://dev2020.itraws.com',
     seo: true,

@@ -95,6 +95,9 @@ export default Vue.extend({
     BlogCard,
     Icon
   },
+  async fetch() {
+    await this.fetchLatestPosts('3')
+  },
   computed: {
     ...mapGetters('blog', ['getLatestPosts']),
     contentCms() {
@@ -107,9 +110,15 @@ export default Vue.extend({
         : null
     }
   },
-  created() {
-    this.fetchLatestPosts('3')
+  activated() {
+    // call fetch again if last fetch more than 60 sec ago
+    if (this.$fetchState.timestamp <= Date.now() - 60000) {
+      this.$fetch()
+    }
   },
+  // created() {
+  //   this.fetchLatestPosts('3')
+  // },
   methods: {
     ...mapActions('blog', ['fetchLatestPosts'])
   }
