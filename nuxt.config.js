@@ -1,4 +1,6 @@
 import FMMode from 'frontmatter-markdown-loader'
+import { getAllPosts } from './api/GhostApi'
+
 export default {
   mode: 'universal',
   /*
@@ -33,6 +35,21 @@ export default {
    */
   router: {
     middleware: 'pages'
+  },
+  generate: {
+    routes: () => {
+      try {
+        const data = getAllPosts()
+        return data.map((post) => {
+          return {
+            route: `/blog/${post.slug}`,
+            payload: post
+          }
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }
   },
   /*
    ** Plugins to load before mounting the App

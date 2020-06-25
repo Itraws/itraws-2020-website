@@ -13,6 +13,10 @@ export const getPosts = async (currentPage = 1) => {
   })
 }
 
+export const getAllPosts = async () => {
+  return await api.posts.browse()
+}
+
 export const getFeaturedPost = async () => {
   return await api.posts.browse({
     filter: 'featured:true'
