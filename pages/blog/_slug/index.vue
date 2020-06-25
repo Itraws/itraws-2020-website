@@ -49,7 +49,7 @@ export default Vue.extend({
   },
   computed: {
     fullPageUrl(): string {
-      return typeof location.href !== 'undefined' ? location.href : ''
+      return 'https://dev2020.itraws.com' + this.$route.fullPath
     }
   }
 })
