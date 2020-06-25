@@ -10,3 +10,7 @@ command = "npm run dev"
   for = "/"
     [headers.values]
     Access-Control-Allow-Origin = "*"
+[[redirects]]
+  from = "/*"
+  to = "/index.html#Error404"
+  status = 404
