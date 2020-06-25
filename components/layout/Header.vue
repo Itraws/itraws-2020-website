@@ -8,14 +8,22 @@
         <ItrawsLogo
           :is-header="true"
           :white-logo="
-            page === 'blog-slug' && scrollPosition < 50 ? 'true' : 'false'
+            page === `blog-slug___${currentLocal}` && scrollPosition < 50
+              ? 'true'
+              : 'false'
           "
         />
         <div class="header-menu--mobile">
           <div class="menu-hamburger" @click="hamburgerClickedActive()">
             <div
               class="menu-hamburger--bar"
-              :class="hamburger ? 'menu-hamburger--bar--clicked' : ''"
+              :class="{
+                'menu-hamburger--bar--clicked': hamburger,
+                'menu-hamburger--bar--white':
+                  page === `blog-slug___${currentLocal}`,
+                'menu-hamburger--bar--black':
+                  page !== `blog-slug___${currentLocal}`
+              }"
             />
           </div>
         </div>
@@ -29,10 +37,15 @@
             <nuxt-link
               :to="localePath(link.link_url)"
               :class="{
-                'header-menu__item--active': page === link.link_name,
+                'header-menu__item--active':
+                  page === link.link_url + `___${currentLocal}` ||
+                  page === `blog-slug___${currentLocal}` ||
+                  (page === `index___${currentLocal}` &&
+                    link.link_name === 'home') ||
+                  (page === `index___${currentLocal}` &&
+                    link.link_name === 'Acceuil'),
                 'header-menu__item--blogpost':
-                  page === `blog-slug__${availableLocales.code}` &&
-                  scrollPosition < 50
+                  page === `blog-slug___${currentLocal}` && scrollPosition < 50
               }"
               >{{ link.link_name }}</nuxt-link
             >
@@ -46,7 +59,7 @@
               :to="switchLocalePath(locale.code)"
               :class="{
                 'header-menu__item--blogpost':
-                  page === 'blog-slug' && scrollPosition < 50
+                  page === `blog-slug___${currentLocal}` && scrollPosition < 50
               }"
               class="header-menu__item--active"
               ><Icon
@@ -170,6 +183,9 @@ export default Vue.extend({
   computed: {
     ...mapState('pageAnimation', ['page']),
     socialMedias: () => SocialLinks.attributes,
+    currentLocal(): string | any {
+      return this.$i18n.locale
+    },
     availableLocales(): [] | any {
       const locales: objectType = this.$i18n.locales || { ok: '' }
       return locales.filter((i: objectType) => i.code !== this.$i18n.locale)

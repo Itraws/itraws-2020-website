@@ -96,7 +96,6 @@ export default Vue.extend({
         { name: 'twitter:site', content: 'https://dev2020.itraws.com' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:creator', content: '@itraws' },
-        { name: 'twitter:creator', content: '@itraws' },
         {
           hid: 'description',
           name: 'description',

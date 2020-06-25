@@ -206,12 +206,19 @@
         cursor: pointer;
         width: 30px;
         height: 2px;
-        background-color: colors(rich-black);
         display: flex;
         justify-content: center;
         align-items: center;
         position: absolute;
         transition: all 0.4s ease;
+
+        &--black {
+          background-color: colors(rich-black);
+        }
+
+        &--white {
+          background-color: colors(coconut);
+        }
 
         &::before {
           content: '';
