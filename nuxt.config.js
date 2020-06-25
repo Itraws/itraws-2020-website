@@ -37,9 +37,9 @@ export default {
     middleware: 'pages'
   },
   generate: {
-    routes: () => {
+    routes: async () => {
       try {
-        const data = getAllPosts()
+        const data = await getAllPosts()
         return data.map((post) => {
           return {
             route: `/blog/${post.slug}`,
