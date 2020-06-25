@@ -45,7 +45,7 @@
             </template>
             <template #postTitle>
               <h3 class="blog-card__title mg-bottom-2">
-                <nuxt-link :to="{ path: `blog/${post.slug}` }">{{
+                <nuxt-link :to="{ path: `/blog/${post.slug}` }">{{
                   post.title
                 }}</nuxt-link>
               </h3>

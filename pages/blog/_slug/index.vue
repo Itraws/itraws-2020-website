@@ -49,7 +49,7 @@ export default Vue.extend({
   },
   computed: {
     fullPageUrl(): string {
-      return location.href
+      return location.href !== 'undefined' ? location.href : ''
     }
   }
 })
