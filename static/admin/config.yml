@@ -215,6 +215,25 @@ collections:
               widget: "string",
               hint: "Copyright text that appears at the footer of each pages. In French.",
             }
+      - name: "socialSettings"
+        label: "Social Media Settings"
+        file: "assets/site/settings/socialmediasettings.json"
+        description: "Social media links and settings."
+        widget: "list"
+        collapsed: false
+        fields:
+          - label: "Social Networks"
+            name: "socialNetworks"
+            widget: "list"
+            collapsed: false
+            fields:
+              - {
+                  label: "Social Media Name",
+                  name: "socialMediaName",
+                  widget: "string",
+                }
+              - { label: "Profile Url", name: "profileUrl", widget: "string" }
+              - { label: "Display", name: "display", widget: "boolean" }
       - name: "metaSettings"
         label: "Meta Data Settings"
         file: "assets/site/settings/metasettings.json"
