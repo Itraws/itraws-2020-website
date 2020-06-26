@@ -1,0 +1,12 @@
+{
+  "language": "en",
+  "title": "Privacy Policy",
+  "content_markdown": "text",
+  "content_list": [
+    {
+      "type": "hero_content",
+      "headline": "Privacy Policy",
+      "text": "test"
+    }
+  ]
+}
