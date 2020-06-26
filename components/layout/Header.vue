@@ -132,11 +132,16 @@
         </ul>
         <div class="mobile-menu__sub__social">
           <a
-            v-for="(social, key, index) in socialMedias"
+            v-for="(social, index) in socialMedias"
+            v-show="social.display"
             :key="index"
-            :href="social"
+            :href="social.profileUrl"
             target="_blank"
-            ><Icon i-type="fab" :i-icon="key" i-color="blue" i-background="true"
+            ><Icon
+              i-type="fab"
+              :i-icon="social.socialMediaName.toLowerCase()"
+              i-color="blue"
+              i-background="true"
           /></a>
         </div>
       </div>
@@ -149,7 +154,7 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 import ItrawsLogo from '~/components/branding/Logo.vue'
 import Icon from '~/components/elements/Icon.vue'
-const SocialLinks = require('~/content/social.md')
+const socialMediaSetting = require('~/assets/site/settings/socialmediasettings.json')
 const contentCmsEn = require('~/assets/content/navigation-en.json')
 const contentCmsFr = require('~/assets/content/navigation-fr.json')
 const subNavigationEn = require('~/assets/content/sub-navigation-en.json')
@@ -182,7 +187,7 @@ export default Vue.extend({
   },
   computed: {
     ...mapState('pageAnimation', ['page']),
-    socialMedias: () => SocialLinks.attributes,
+    socialMedias: () => socialMediaSetting.socialNetworks,
     currentLocal(): string | any {
       return this.$i18n.locale
     },

@@ -5,14 +5,15 @@
         <ItrawsLogo :is-header="false" />
         <ul class="footer-menu">
           <li
-            v-for="(social, key, index) in socialMedias"
+            v-for="(social, index) in socialMedias"
+            v-show="social.display"
             :key="index"
             class="footer-menu__item meta-typo"
           >
-            <a :href="social" target="_blank"
+            <a :href="social.profileUrl" target="_blank"
               ><Icon
                 i-type="fab"
-                :i-icon="key"
+                :i-icon="social.socialMediaName.toLowerCase()"
                 i-color="white"
                 i-background="true"
             /></a>
@@ -37,7 +38,7 @@
 import Vue from 'vue'
 import ItrawsLogo from '~/components/branding/Logo.vue'
 import Icon from '~/components/elements/Icon.vue'
-const SocialLinks = require('~/content/social.md')
+const socialMediaSetting = require('~/assets/site/settings/socialmediasettings.json')
 const uiSettings = require('~/assets/site/uisettings.json')
 const subNavigationEn = require('~/assets/content/sub-navigation-en.json')
 const subNavigationFr = require('~/assets/content/sous-navigation-fr.json')
@@ -49,7 +50,7 @@ export default Vue.extend({
     Icon
   },
   computed: {
-    socialMedias: () => SocialLinks.attributes,
+    socialMedias: () => socialMediaSetting.socialNetworks,
     contentCms() {
       const contentCopyRightEn = uiSettings.copyrightTextEn
       const contentCopyRightFr = uiSettings.copyrightTextFr
