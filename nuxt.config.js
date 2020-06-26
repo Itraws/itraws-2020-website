@@ -38,17 +38,13 @@ export default {
   },
   generate: {
     routes: async () => {
-      try {
-        const data = await getAllPosts()
-        return data.map((post) => {
-          return {
-            route: `/blog/${post.slug}`,
-            payload: post
-          }
-        })
-      } catch (error) {
-        console.log(error)
-      }
+      const data = await getAllPosts()
+      return data.map((post) => {
+        return {
+          route: `/blog/${post.slug}`,
+          payload: post
+        }
+      })
     }
   },
   /*
@@ -61,7 +57,16 @@ export default {
   buildModules: [
     '@nuxt/typescript-build',
     '@nuxtjs/moment',
-    ['@nuxtjs/google-analytics', { id: 'UA-170813746-1' }]
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-170813746-1',
+        debug: {
+          enabled: true,
+          sendHitTask: true
+        }
+      }
+    ]
   ],
   /*
    ** Nuxt.js modules

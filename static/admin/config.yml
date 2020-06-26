@@ -215,6 +215,30 @@ collections:
               widget: "string",
               hint: "Copyright text that appears at the footer of each pages. In French.",
             }
+          - {
+              label: "Cookie Componenent Text (English)",
+              name: "cookieMessageEn",
+              widget: "string",
+              hint: "Cookie component text message.",
+            }
+          - {
+              label: "Cookie Componenent Text (French)",
+              name: "cookieMessageFr",
+              widget: "string",
+              hint: "Cookie component text message.",
+            }
+          - {
+              label: "Cookie Componenent Label (English)",
+              name: "cookieLabelEn",
+              widget: "string",
+              hint: "Cookie component text label.",
+            }
+          - {
+              label: "Cookie Componenent Label (French)",
+              name: "cookieLabelFr",
+              widget: "string",
+              hint: "Cookie component text label.",
+            }
       - name: "socialSettings"
         label: "Social Media Settings"
         file: "assets/site/settings/socialmediasettings.json"

@@ -2,6 +2,9 @@
   <div class="body">
     <modal-component v-if="getModalStatus" />
     <nuxt keep-alive />
+    <client-only>
+      <cookie />
+    </client-only>
   </div>
 </template>
 
@@ -9,6 +12,8 @@
 import Vue from 'vue'
 import { mapState, mapActions, mapGetters } from 'vuex'
 import modalComponent from '~/components/elements/Modal.vue'
+import Cookie from '~/components/elements/Cookie.vue'
+
 const metaSettings = require('~/assets/site/settings/metasettings.json')
 
 export default Vue.extend({
@@ -18,7 +23,8 @@ export default Vue.extend({
     mode: 'out-in'
   },
   components: {
-    modalComponent
+    modalComponent,
+    Cookie
   },
   data() {
     return {

@@ -80,6 +80,16 @@
       color: colors(rich-black-75);
     }
   }
+
+  &--richblack {
+    background-color: colors(rich-black);
+    color: colors(coconut);
+
+    &:hover {
+      background-color: colors(rich-black-75);
+      color: colors(coconut);
+    }
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -815,5 +825,34 @@
   &--success {
     color: colors(ocean-blue);
     background-color: colors(white-smoke);
+  }
+}
+
+// Cookie component
+.cookie {
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  background-color: colors(persian-blue);
+
+  &__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .cookie__message {
+      display: inherit;
+      flex-direction: column;
+      max-width: 50%;
+      color: colors(coconut)
+    }
+
+    .cookie__actions {
+      display: inherit;
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: 50%;
+    }
   }
 }
