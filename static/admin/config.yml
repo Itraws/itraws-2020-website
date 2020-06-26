@@ -187,12 +187,10 @@ collections:
         description: "Ui elements translations and Settings"
         widget: "list"
         fields:
-          - {
-              label: "Blog Article Previews Display",
-              name: "blogArticlePreviewDisplay",
-              widget: "boolean",
-              hint: "Show or hide article previews",
-            }
+          - label: "Blog Article Previews Display"
+            name: "blogArticlePreviewDisplay"
+            widget: "boolean"
+            hint: "Show or hide article previews"
           - {
               label: "Article Preview Text (English)",
               name: "articlePreviewEn",
