@@ -181,12 +181,18 @@ collections:
     format: "json"
     slug: "{{slug}}"
     files:
-      - name: "uiTextElements"
-        label: "UI Text Elements"
+      - name: "uiElements"
+        label: "UI Elements"
         file: "assets/site/uisettings.json"
-        description: "Ui elements translations"
+        description: "Ui elements translations and Settings"
         widget: "list"
         fields:
+          - {
+              label: "Blog Article Previews Display",
+              name: "blogArticlePreviewDisplay",
+              widget: "boolean",
+              hint: "Show or hide article previews",
+            }
           - {
               label: "Article Preview Text (English)",
               name: "articlePreviewEn",
