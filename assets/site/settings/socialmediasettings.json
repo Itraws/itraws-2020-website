@@ -8,17 +8,17 @@
     {
       "socialMediaName": "Facebook",
       "profileUrl": "https://facebook.com/itraws",
-      "display": true
+      "display": false
     },
     {
       "socialMediaName": "Linkedin",
-      "profileUrl": "https://linkedin.com/itraws",
+      "profileUrl": "https://linkedin.com/company/itraws",
       "display": true
     },
     {
       "socialMediaName": "Youtube",
-      "profileUrl": "https://youtube.com/itraws",
-      "display": true
+      "profileUrl": "https://www.youtube.com/channel/UCtJSf86amJEgOnVWtfgGuTA",
+      "display": false
     },
     {
       "socialMediaName": "Github",
