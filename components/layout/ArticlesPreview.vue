@@ -1,5 +1,5 @@
 <template>
-  <section class="section articles-preview">
+  <section v-show="articlesDisplay" class="section articles-preview">
     <div class="section__inner">
       <div class="articles-preview__link mg-bottom-5">
         <h4 class="text-rich-black text-semibold mg-right-4">
@@ -100,6 +100,9 @@ export default Vue.extend({
   },
   computed: {
     ...mapGetters('blog', ['getLatestPosts']),
+    articlesDisplay() {
+      return uiSettings.blogArticlePreviewDisplay
+    },
     contentCms() {
       const contentArticlePreviewEn = uiSettings.articlePreviewEn
       const contentArticlePreviewFr = uiSettings.articlePreviewFr
