@@ -2,18 +2,18 @@
   <section v-if="isOpen" class="cookie section">
     <div class="section__inner cookie__inner">
       <div class="cookie__message">
-        <small>{{ message }}</small>
+        <small>{{ uiCookieContent.message }}</small>
       </div>
       <div class="cookie__actions">
         <button-component
-          :button-value="buttonTextAccept"
+          :button-value="uiCookieContent.acceptLabel"
           button-type="button"
           button-color="white"
           @click.native="accept"
         />
         <button-component
           :button-to="localePath(privacylink.link_url)"
-          :button-value="privacylink.link_name"
+          :button-value="uiCookieContent.label"
           button-type="link"
           button-color="richblack"
           class="mg-left-3"
@@ -28,6 +28,7 @@ import Vue from 'vue'
 import ButtonComponent from '~/components/elements/ButtonComponent.vue'
 const subNavigationEn = require('~/assets/content/sub-navigation-en.json')
 const subNavigationFr = require('~/assets/content/sous-navigation-fr.json')
+const uiSettings = require('~/assets/site/uisettings.json')
 
 interface CookieComponent {
   isOpen: boolean
@@ -75,6 +76,21 @@ export default Vue.extend({
       return local === 'en'
         ? subNavigationEn.navigation_list[0]
         : subNavigationFr.navigation_list[0]
+    },
+    uiCookieContent(): object | any {
+      return this.$i18n.locale === 'en'
+        ? {
+            message: uiSettings.cookieMessageEn,
+            label: uiSettings.cookieLabelEn,
+            acceptLabel: uiSettings.cookieAcceptLabelEn
+          }
+        : this.$i18n.locale === 'fr'
+        ? {
+            message: uiSettings.cookieMessageFr,
+            label: uiSettings.cookieLabelFr,
+            acceptLabel: uiSettings.cookieAcceptLabelFr
+          }
+        : null
     }
   },
   created() {

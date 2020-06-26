@@ -228,16 +228,28 @@ collections:
               hint: "Cookie component text message.",
             }
           - {
-              label: "Cookie Componenent Label (English)",
+              label: "Cookie Componenent Details Label (English)",
               name: "cookieLabelEn",
               widget: "string",
-              hint: "Cookie component text label.",
+              hint: "Cookie component Details text label.",
             }
           - {
-              label: "Cookie Componenent Label (French)",
+              label: "Cookie Componenent Details Label (French)",
               name: "cookieLabelFr",
               widget: "string",
-              hint: "Cookie component text label.",
+              hint: "Cookie component Details text label.",
+            }
+          - {
+              label: "Cookie Componenent Accept Label (English)",
+              name: "cookieAcceptLabelEn",
+              widget: "string",
+              hint: "Cookie component Accept text label.",
+            }
+          - {
+              label: "Cookie Componenent Accept Label (French)",
+              name: "cookieAcceptLabelFr",
+              widget: "string",
+              hint: "Cookie component Accept text label.",
             }
       - name: "socialSettings"
         label: "Social Media Settings"
