@@ -24,7 +24,7 @@
       "type": "link",
       "link_name": "blog",
       "link_url": "blog",
-      "link_display": true
+      "link_display": false
     }
   ]
 }
