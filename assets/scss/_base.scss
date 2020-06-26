@@ -391,6 +391,11 @@ body {
     margin: 0 auto;
     padding: spacing-multiply($DEFAULT-SPACING, 10rem) 0;
 
+    p {
+      margin-bottom: spacing-multiply($DEFAULT-SPACING, 6rem);
+      /* between paragraphs */
+    }
+
     .section__grid {
       column-gap: 5.875rem;
     }
