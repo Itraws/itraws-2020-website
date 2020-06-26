@@ -6,7 +6,10 @@
     />
     <div class="policy-page">
       <section class="section">
-        <div class="section__inner">{{ contentCms.content_markdown }}</div>
+        <div
+          class="section__inner"
+          v-html="$md.render(contentCms.content_markdown)"
+        ></div>
       </section>
       <ArticlesPreview />
       <LayoutFooter />
@@ -22,6 +25,10 @@ import LayoutFooter from '~/components/layout/Footer.vue'
 const contentCmsEn = require('~/assets/content/page/privacy-policy-en.json')
 const contentCmsFr = require('~/assets/content/page/politique-de-confidentialité-fr.json')
 
+interface objectType {
+  [key: string]: any | []
+}
+
 export default Vue.extend({
   name: 'ProductsPage',
   components: {
@@ -30,7 +37,7 @@ export default Vue.extend({
     LayoutFooter
   },
   computed: {
-    contentCms(): object {
+    contentCms(): objectType {
       return this.$i18n.locale === 'en'
         ? contentCmsEn
         : this.$i18n.locale === 'fr'

@@ -1,4 +1,3 @@
-import FMMode from 'frontmatter-markdown-loader'
 import { getAllPosts } from './api/GhostApi'
 
 export default {
@@ -60,11 +59,7 @@ export default {
     [
       '@nuxtjs/google-analytics',
       {
-        id: 'UA-170813746-1',
-        debug: {
-          enabled: true,
-          sendHitTask: true
-        }
+        id: 'UA-170813746-1'
       }
     ]
   ],
@@ -76,8 +71,15 @@ export default {
     '@nuxtjs/axios',
     'vue-social-sharing/nuxt',
     'nuxt-i18n',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/markdownit'
   ],
+  markdownit: {
+    injected: true,
+    preset: 'default',
+    linkify: true,
+    breaks: true
+  },
   sitemap: {
     hostname: 'https://dev2020.itraws.com',
     gzip: true,
@@ -129,13 +131,7 @@ export default {
     },
     extend(config) {
       // add frontmatter-markdown-loader
-      config.module.rules.push({
-        test: /\.md$/,
-        loader: 'frontmatter-markdown-loader',
-        options: {
-          mode: [FMMode.VUE_COMPONENT]
-        }
-      })
+      config.module.rules.push({})
     }
   },
   server: {
