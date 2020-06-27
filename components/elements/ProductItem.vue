@@ -1,10 +1,9 @@
 <template>
   <article class="product-item">
-    <img
-      src="https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/UI/Branding/product-logo.png"
-      alt="Victoria Analytica"
-      class="product-logo"
-    />
+    <img v-if="!linkUrl" :src="imageUrl" :alt="altValue" class="product-logo" />
+    <a v-else :href="linkUrl">
+      <img :src="imageUrl" :alt="altValue" class="product-logo" />
+    </a>
   </article>
 </template>
 
@@ -12,16 +11,19 @@
 import Vue from 'vue'
 export default Vue.extend({
   props: {
-    image: {
+    imageUrl: {
       type: String,
+      required: false,
       default: ''
     },
-    url: {
+    linkUrl: {
       type: String,
+      required: false,
       default: ''
     },
-    name: {
+    altValue: {
       type: String,
+      required: true,
       default: ''
     }
   }

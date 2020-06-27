@@ -1,21 +1,22 @@
-import FMMode from 'frontmatter-markdown-loader'
+import { getAllPosts } from './api/GhostApi'
+
 export default {
   mode: 'universal',
   /*
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || 'Itraws - Empowering Africain tech.',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || ''
-      }
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    // title: process.env.npm_package_name || 'Itraws - Empowering Africain tech.',
+    // meta: [
+    //   { charset: 'utf-8' },
+    //   { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    //   {
+    //     hid: 'description',
+    //     name: 'description',
+    //     content: process.env.npm_package_description || ''
+    //   }
+    // ],
+    // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Customize the progress-bar color
@@ -34,6 +35,17 @@ export default {
   router: {
     middleware: 'pages'
   },
+  generate: {
+    routes: async () => {
+      const data = await getAllPosts()
+      return data.map((post) => {
+        return {
+          route: `/blog/${post.slug}`,
+          payload: post
+        }
+      })
+    }
+  },
   /*
    ** Plugins to load before mounting the App
    */
@@ -41,15 +53,62 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/moment'],
+  buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/moment',
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-170813746-1'
+      }
+    ]
+  ],
   /*
    ** Nuxt.js modules
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    'vue-social-sharing/nuxt'
+    'vue-social-sharing/nuxt',
+    'nuxt-i18n',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/markdownit'
   ],
+  markdownit: {
+    injected: true,
+    preset: 'default',
+    linkify: true,
+    breaks: true
+  },
+  sitemap: {
+    hostname: 'https://www.itraws.com',
+    gzip: true,
+    exclude: ['/admin/**']
+  },
+  i18n: {
+    baseUrl: 'https://www.itraws.com',
+    seo: true,
+    locales: [
+      {
+        code: 'en',
+        name: 'English',
+        iso: 'en-US'
+      },
+      {
+        code: 'fr',
+        name: 'Francais',
+        iso: 'fr-FR'
+      }
+    ],
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en: require('./locales/en.json'),
+        fr: require('./locales/fr.json')
+      }
+    }
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -72,13 +131,7 @@ export default {
     },
     extend(config) {
       // add frontmatter-markdown-loader
-      config.module.rules.push({
-        test: /\.md$/,
-        loader: 'frontmatter-markdown-loader',
-        options: {
-          mode: [FMMode.VUE_COMPONENT]
-        }
-      })
+      config.module.rules.push({})
     }
   },
   server: {

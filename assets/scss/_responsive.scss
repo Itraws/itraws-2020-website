@@ -123,7 +123,21 @@
 
 // mobile phones
 @include media('≥phone', '<tablet') {
-  .header-menu--mobile {}
+  .cookie {
+    &__inner {
+      justify-content: center;
+      flex-direction: column;
+
+      .cookie__message {
+        max-width: 100%;
+      }
+
+      .cookie__actions {
+        margin-top: spacing-multiply($DEFAULT-SPACING, 3rem);
+        max-width: 100%;
+      }
+    }
+  }
 
   .header>.header__content>.header__inner {
     .header-menu {

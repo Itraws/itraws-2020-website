@@ -43,13 +43,17 @@ export default Vue.extend({
     ArticlesPreview,
     LayoutFooter
   },
-  async asyncData({ params }) {
-    const post = await getSinglePost(params.slug)
-    return { data: post }
+  async asyncData({ params, error }) {
+    try {
+      const post = await getSinglePost(params.slug)
+      return { data: post }
+    } catch (e) {
+      error({ statusCode: 404, message: e.message })
+    }
   },
   computed: {
     fullPageUrl(): string {
-      return location.href
+      return 'https://www.itraws.com' + this.$route.fullPath
     }
   }
 })

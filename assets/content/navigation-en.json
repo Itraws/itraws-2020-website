@@ -1,0 +1,30 @@
+{
+  "language": "en",
+  "title": "navigation",
+  "navigation_list": [
+    {
+      "type": "link",
+      "link_name": "home",
+      "link_url": "/",
+      "link_display": true
+    },
+    {
+      "type": "link",
+      "link_name": "about",
+      "link_url": "about",
+      "link_display": true
+    },
+    {
+      "type": "link",
+      "link_name": "products",
+      "link_url": "products",
+      "link_display": true
+    },
+    {
+      "type": "link",
+      "link_name": "blog",
+      "link_url": "blog",
+      "link_display": false
+    }
+  ]
+}

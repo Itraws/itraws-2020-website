@@ -1,0 +1,26 @@
+{
+  "language": "en",
+  "title": "Our Products",
+  "content_list": [
+    {
+      "type": "hero_content",
+      "headline": "Our Products",
+      "text": "Discover our suite of products and services."
+    },
+    {
+      "type": "products_content",
+      "image_url": "https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/UI/Branding/product-logo.png",
+      "image_display": true,
+      "alt_text": "Victoria Analytica",
+      "image": "/images/uploads/screenshot_2020-06-18-create-a-palette-coolors.png",
+      "products": [
+        {
+          "type": "product",
+          "image_url": "https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/UI/Branding/product-logo.png",
+          "alt_text": "Victoria Analytica",
+          "image_display": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "language": "fr",
+  "title": "Sous Navigation",
+  "navigation_list": [
+    {
+      "type": "link",
+      "link_name": "Politique de confidentialité",
+      "link_url": "privacy",
+      "link_display": true
+    }
+  ]
+}

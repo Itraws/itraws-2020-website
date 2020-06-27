@@ -1,0 +1,12 @@
+{
+  "language": "en",
+  "title": "Sub Navigation",
+  "navigation_list": [
+    {
+      "type": "link",
+      "link_name": "Privacy Policy",
+      "link_url": "privacy",
+      "link_display": true
+    }
+  ]
+}

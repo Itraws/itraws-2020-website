@@ -1,22 +1,25 @@
 <template>
   <div>
-    <HeaderHero />
+    <HeaderHero
+      :hero-headline="contentCms.content_list[0].headline"
+      :hero-text="contentCms.content_list[0].text"
+    />
     <div class="about-page">
       <section class="section section--white-smoke">
         <div class="section__inner">
           <div class="section__grid">
             <div class="about-section">
               <h1 class="text-ocean-blue mg-bottom-3">
-                {{ content.sectionOne.headline }}
+                {{ contentCms.content_list[1].headline }}
               </h1>
               <h4 class="text-persian-blue text-medium">
-                {{ content.sectionOne.paragraph }}
+                {{ contentCms.content_list[1].text }}
               </h4>
             </div>
             <div class="about-section__image--1">
               <img
                 class="about-section__image--1"
-                src="https://itrawsorigin.s3.ca-central-1.amazonaws.com/about-image-1-v2.jpg"
+                :src="contentCms.content_list[1].image_url"
                 alt="image 1"
               />
             </div>
@@ -25,16 +28,16 @@
             <div class="about-section__image--2">
               <img
                 class="about-section__image--2"
-                src="https://itrawsorigin.s3.ca-central-1.amazonaws.com/about-image-2-v2.jpg"
+                :src="contentCms.content_list[2].image_url"
                 alt="image 2"
               />
             </div>
             <div class="about-section">
               <h3 class="text-ocean-blue mg-bottom-3">
-                {{ content.sectionTwo.headline }}
+                {{ contentCms.content_list[2].headline }}
               </h3>
               <p class="text-persian-blue">
-                {{ content.sectionTwo.paragraph }}
+                {{ contentCms.content_list[2].text }}
               </p>
             </div>
           </div>
@@ -73,7 +76,8 @@ import Vue from 'vue'
 import HeaderHero from '~/components/layout/HeaderHero.vue'
 import LayoutFooter from '~/components/layout/Footer.vue'
 // import content from '~/content/about.md'
-const content = require('~/content/about.md')
+const contentCmsEn = require('~/assets/content/page/about-en.json')
+const contentCmsFr = require('~/assets/content/page/apropos-fr.json')
 
 export default Vue.extend({
   name: 'AboutPage',
@@ -82,7 +86,13 @@ export default Vue.extend({
     LayoutFooter
   },
   computed: {
-    content: () => content.attributes
+    contentCms() {
+      return this.$i18n.locale === 'en'
+        ? contentCmsEn
+        : this.$i18n.locale === 'fr'
+        ? contentCmsFr
+        : null
+    }
   }
 })
 </script>

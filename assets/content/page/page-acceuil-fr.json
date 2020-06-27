@@ -1,0 +1,38 @@
+{
+  "language": "fr",
+  "title": "Page acceuil",
+  "content_list": [
+    {
+      "type": "hero_content",
+      "headline": "Immobilité. Fermeté. Constance.",
+      "text": "Chaque sommet de montagne est à portée de main si vous continuez à grimper. ",
+      "button_url": "about",
+      "button_value": "en savoir plus",
+      "button_display": true
+    },
+    {
+      "type": "page_content_block_links",
+      "headline": "Nous avons la tête haute",
+      "text": "Renforcer les capacités technologiques africaines",
+      "section_links": [
+        {
+          "type": "link",
+          "link_name": "Qui sommes-nous",
+          "link_url": "about"
+        },
+        {
+          "type": "link",
+          "link_name": "ce que nous construisons",
+          "link_url": "products"
+        }
+      ]
+    },
+    {
+      "type": "hero_content",
+      "text": "Restez au courant de nos progrès",
+      "headline": "Nous dirigeons",
+      "button_value": "S'abonner",
+      "button_display": true
+    }
+  ]
+}

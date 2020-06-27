@@ -80,6 +80,16 @@
       color: colors(rich-black-75);
     }
   }
+
+  &--richblack {
+    background-color: colors(rich-black);
+    color: colors(coconut);
+
+    &:hover {
+      background-color: colors(rich-black-75);
+      color: colors(coconut);
+    }
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -99,12 +109,26 @@
   .card__content {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     padding: spacing-multiply($DEFAULT-SPACING, 15rem) 8.5rem;
     z-index: 0;
     position: relative;
+
+    &--one {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+
+    &--two {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      align-items: center;
+    }
 
     .card-menu {
       display: block;
@@ -801,5 +825,34 @@
   &--success {
     color: colors(ocean-blue);
     background-color: colors(white-smoke);
+  }
+}
+
+// Cookie component
+.cookie {
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  background-color: colors(persian-blue);
+
+  &__inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .cookie__message {
+      display: inherit;
+      flex-direction: column;
+      max-width: 50%;
+      color: colors(coconut)
+    }
+
+    .cookie__actions {
+      display: inherit;
+      flex-direction: row;
+      justify-content: space-between;
+      max-width: 50%;
+    }
   }
 }

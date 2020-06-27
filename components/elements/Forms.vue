@@ -11,7 +11,7 @@
     <input
       v-model="newsletterFname"
       class="newsletter__input"
-      placeholder="Enter name"
+      :placeholder="contentCms.name"
       type="text"
       name="name"
       required
@@ -19,7 +19,7 @@
     <input
       v-model="newsletterEmail"
       class="newsletter__input"
-      placeholder="Enter your email..."
+      :placeholder="contentCms.email"
       type="email"
       name="email"
       required
@@ -28,7 +28,7 @@
       type="submit"
       value="Subscribe"
       name="subscribe"
-      :button-value="content.cardTwo.button"
+      :button-value="value"
       button-type="button"
       button-color="coconut"
     />
@@ -39,7 +39,6 @@
 import Vue from 'vue'
 import { mapActions } from 'vuex'
 import ButtonComponent from '~/components/elements/ButtonComponent.vue'
-const content = require('~/content/home.md')
 
 interface modalState {
   [key: string]: any | []
@@ -65,7 +64,13 @@ export default Vue.extend({
     }
   },
   computed: {
-    content: () => content.attributes
+    contentCms() {
+      return this.$i18n.locale === 'en'
+        ? { name: 'Enter your Name', email: 'Enter Your Email...' }
+        : this.$i18n.locale === 'fr'
+        ? { name: 'Entrez votre nom', email: 'Entrez votre E-mail' }
+        : null
+    }
   },
   methods: {
     ...mapActions('modal', ['setSuccess', 'setError']),

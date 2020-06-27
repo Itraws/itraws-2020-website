@@ -1,0 +1,29 @@
+{
+  "socialNetworks": [
+    {
+      "socialMediaName": "Twitter",
+      "profileUrl": "https://twitter.com/itraws",
+      "display": true
+    },
+    {
+      "socialMediaName": "Facebook",
+      "profileUrl": "https://facebook.com/itraws",
+      "display": false
+    },
+    {
+      "socialMediaName": "Linkedin",
+      "profileUrl": "https://linkedin.com/company/itraws",
+      "display": true
+    },
+    {
+      "socialMediaName": "Youtube",
+      "profileUrl": "https://www.youtube.com/channel/UCtJSf86amJEgOnVWtfgGuTA",
+      "display": false
+    },
+    {
+      "socialMediaName": "Github",
+      "profileUrl": "https://github.com/itraws",
+      "display": true
+    }
+  ]
+}

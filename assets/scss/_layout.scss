@@ -206,12 +206,19 @@
         cursor: pointer;
         width: 30px;
         height: 2px;
-        background-color: colors(rich-black);
         display: flex;
         justify-content: center;
         align-items: center;
         position: absolute;
         transition: all 0.4s ease;
+
+        &--black {
+          background-color: colors(rich-black);
+        }
+
+        &--white {
+          background-color: colors(coconut);
+        }
 
         &::before {
           content: '';
@@ -256,7 +263,7 @@
   }
 
   .header-menu {
-    display: block;
+    display: flex;
     height: auto;
     padding-top: 0;
     opacity: 1;
@@ -269,7 +276,7 @@
     margin-left: auto;
 
     .header-menu__item {
-      display: inline-block;
+      display: flex;
       vertical-align: top;
       padding: 0;
       text-transform: capitalize;
@@ -293,7 +300,9 @@
       }
 
       a {
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         max-width: none;
         color: colors(rich-black-75);
         font-weight: fontWeight(semibold);
@@ -318,6 +327,11 @@
       transition: ease-in-out 0.5s;
     }
 
+    &__lang {
+      display: flex;
+      align-items: center;
+    }
+
     &__list {
       width: 100%;
       list-style-type: none;
@@ -334,6 +348,10 @@
         text-transform: capitalize;
         font-weight: fontWeight(semibold);
         font-size: fontSize(body);
+
+        &--bgblue {
+          background-color: colors(ocean-blue);
+        }
 
         a {
           margin: 0 spacing-multiply($DEFAULT-SPACING, 4rem);
@@ -411,6 +429,7 @@
 
   .hero__headline {
     color: colors(rich-black);
+    text-transform: capitalize;
   }
 
   .hero__text {

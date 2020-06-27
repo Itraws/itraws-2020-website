@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-hero />
+    <header-hero hero-headline="" hero-text="" />
     <div class="error-page">
       <section class="section">
         <div class="section__inner">

@@ -1,19 +1,332 @@
 backend:
   name: git-gateway
-  branch: cms # Branch to update (optional; defaults to master)
+  branch: master # Branch to update (optional; defaults to master)
+site_url: https://wwww.itraws.com
 # This lines should *not* be indented
 publish_mode: editorial_workflow
+locale: "en" # other languages, defaults to "en"
 media_folder: "static/images/uploads" # Media files will be stored in the repo under images/uploads
 public_folder: "/images/uploads" # The src attribute for uploaded media will begin with /images/uploads
 collections:
-  - name: "page" # Used in routes, e.g., /admin/collections/content
-    label: "Page" # Used in the UI
-    format: "json" # important for consuming in nuxt
-    folder: "assets/content/page" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
-      - { label: "Layout", name: "layout", widget: "hidden", default: "page" }
+  - name: "Navigation"
+    label: "navigation"
+    description: "Site navigation"
+    delete: false # prevent users from deleting documents in this collection
+    editor:
+      preview: false
+    format: "json"
+    folder: "assets/content"
+    create: true
+    slug: "{{slug}}-{{language}}"
+    fields:
+      - {
+          label: "Language",
+          name: "language",
+          widget: "select",
+          options: ["en", "fr"],
+        }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Language", name: "language" }
+      - label: "Navigation list"
+        name: "navigation_list"
+        widget: "list"
+        types:
+          - label: "Link"
+            name: "link"
+            widget: "object"
+            fields:
+              - { label: "Link Name", name: "link_name", widget: "string" }
+              - { label: "Link Url", name: "link_url", widget: "string" }
+              - {
+                  label: "Link Display",
+                  name: "link_display",
+                  widget: "boolean",
+                }
+  - name: "contentPages" # Used in the UI
+    label: "Content Pages" # Used in routes, e.g., /admin/collections/content
+    format: "json"
+    folder: "assets/content/page"
+    create: true
+    slug: "{{slug}}-{{language}}"
+    fields:
+      - {
+          label: "Language",
+          name: "language",
+          widget: "select",
+          options: ["en", "fr"],
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Content List"
+        name: "content_list"
+        widget: "list"
+        types:
+          - label: "Hero content"
+            name: "hero_content"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - {
+                  label: "Button url",
+                  name: "button_url",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Button value",
+                  name: "button_value",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Button display",
+                  name: "button_display",
+                  widget: "boolean",
+                  required: false,
+                }
+          - label: "Page content block"
+            name: "page_content_block"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - {
+                  label: "Image URL",
+                  name: "image_url",
+                  widget: "string",
+                  required: false,
+                }
+              - {
+                  label: "Image Upload",
+                  name: "image_upload",
+                  widget: "image",
+                  required: false,
+                }
+              - {
+                  label: "Image display",
+                  name: "image_display",
+                  widget: "boolean",
+                  required: false,
+                }
+          - label: "Page content block with links"
+            name: "page_content_block_links"
+            widget: "object"
+            fields:
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - label: "Section Links"
+                name: "section_links"
+                widget: "list"
+                required: false
+                types:
+                  - label: "Link"
+                    name: "link"
+                    widget: "object"
+                    fields:
+                      - {
+                          label: "Link Name",
+                          name: "link_name",
+                          widget: "string",
+                        }
+                      - {
+                          label: "Link Url",
+                          name: "link_url",
+                          widget: "string",
+                        }
+          - label: "Products Content"
+            name: "products_content"
+            widget: "object"
+            fields:
+              - label: "Products and Services"
+                name: "products"
+                widget: "list"
+                types:
+                  - label: "Product"
+                    name: "product"
+                    widget: "object"
+                    fields:
+                      - {
+                          label: "Image",
+                          name: "image",
+                          widget: "image",
+                          required: false,
+                        }
+                      - {
+                          label: "Alt text",
+                          name: "alt_text",
+                          widget: "string",
+                        }
+                      - {
+                          label: "Image url",
+                          name: "image_url",
+                          widget: "string",
+                        }
+                      - {
+                          label: "Image Display",
+                          name: "image_display",
+                          widget: "boolean",
+                        }
+      - {
+          label: "Content Markdown",
+          name: "content_markdown",
+          widget: markdown,
+          required: false,
+        }
+  - name: "settings"
+    label: "Settings"
+    description: "Set and config frontend settings of the website."
+    delete: false
+    editor:
+      preview: false
+    created: false
+    format: "json"
+    slug: "{{slug}}"
+    files:
+      - name: "uiElements"
+        label: "UI Elements"
+        file: "assets/site/uisettings.json"
+        description: "Ui elements translations and Settings"
+        widget: "list"
+        fields:
+          - label: "Blog Article Previews Display"
+            name: "blogArticlePreviewDisplay"
+            widget: "boolean"
+            hint: "Show or hide article previews"
+          - {
+              label: "Article Preview Text (English)",
+              name: "articlePreviewEn",
+              widget: "string",
+              hint: "The text string that appears above recent blog post entries in the acticle preview component.",
+            }
+          - {
+              label: "Article Preview Text (French)",
+              name: "articlePreviewFr",
+              widget: "string",
+              hint: "The text string that appears above recent blog post entries in the acticle preview component. In French.",
+            }
+          - {
+              label: "Copyright Text (English)",
+              name: "copyrightTextEn",
+              widget: "string",
+              hint: "Copyright text that appears at the footer of each pages.",
+            }
+          - {
+              label: "Copyright Text (French)",
+              name: "copyrightTextFr",
+              widget: "string",
+              hint: "Copyright text that appears at the footer of each pages. In French.",
+            }
+          - {
+              label: "Cookie Componenent Text (English)",
+              name: "cookieMessageEn",
+              widget: "string",
+              hint: "Cookie component text message.",
+            }
+          - {
+              label: "Cookie Componenent Text (French)",
+              name: "cookieMessageFr",
+              widget: "string",
+              hint: "Cookie component text message.",
+            }
+          - {
+              label: "Cookie Componenent Details Label (English)",
+              name: "cookieLabelEn",
+              widget: "string",
+              hint: "Cookie component Details text label.",
+            }
+          - {
+              label: "Cookie Componenent Details Label (French)",
+              name: "cookieLabelFr",
+              widget: "string",
+              hint: "Cookie component Details text label.",
+            }
+          - {
+              label: "Cookie Componenent Accept Label (English)",
+              name: "cookieAcceptLabelEn",
+              widget: "string",
+              hint: "Cookie component Accept text label.",
+            }
+          - {
+              label: "Cookie Componenent Accept Label (French)",
+              name: "cookieAcceptLabelFr",
+              widget: "string",
+              hint: "Cookie component Accept text label.",
+            }
+      - name: "socialSettings"
+        label: "Social Media Settings"
+        file: "assets/site/settings/socialmediasettings.json"
+        description: "Social media links and settings."
+        widget: "list"
+        collapsed: false
+        fields:
+          - label: "Social Networks"
+            name: "socialNetworks"
+            widget: "list"
+            collapsed: false
+            fields:
+              - {
+                  label: "Social Media Name",
+                  name: "socialMediaName",
+                  widget: "string",
+                }
+              - { label: "Profile Url", name: "profileUrl", widget: "string" }
+              - { label: "Display", name: "display", widget: "boolean" }
+      - name: "metaSettings"
+        label: "Meta Data Settings"
+        file: "assets/site/settings/metasettings.json"
+        description: "Website meta Tags data for SEO Optomization"
+        widget: "list"
+        fields:
+          - {
+              label: "Site Title",
+              name: "title",
+              widget: "string",
+              description: "Define website title",
+            }
+          - {
+              label: "Site Slogan (En)",
+              name: "sloganEn",
+              widget: "string",
+              description: "Define website slogan",
+            }
+          - {
+              label: "Site Slogan (Fr)",
+              name: "sloganFr",
+              widget: "string",
+              description: "Define website slogan",
+            }
+          - {
+              label: "Description (En)",
+              name: "descriptionEn",
+              widget: "string",
+              description: "Define a description of web page",
+            }
+          - {
+              label: "Description (Fr)",
+              name: "descriptionFr",
+              widget: "string",
+              description: "Define a description of web page",
+            }
+          - {
+              label: "Author",
+              name: "author",
+              widget: "string",
+              description: "Define the author of the site",
+            }
+          - {
+              label: "keywords (En)",
+              name: "keywordsEn",
+              widget: "string",
+              description: "Define keywords for search engines",
+            }
+          - {
+              label: "keywords (Fr)",
+              name: "keywordsFr",
+              widget: "string",
+              description: "Define keywords for search engines",
+            }
+          - {
+              label: "Meta image",
+              name: "metaImage",
+              widget: "string",
+              description: "Define meta image for social networks, e.g: Facebook and twitter.",
+            }

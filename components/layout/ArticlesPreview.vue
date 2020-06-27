@@ -1,10 +1,10 @@
 <template>
-  <section class="section articles-preview">
+  <section v-show="articlesDisplay" class="section articles-preview">
     <div class="section__inner">
       <div class="articles-preview__link mg-bottom-5">
         <h4 class="text-rich-black text-semibold mg-right-4">
           <nuxt-link to="/blog"
-            >Read more on our blog
+            >{{ contentCms }}
             <Icon
               i-type="fas"
               i-icon="arrow-right"
@@ -87,6 +87,7 @@ import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
 import BlogCard from '~/components/blog/BlogCard.vue'
 import Icon from '~/components/elements/Icon.vue'
+const uiSettings = require('~/assets/site/uisettings.json')
 
 export default Vue.extend({
   name: 'BlogArticlesPreview',
@@ -94,12 +95,33 @@ export default Vue.extend({
     BlogCard,
     Icon
   },
+  async fetch() {
+    await this.fetchLatestPosts('3')
+  },
   computed: {
-    ...mapGetters('blog', ['getLatestPosts'])
+    ...mapGetters('blog', ['getLatestPosts']),
+    articlesDisplay() {
+      return uiSettings.blogArticlePreviewDisplay
+    },
+    contentCms() {
+      const contentArticlePreviewEn = uiSettings.articlePreviewEn
+      const contentArticlePreviewFr = uiSettings.articlePreviewFr
+      return this.$i18n.locale === 'en'
+        ? contentArticlePreviewEn
+        : this.$i18n.locale === 'fr'
+        ? contentArticlePreviewFr
+        : null
+    }
   },
-  created() {
-    this.fetchLatestPosts('3')
+  activated() {
+    // call fetch again if last fetch more than 60 sec ago
+    if (this.$fetchState.timestamp <= Date.now() - 60000) {
+      this.$fetch()
+    }
   },
+  // created() {
+  //   this.fetchLatestPosts('3')
+  // },
   methods: {
     ...mapActions('blog', ['fetchLatestPosts'])
   }
