@@ -53,7 +53,7 @@ export default Vue.extend({
   },
   computed: {
     fullPageUrl(): string {
-      return 'https://dev2020.itraws.com' + this.$route.fullPath
+      return 'https://www.itraws.com' + this.$route.fullPath
     }
   }
 })

@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
-  branch: dev # Branch to update (optional; defaults to master)
-site_url: https://dev2020.itraws.com
+  branch: master # Branch to update (optional; defaults to master)
+site_url: https://wwww.itraws.com
 # This lines should *not* be indented
 publish_mode: editorial_workflow
 locale: "en" # other languages, defaults to "en"

@@ -93,13 +93,13 @@ export default Vue.extend({
         { property: 'og:title', content: this.metaSettings.title }, // website title
         { property: 'og:description', content: this.metaSettings.description }, // website description
         { property: 'og:image', content: this.metaSettings.metaImage }, // website image with logo
-        { property: 'og:url', content: 'https://dev2020.itraws.com' },
+        { property: 'og:url', content: 'https://www.itraws.com' },
         // Twitter
         { name: 'twitter:title', content: this.metaSettings.title }, // website title
         { name: 'twitter:description', content: this.metaSettings.description }, // website description
         { name: 'twitter:image:src', content: this.metaSettings.metaImage }, // website image with logo
         { name: 'twitter:image', content: this.metaSettings.metaImage }, // website image with logo
-        { name: 'twitter:site', content: 'https://dev2020.itraws.com' },
+        { name: 'twitter:site', content: 'https://www.itraws.com' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:creator', content: '@itraws' },
         {

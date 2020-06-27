@@ -81,12 +81,12 @@ export default {
     breaks: true
   },
   sitemap: {
-    hostname: 'https://dev2020.itraws.com',
+    hostname: 'https://www.itraws.com',
     gzip: true,
     exclude: ['/admin/**']
   },
   i18n: {
-    baseUrl: 'https://dev2020.itraws.com',
+    baseUrl: 'https://www.itraws.com',
     seo: true,
     locales: [
       {
