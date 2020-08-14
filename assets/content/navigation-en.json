@@ -18,13 +18,13 @@
       "type": "link",
       "link_name": "products",
       "link_url": "products",
-      "link_display": true
+      "link_display": false
     },
     {
       "type": "link",
       "link_name": "blog",
-      "link_url": "blog",
-      "link_display": false
+      "link_url": "https://ghost.itraws.com/",
+      "link_display": true
     }
   ]
 }
