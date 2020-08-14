@@ -18,7 +18,7 @@
     {
       "socialMediaName": "Youtube",
       "profileUrl": "https://www.youtube.com/channel/UCtJSf86amJEgOnVWtfgGuTA",
-      "display": false
+      "display": true
     },
     {
       "socialMediaName": "Github",
