@@ -19,11 +19,6 @@
           "type": "link",
           "link_name": "Who we are",
           "link_url": "about"
-        },
-        {
-          "type": "link",
-          "link_name": "what we build",
-          "link_url": "products"
         }
       ]
     },
