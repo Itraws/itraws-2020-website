@@ -23,8 +23,8 @@
     {
       "type": "link",
       "link_name": "blog",
-      "link_url": "blog",
-      "link_display": false
+      "link_url": "https://ghost.itraws.com/",
+      "link_display": true
     }
   ]
 }
