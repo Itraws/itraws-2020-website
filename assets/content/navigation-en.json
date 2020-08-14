@@ -18,7 +18,7 @@
       "type": "link",
       "link_name": "products",
       "link_url": "products",
-      "link_display": true
+      "link_display": false
     },
     {
       "type": "link",
