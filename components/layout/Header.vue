@@ -3,79 +3,83 @@
     class="section header"
     :class="{ header__scroll: scrollPosition > 50 }"
   >
-    <section class="header__content">
-      <div class="header__inner">
-        <ItrawsLogo
-          :is-header="true"
-          :white-logo="
-            page === `blog-slug___${currentLocal}` && scrollPosition < 50
-              ? 'true'
-              : 'false'
-          "
-        />
-        <div class="header-menu--mobile">
-          <div class="menu-hamburger" @click="hamburgerClickedActive()">
-            <div
-              class="menu-hamburger--bar"
-              :class="{
-                'menu-hamburger--bar--clicked': hamburger,
-                'menu-hamburger--bar--white':
-                  page === `blog-slug___${currentLocal}`,
-                'menu-hamburger--bar--black':
-                  page !== `blog-slug___${currentLocal}`
-              }"
+    <nav class="navbar navbar-expand-lg py-4">
+      <div class="container">
+            <ItrawsLogo
+              :is-header="true"
+              :white-logo="
+                page === `blog-slug___${currentLocal}` && scrollPosition < 50
+                  ? 'true'
+                  : 'false'
+              "
             />
-          </div>
-        </div>
-        <ul class="header-menu">
-          <li
-            v-for="(link, index) in contentCms[0].navigation_list"
-            v-show="link.link_display"
-            :key="index"
-            class="meta-typo header-menu__item"
-          >
-            <nuxt-link
-              :to="localePath(link.link_url)"
-              :class="{
-                'header-menu__item--active':
-                  page === link.link_url + `___${currentLocal}` ||
-                  page === `blog-slug___${currentLocal}` ||
-                  (page === `index___${currentLocal}` &&
-                    link.link_name === 'home') ||
-                  (page === `index___${currentLocal}` &&
-                    link.link_name === 'Acceuil'),
-                'header-menu__item--blogpost':
-                  page === `blog-slug___${currentLocal}` && scrollPosition < 50
-              }"
-              >{{ link.link_name }}</nuxt-link
-            >
-          </li>
-          <li
-            v-for="locale in availableLocales"
-            :key="locale.code"
-            class="meta-typo header-menu__item"
-          >
-            <nuxt-link
-              :to="switchLocalePath(locale.code)"
-              :class="{
-                'header-menu__item--blogpost':
-                  page === `blog-slug___${currentLocal}` && scrollPosition < 50
-              }"
-              class="header-menu__item--active"
-              ><Icon
-                i-type="fas"
-                i-icon="globe-africa"
-                i-color="blue"
-                i-background="false"
-                class="mg-right-1"
-              />
-              {{ locale.name }}</nuxt-link
-            >
-          </li>
-        </ul>
+            <div class="header-menu--mobile">
+              <div class="menu-hamburger" @click="hamburgerClickedActive()">
+                <div
+                  class="menu-hamburger--bar"
+                  :class="{
+                    'menu-hamburger--bar--clicked': hamburger,
+                    'menu-hamburger--bar--white':
+                      page === `blog-slug___${currentLocal}`,
+                    'menu-hamburger--bar--black':
+                      page !== `blog-slug___${currentLocal}`
+                  }"
+                />
+              </div>
+            </div>
+            <ul class="header-menu navbar-nav ms-auto">
+              <li
+                v-for="(link, index) in contentCms[0].navigation_list"
+                v-show="link.link_display"
+                :key="index"
+                class=" header-menu__item"
+              >
+                <nuxt-link
+                  :to="localePath(link.link_url)"
+                  :class="{
+                    'header-menu__item--active':
+                      page === link.link_url + `___${currentLocal}` ||
+                      page === `blog-slug___${currentLocal}` ||
+                      (page === `index___${currentLocal}` &&
+                        link.link_name === 'home') ||
+                      (page === `index___${currentLocal}` &&
+                        link.link_name === 'Acceuil'),
+                    'header-menu__item--blogpost':
+                      page === `blog-slug___${currentLocal}` &&
+                      scrollPosition < 50
+                  }"
+                  >{{ link.link_name }}</nuxt-link
+                >
+              </li>
+              <li
+                v-for="locale in availableLocales"
+                :key="locale.code"
+                class="header-menu__item"
+              >
+                <nuxt-link
+                  :to="switchLocalePath(locale.code)"
+                  :class="{
+                    'header-menu__item--blogpost':
+                      page === `blog-slug___${currentLocal}` &&
+                      scrollPosition < 50
+                  }"
+                  class="header-menu__item--active"
+                  ><Icon
+                    i-type="fas"
+                    i-icon="globe-africa"
+                    i-color="blue"
+                    i-background="false"
+                    class="mg-right-1"
+                  />
+                  {{ locale.name }}</nuxt-link
+                >
+              </li>
+            </ul>
+        </section>
       </div>
-    </section>
+    </nav>
     <div
+    v-if="width <= 768"
       :class="
         hamburger
           ? 'mobile-menu scale-in-ver-top'
@@ -154,6 +158,8 @@ import Vue from 'vue'
 import { mapState } from 'vuex'
 import ItrawsLogo from '~/components/branding/Logo.vue'
 import Icon from '~/components/elements/Icon.vue'
+
+import { useWindowSize } from '~/mixins/windowSize'
 const socialMediaSetting = require('~/assets/site/settings/socialmediasettings.json')
 const contentCmsEn = require('~/assets/content/navigation-en.json')
 const contentCmsFr = require('~/assets/content/navigation-fr.json')
@@ -175,6 +181,7 @@ export default Vue.extend({
     ItrawsLogo,
     Icon
   },
+  mixins: [useWindowSize],
   data(): headerData {
     return {
       hamburger: false,

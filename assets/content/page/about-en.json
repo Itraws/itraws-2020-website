@@ -1,11 +1,10 @@
 {
   "language": "en",
   "title": "About",
-  "content_list": [
-    {
+  "content_list": [{
       "type": "hero_content",
-      "headline": "Aiming for the peak ",
-      "text": "At Itraws we build infrastructural technologies to improve the world we live in."
+      "headline": "Modern experiences designed to matter in culture.",
+      "text": "Our business acumen, marketing knowledge, and technology background allow us to meet the digital transformation challenges faced by organizations by adopting a client-centric approach."
     },
     {
       "type": "page_content_block",
@@ -18,6 +17,15 @@
       "headline": "Solutions for society",
       "text": "As far as it may be, we have always been fascinated by technology. It allows us to design solutions for various problems, brings innovation, and allows the construction of the infrastructures that constitute the world in which we live. However, several obstacles to the development of our society remain to be resolved. By solving them, we believe that we can contribute to economic growth.",
       "image_url": "https://itrawsorigin.s3.ca-central-1.amazonaws.com/about-image-2-v2.jpg"
+    },
+    {
+      "type": "page_content_block",
+      "headline": "Our mission",
+      "text": "To provide better solutions that: (improves public life), Offer commercial advantages, retells the story and shifts the status quo.",
+      "points": [
+        "Develop commercial solutions.",
+        "Create economic opportunity."
+      ]
     }
   ]
 }

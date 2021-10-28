@@ -1,82 +1,94 @@
 <template>
-  <section v-show="articlesDisplay" class="section articles-preview">
-    <div class="section__inner">
-      <div class="articles-preview__link mg-bottom-5">
-        <h4 class="text-rich-black text-semibold mg-right-4">
-          <nuxt-link to="/blog"
-            >{{ contentCms }}
-            <Icon
+  <section v-show="articlesDisplay" class="w-100 articles-preview py-5">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col">
+            <nuxt-link to="/blog"
+            class="d-flex"
+              >
+          <h5 class="text-rich-black text-semibold mg-right-4 d-inline-block">
+              {{ contentCms }}
+          </h5>
+              <Icon
+                i-type="fas"
+                i-icon="arrow-right"
+                i-color="red"
+                i-background="false"
+                class="hvr-forward"
+            />
+            </nuxt-link>
+        </div>
+      </div>
+          <div v-if="getLatestPosts" class="row">
+            <div class="col">
+
+            <BlogCard
+              v-for="post in getLatestPosts"
+              :key="post.id"
+              :card-color="
+                post.tags[0].slug === 'blog-post'
+                  ? 'white'
+                  : post.tags[0].slug === 'publication'
+                  ? 'blue'
+                  : post.tags[0].slug === 'open-source'
+                  ? 'black'
+                  : 'white'
+              "
               i-type="fas"
-              i-icon="arrow-right"
-              i-color="red"
-              i-background="false"
-              class="mg-left-1 hvr-forward"
-          /></nuxt-link>
-        </h4>
-      </div>
-      <div v-if="getLatestPosts" class="articles-container">
-        <BlogCard
-          v-for="post in getLatestPosts"
-          :key="post.id"
-          :card-color="
-            post.tags[0].slug === 'blog-post'
-              ? 'white'
-              : post.tags[0].slug === 'publication'
-              ? 'blue'
-              : post.tags[0].slug === 'open-source'
-              ? 'black'
-              : 'white'
-          "
-          i-type="fas"
-          :i-icon="
-            post.tags[0].slug === 'blog-post'
-              ? 'newspaper'
-              : post.tags[0].slug === 'publication'
-              ? 'file-alt'
-              : post.tags[0].slug === 'open-source'
-              ? 'file-code'
-              : post.tags[0].slug === 'podcast'
-              ? 'podcast'
-              : ''
-          "
-          i-color="blue"
-          i-background="true"
-          :i-link="`/blog/${post.slug}`"
-        >
-          <template #postCategory>
-            <p v-if="post.tags ? post.tags[0] : ''" class="blog-card__category">
-              {{ post.tags[0].name }}
-            </p>
-          </template>
-          <template #postTag
-            ><p
-              v-if="post.tags ? post.tags[1] : ''"
-              class="blog-card__posttype"
+              :i-icon="
+                post.tags[0].slug === 'blog-post'
+                  ? 'newspaper'
+                  : post.tags[0].slug === 'publication'
+                  ? 'file-alt'
+                  : post.tags[0].slug === 'open-source'
+                  ? 'file-code'
+                  : post.tags[0].slug === 'podcast'
+                  ? 'podcast'
+                  : ''
+              "
+              i-color="blue"
+              i-background="true"
+              :i-link="`/blog/${post.slug}`"
             >
-              {{ post.tags[1].name }}
-            </p></template
-          >
-          <template #postTitle
-            ><h3 class="blog-card__title mg-bottom-2">
-              <nuxt-link :to="{ path: `/blog/${post.slug}` }">{{
-                post.title
-              }}</nuxt-link>
-            </h3></template
-          >
-          <template #postExcerp
-            ><p class="blog-card__excerp">
-              {{ post.excerpt }}
-            </p></template
-          >
-          <template #postDate
-            ><p class="blog-card__date">
-              {{ $moment(post.created_at).format('MMM Do YYYY') }}
-            </p></template
-          >
-        </BlogCard>
-      </div>
-      <div v-else class="articles-container">
-        <p>Loading...</p>
+              <template #postCategory>
+                <small
+                  v-if="post.tags ? post.tags[0] : ''"
+                  class="blog-card__category"
+                >
+                  {{ post.tags[0].name }}
+                </small>
+              </template>
+              <template #postTag
+                ><p
+                  v-if="post.tags ? post.tags[1] : ''"
+                  class="blog-card__posttype"
+                >
+                  {{ post.tags[1].name }}
+                </p></template
+              >
+              <template #postTitle
+                ><h5 class="blog-card__title mg-bottom-2">
+                  <nuxt-link :to="{ path: `/blog/${post.slug}` }">{{
+                    post.title
+                  }}</nuxt-link>
+                </h5></template
+              >
+              <template #postExcerp
+                ><p class="blog-card__excerp">
+                  {{ post.excerpt }}
+                </p></template
+              >
+              <template #postDate
+                ><small class="blog-card__date">
+                  {{ $moment(post.created_at).format('MMM Do YYYY') }}
+                </small></template
+              >
+            </BlogCard>
+            </div>
+          </div>
+          <div v-else class="row">
+            <p>Loading...</p>
+          </div>
       </div>
     </div>
   </section>

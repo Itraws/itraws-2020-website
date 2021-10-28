@@ -1,10 +1,13 @@
 <template>
-  <div class="body">
+  <div class="container-fluid px-0">
     <modal-component v-if="getModalStatus" />
+    <layout-header />
     <nuxt keep-alive />
     <client-only>
       <cookie />
     </client-only>
+    <LayoutArticlesPreview />
+    <LayoutFooter />
   </div>
 </template>
 
@@ -13,18 +16,24 @@ import Vue from 'vue'
 import { mapState, mapActions, mapGetters } from 'vuex'
 import modalComponent from '~/components/elements/Modal.vue'
 import Cookie from '~/components/elements/Cookie.vue'
+import LayoutArticlesPreview from '~/components/layout/ArticlesPreview.vue'
+import LayoutFooter from '~/components/layout/Footer.vue'
+import LayoutHeader from '~/components/layout/Header.vue'
 
 const metaSettings = require('~/assets/site/settings/metasettings.json')
 
 export default Vue.extend({
   name: 'LandingPageLayout',
+  components: {
+    modalComponent,
+    LayoutArticlesPreview,
+    LayoutFooter,
+    LayoutHeader,
+    Cookie
+  },
   transition: {
     name: 'default',
     mode: 'out-in'
-  },
-  components: {
-    modalComponent,
-    Cookie
   },
   data() {
     return {

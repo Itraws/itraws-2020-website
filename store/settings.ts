@@ -21,7 +21,7 @@ export const state = () =>
       description: '',
       keywords: []
     },
-    uiSettings: {}
+    uiSettings: {},
   } as pageSettings)
 
 export type RootState = ReturnType<typeof state>
@@ -33,7 +33,7 @@ export const getters: GetterTree<RootState, RootState> = {
   getMeta: (state) => state.meta,
   getMetaDescription: (state) => state.meta.description,
   getMetaKeywords: (state) => state.meta.keywords,
-  getUiSettings: (state) => state.uiSettings
+  getUiSettings: (state) => state.uiSettings,
 }
 
 // Mutations
@@ -49,7 +49,7 @@ export const mutations: MutationTree<RootState> = {
   },
   SET_UI_SETTINGS: (state, payload: {}) => {
     state.uiSettings = payload
-  }
+  },
 }
 
 // Actions

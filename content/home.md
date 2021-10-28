@@ -1,6 +1,6 @@
 ---
-heroHeadline: 'Stillness. Firmness. Constancy.'
-heroText: 'Every mountain top is within reach if you just keep climbing.'
+heroHeadline: 'Creative Digital Agency.'
+heroText: 'We help businesses modernize and offer distinctive consumer experiences through the use of digital technologies.'
 heroButton:
   text: 'Know more'
   url: '/about'

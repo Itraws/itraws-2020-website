@@ -22,8 +22,6 @@
         </section>
       </div>
     </section>
-    <ArticlesPreview />
-    <LayoutFooter />
   </div>
 </template>
 

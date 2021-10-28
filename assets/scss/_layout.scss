@@ -22,7 +22,6 @@
     right: -5vw;
     bottom: 0;
     left: auto;
-
   }
 
   &--circle-alt {
@@ -258,22 +257,11 @@
           }
         }
       }
-
     }
   }
 
   .header-menu {
-    display: flex;
-    height: auto;
-    padding-top: 0;
-    opacity: 1;
-    position: relative;
-    pointer-events: auto;
-    padding-left: 0;
-    left: 0;
-    right: 0;
     list-style-type: none;
-    margin-left: auto;
 
     .header-menu__item {
       display: flex;
@@ -305,9 +293,8 @@
         align-items: center;
         max-width: none;
         color: colors(rich-black-75);
-        font-weight: fontWeight(semibold);
+        font-weight: fontWeight(medium);
         text-decoration: none;
-
 
         &:hover {
           color: colors(ocean-blue);
@@ -501,7 +488,8 @@
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-    padding: spacing-multiply($DEFAULT-SPACING, 10rem) 0 spacing-multiply($DEFAULT-SPACING, 5rem);
+    padding: spacing-multiply($DEFAULT-SPACING, 10rem) 0
+      spacing-multiply($DEFAULT-SPACING, 5rem);
   }
 
   .footer-menu {
@@ -516,7 +504,6 @@
     right: 0;
     list-style-type: none;
     margin: 0;
-    margin-left: spacing-multiply($DEFAULT-SPACING, 11em);
 
     .footer-menu__item {
       display: inline-block;
@@ -537,9 +524,7 @@
 
   .footer-copyright {
     display: block;
-    width: 100%;
     color: colors(coconut);
-    margin-top: spacing-multiply($DEFAULT-SPACING, 5em);
 
     a {
       color: colors(white-smoke);
@@ -586,7 +571,7 @@
   }
 
   .pattern--dot-rectangle-blog-post {
-    opacity: .75;
+    opacity: 0.75;
   }
 }
 
@@ -613,23 +598,22 @@
     }
   }
 
-
-
   .kg-bookmark-container {
     display: flex;
     min-height: 148px;
     color: colors(rich-black);
     text-decoration: none;
-    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, .15), 0 0 1px rgba(0, 0, 0, .09);
+    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.09);
 
     &:hover {
       color: colors(rich-black-75);
       text-decoration: none;
-      box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.09);
+      box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.15),
+        0 0 1px rgba(0, 0, 0, 0.09);
     }
   }
 
-  .kg-card+.kg-bookmark-card {
+  .kg-card + .kg-bookmark-card {
     margin-top: 0;
   }
 
@@ -646,7 +630,7 @@
     color: #313b3f;
     line-height: 1.5em;
     font-weight: 600;
-    transition: color .2s ease-in-out;
+    transition: color 0.2s ease-in-out;
   }
 
   .kg-bookmark-description {
@@ -701,7 +685,6 @@
   }
 
   .kg-gallery-image {
-
     img {
       display: block;
       margin: 0;
@@ -718,10 +701,10 @@
     max-width: 1040px;
   }
 
-  .kg-gallery-card+.kg-image-card.kg-width-wide,
-  .kg-gallery-card+.kg-gallery-card,
-  .kg-image-card.kg-width-wide+.kg-gallery-card,
-  .kg-image-card.kg-width-wide+.kg-image-card.kg-width-wide {
+  .kg-gallery-card + .kg-image-card.kg-width-wide,
+  .kg-gallery-card + .kg-gallery-card,
+  .kg-image-card.kg-width-wide + .kg-gallery-card,
+  .kg-image-card.kg-width-wide + .kg-image-card.kg-width-wide {
     margin: 0 0 3em;
   }
 
@@ -758,7 +741,7 @@
 
   a {
     word-break: break-word;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   .ul {
@@ -766,8 +749,8 @@
     min-width: 100%;
 
     li {
-      margin: .5em 0;
-      padding-left: .3em;
+      margin: 0.5em 0;
+      padding-left: 0.3em;
       line-height: 1.6em;
       word-break: break-word;
     }
@@ -784,7 +767,7 @@
     font-size: fontSize(button);
     line-height: 1.5em;
     background-color: colors(rich-black);
-    border-radius: .5rem;
+    border-radius: 0.5rem;
 
     code {
       padding: 0;
@@ -803,7 +786,7 @@
     h3,
     h4 {
       min-width: 100%;
-      margin: .5em 0 .4em;
+      margin: 0.5em 0 0.4em;
     }
 
     p {
@@ -811,7 +794,6 @@
       color: colors(rich-black-75);
       margin: 0 0 1.5em;
     }
-
 
     ul {
       list-style: disc;
@@ -823,15 +805,13 @@
       padding-left: 1.3em;
       padding-right: 1.5em;
     }
-
-
   }
 }
 
-.blog-container h1+figure,
-.blog-container h2+figure,
-.blog-container h3+figure,
-.blog-container h4+figure {
+.blog-container h1 + figure,
+.blog-container h2 + figure,
+.blog-container h3 + figure,
+.blog-container h4 + figure {
   margin-top: 2em;
 }
 

@@ -1,15 +1,13 @@
 // Desktop
-@include media('>=815px') {
+@include media('>768px') {
   .header-menu--mobile {
     display: none;
   }
 }
 
-@include media('≤815px') {
-  .header>.header__content>.header__inner {
-    .header-menu {
-      display: none;
-    }
+@include media('<=768px') {
+  .header-menu {
+    display: none;
   }
 }
 
@@ -40,7 +38,7 @@
     }
   }
 
-  .about-page>.section>.section__inner {
+  .about-page > .section > .section__inner {
     .section__grid {
       &:first-of-type {
         .about-section {
@@ -76,16 +74,16 @@
     }
   }
 
-  .blog-page>.section>.section__inner {
+  .blog-page > .section > .section__inner {
     max-width: 710px;
   }
 
-  .blog-post-page>.section>.section__content>.section__inner {
+  .blog-post-page > .section > .section__content > .section__inner {
     max-width: 710px;
   }
 
   .blog-post-page {
-    .section>.section__inner {
+    .section > .section__inner {
       max-width: 710px;
 
       .blog-container {
@@ -139,7 +137,7 @@
     }
   }
 
-  .header>.header__content>.header__inner {
+  .header > .header__content > .header__inner {
     .header-menu {
       display: none;
     }
@@ -153,7 +151,6 @@
 
         &--alt {
           top: 11rem;
-
         }
       }
 
@@ -207,7 +204,7 @@
       grid-template-columns: 1fr;
     }
 
-    .card>.card__content {
+    .card > .card__content {
       padding: 2.5rem 0;
       max-width: 300px;
       margin: 0 auto;
@@ -253,8 +250,6 @@
       overflow-x: hidden;
     }
   }
-
-
 
   .footer {
     .section__content {
@@ -308,7 +303,6 @@
 
   .blog-post-page {
     .section {
-
       .section__content {
         .section__inner {
           max-width: 300px;
@@ -345,12 +339,9 @@
     }
   }
 
-  .about-page>.section>.section__inner {
-
-
+  .about-page > .section > .section__inner {
     .section__grid {
       .about-section {
-
         h4,
         p {
           // ok
@@ -392,7 +383,6 @@
   }
 }
 
-
 // flaoting icons Phone
 @include media('≥phone', '<tablet') {
   .pattern--dot-rectangle {
@@ -413,7 +403,7 @@
   .shape-white {
     @include shape-image('white', 4);
     top: 4rem;
-    right: .25rem;
+    right: 0.25rem;
     bottom: 0;
     left: auto;
   }
@@ -444,7 +434,11 @@
 }
 
 // floafing icons tablet 600px
-@include media-context(('custom': 600px)) {
+@include media-context(
+  (
+    'custom': 600px
+  )
+) {
   @include media('≥600px', '≤custom') {
     .pattern--dot-rectangle {
       right: 0;
@@ -477,7 +471,6 @@
   }
 }
 
-
 // Blog post page phone and tablet <=600px
 @include media('≥phone', '≤600px') {
   .blog-container {
@@ -496,7 +489,6 @@
     left: 5rem;
   }
 }
-
 
 @include media('>1440px', '≥1920px') {
   .shape-white {

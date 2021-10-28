@@ -1,6 +1,5 @@
 <template>
   <div class="blog-page">
-    <BlogHeaderHero :featured-post="getFeaturedPost" />
     <FilterBar @changeSearchInput="updateSearchInput($event)" />
     <section class="section section--white-smoke">
       <div class="section__inner">
@@ -63,31 +62,27 @@
         <Pagination :filter-data="search" />
       </div>
     </section>
-    <LayoutFooter />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { mapGetters, mapActions } from 'vuex'
-import BlogHeaderHero from '~/components/layout/BlogHeaderHero.vue'
 import FilterBar from '~/components/elements/FilterBar.vue'
 import BlogCard from '~/components/blog/BlogCard.vue'
 import Pagination from '~/components/elements/Pagination.vue'
-import LayoutFooter from '~/components/layout/Footer.vue'
 
 export default Vue.extend({
   name: 'BlogPage',
+  layout: 'BlogLayout',
   transition: {
     name: 'bloglist',
     mode: 'out-in'
   },
   components: {
     FilterBar,
-    BlogHeaderHero,
     BlogCard,
-    Pagination,
-    LayoutFooter
+    Pagination
   },
   async fetch() {
     this.error = ''

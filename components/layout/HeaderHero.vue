@@ -1,35 +1,39 @@
 <template>
   <section
-    class="section"
-    :class="isHomePage ? 'section--100vh' : 'section--not100vh'"
+    class="container position-relative section--space overflow-hidden"
+    :class="isHomePage ? 'section--100vh ' : 'section--not100vh'"
   >
-    <layout-header />
     <span :class="isHomePage ? 'shape-red' : 'shape-red--alt'" />
-    <span :class="isHomePage ? 'shape-blue' : 'shape-blue--alt'" />
+    <span
+      v-if="width >= 768"
+      :class="isHomePage ? 'shape-blue' : 'shape-blue--alt'"
+    />
     <span
       :class="isHomePage ? 'pattern--circle' : 'pattern--circle-alt'"
       class="pattern"
     />
-    <div class="section__content">
-      <div class="section__inner">
-        <div
-          class="hero"
-          :class="isHomePage ? 'hero--homePage' : 'hero--altPage'"
-        >
+    <div class="row w-100  align-items-center">
+      <div class="col col-lg-8">
+        <div class="hero" :class="isHomePage ? '' : ''">
           <!-- <span class="pattern pattern--dot-vertical" /> -->
           <h1
-            class="hero__headline text-bold"
-            :class="isHomePage ? 'display-typo mg-bottom-5' : 'mg-bottom-3'"
+            class="hero__headline  text-bold"
+            :class="
+              isHomePage ? 'display-3 mg-bottom-5' : 'display-4 mg-bottom-3'
+            "
           >
             {{ heroHeadline }}
           </h1>
 
-          <p v-if="isHomePage" class="hero__text text-regular">
+          <h3 v-if="width >= 768" class="hero__text text-regular">
             {{ heroText }}
-          </p>
-          <h4 v-else class="text-regular text-rich-black-75">
+          </h3>
+          <h4 v-else class="hero__text text-regular">
             {{ heroText }}
           </h4>
+          <!-- <h3 class="text-regular text-rich-black-75">
+            {{ heroText }}
+          </h3> -->
           <button-component
             v-if="heroButtonText"
             :button-to="heroButtonTo"
@@ -48,14 +52,14 @@
 <script lang="ts">
 import Vue from 'vue'
 import ButtonComponent from '~/components/elements/ButtonComponent.vue'
-import LayoutHeader from '~/components/layout/Header.vue'
+import { useWindowSize } from '~/mixins/windowSize'
 
 export default Vue.extend({
   name: 'HeaderHero',
   components: {
-    ButtonComponent,
-    LayoutHeader
+    ButtonComponent
   },
+  mixins: [useWindowSize],
   props: {
     heroHeadline: {
       type: String,

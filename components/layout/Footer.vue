@@ -1,34 +1,36 @@
 <template>
-  <footer class="section footer">
-    <div class="section__content">
-      <div class="section__inner footer__content">
-        <ItrawsLogo :is-header="false" />
-        <ul class="footer-menu">
-          <li
-            v-for="(social, index) in socialMedias"
-            v-show="social.display"
-            :key="index"
-            class="footer-menu__item meta-typo"
-          >
-            <a :href="social.profileUrl" target="_blank"
-              ><Icon
-                i-type="fab"
-                :i-icon="social.socialMediaName.toLowerCase()"
-                i-color="white"
-                i-background="true"
-            /></a>
-          </li>
-        </ul>
-        <small class="footer-copyright">
-          {{ contentCms.copyright }} /
-          <nuxt-link
-            v-for="(link, index) in contentCms.menu.navigation_list"
-            v-show="link.link_display"
-            :key="index"
-            :to="localePath(link.link_url)"
-            >{{ link.link_name }}</nuxt-link
-          >
-        </small>
+  <footer class="footer">
+    <div class="container py-4">
+      <div class="row justify-content-sm-center align-items-sm-center">
+        <div class="col">
+          <ItrawsLogo :is-header="false" />
+          <ul class="footer-menu my-2">
+            <li
+              v-for="(social, index) in socialMedias"
+              v-show="social.display"
+              :key="index"
+              class="footer-menu__item meta-typo"
+            >
+              <a :href="social.profileUrl" target="_blank"
+                ><Icon
+                  i-type="fab"
+                  :i-icon="social.socialMediaName.toLowerCase()"
+                  i-color="white"
+                  i-background="true"
+              /></a>
+            </li>
+          </ul>
+          <small class="footer-copyright">
+            {{ contentCms.copyright }} /
+            <nuxt-link
+              v-for="(link, index) in contentCms.menu.navigation_list"
+              v-show="link.link_display"
+              :key="index"
+              :to="localePath(link.link_url)"
+              >{{ link.link_name }}</nuxt-link
+            >
+          </small>
+        </div>
       </div>
     </div>
   </footer>

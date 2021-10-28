@@ -19,8 +19,6 @@
           </div>
         </div>
       </section>
-      <ArticlesPreview />
-      <LayoutFooter />
     </div>
   </div>
 </template>
@@ -28,8 +26,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import HeaderHero from '~/components/layout/HeaderHero.vue'
-import ArticlesPreview from '~/components/layout/ArticlesPreview.vue'
-import LayoutFooter from '~/components/layout/Footer.vue'
 import ProductItem from '~/components/elements/ProductItem.vue'
 const contentCmsEn = require('~/assets/content/page/our-products-en.json')
 const contentCmsFr = require('~/assets/content/page/nos-produits-fr.json')
@@ -38,9 +34,7 @@ export default Vue.extend({
   name: 'ProductsPage',
   components: {
     HeaderHero,
-    ProductItem,
-    ArticlesPreview,
-    LayoutFooter
+    ProductItem
   },
   computed: {
     contentCms(): object {

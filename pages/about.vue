@@ -5,10 +5,29 @@
       :hero-text="contentCms.content_list[0].text"
     />
     <div class="about-page">
-      <section class="section section--white-smoke">
-        <div class="section__inner">
-          <div class="section__grid">
-            <div class="about-section">
+      <section class="section section--dark">
+        <div class="container-fluid p-0">
+          <div class="row">
+            <div class="col">
+              <div class="ratio ratio-16x9">
+                <iframe
+                  src="https://www.youtube.com/embed/is8drsL0q9k?rel=0"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section section--white-smoke py-5">
+        <div class="container">
+          <div
+            class="row row-cols-lg-2 gy-5 g-lg-1 justify-content-between align-items-center"
+          >
+            <div class="col-sm-12 col-lg">
               <h1 class="text-ocean-blue mg-bottom-3">
                 {{ contentCms.content_list[1].headline }}
               </h1>
@@ -16,7 +35,9 @@
                 {{ contentCms.content_list[1].text }}
               </h4>
             </div>
-            <div class="about-section__image--1">
+            <div
+              class="col-sm-12 col-lg d-flex justify-content-center my-sm-5 my-lg-0"
+            >
               <img
                 class="about-section__image--1"
                 :src="contentCms.content_list[1].image_url"
@@ -24,49 +45,33 @@
               />
             </div>
           </div>
-          <div class="section__grid mg-top-10">
-            <div class="about-section__image--2">
-              <img
-                class="about-section__image--2"
-                :src="contentCms.content_list[2].image_url"
-                alt="image 2"
-              />
+        </div>
+      </section>
+      <section class="section section--services py-5">
+        <div class="container">
+          <div class="row mg-bottom-10">
+            <div class="col">
+              <h4 class="text-regular text-uppercase">Rules to Live By</h4>
+              <h3 class="">Our Values</h3>
             </div>
-            <div class="about-section">
-              <h3 class="text-ocean-blue mg-bottom-3">
-                {{ contentCms.content_list[2].headline }}
-              </h3>
-              <p class="text-persian-blue">
-                {{ contentCms.content_list[2].text }}
+          </div>
+          <div class="row row-cols-lg-2 g-5">
+            <div
+              v-for="(x, index) in 4"
+              :key="index"
+              class="col-sm-auto col-md-6"
+            >
+              <h1 class="display-3 text-bold">01</h1>
+              <h2 class="text-semibold h3">Love your creaft.</h2>
+              <p class="text-regular lead">
+                We’re here because we love what we do. It’s our passion, hobby,
+                career, and vocation. We’re looking for others who feel the same
+                way.
               </p>
             </div>
           </div>
         </div>
       </section>
-      <!-- <section class="section section">
-        <div class="section__inner">
-          <div class="section__grid mission-grid">
-            <div class="mission-section">
-              <h1>{{ content.sectionThree.headline }}</h1>
-            </div>
-            <div class="mission-section">
-              <h4 class="text-semibold mg-bottom-5">
-                {{ content.sectionThree.paragraph }}
-              </h4>
-              <ul class="mission-section__list">
-                <li
-                  v-for="point in content.sectionThree.points"
-                  :key="point.id"
-                  class="mission-section__list__item"
-                >
-                  {{ point }}
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section> -->
-      <LayoutFooter />
     </div>
   </div>
 </template>
@@ -74,16 +79,13 @@
 <script lang="ts">
 import Vue from 'vue'
 import HeaderHero from '~/components/layout/HeaderHero.vue'
-import LayoutFooter from '~/components/layout/Footer.vue'
-// import content from '~/content/about.md'
 const contentCmsEn = require('~/assets/content/page/about-en.json')
 const contentCmsFr = require('~/assets/content/page/apropos-fr.json')
 
 export default Vue.extend({
   name: 'AboutPage',
   components: {
-    HeaderHero,
-    LayoutFooter
+    HeaderHero
   },
   computed: {
     contentCms() {

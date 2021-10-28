@@ -1,11 +1,12 @@
 // -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Importing bootstrap// -----------------------------------------------------------------------------
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
 // This file contains very basic styles.
 // -----------------------------------------------------------------------------
-
 // -----------------------------------------------------------------------------
 // This file contains all @font-face declarations, if any.
 // -----------------------------------------------------------------------------
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;600;700&display=swap');
 
 // -----------------------------------------------------------------------------
@@ -37,8 +38,10 @@
 // -----------------------------------------------------------------------------
 @mixin quick-spacing($direction, $multiply, $spacing-type) {
   &-#{$direction}-#{$multiply} {
-    #{$spacing-type}-#{$direction}: spacing-multiply($DEFAULT-SPACING,
-        ($multiply + 0rem));
+    #{$spacing-type}-#{$direction}: spacing-multiply(
+      $DEFAULT-SPACING,
+      ($multiply + 0rem)
+    );
   }
 }
 
@@ -60,25 +63,21 @@
 
 /// Regular font family
 /// @type List
-$text-poppins: 'Poppins',
-'Helvetica Neue Light',
-'Helvetica Neue',
-'Helvetica',
-'Arial',
-sans-serif !default;
+$text-poppins: 'Poppins', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica',
+  'Arial', sans-serif !default;
 
 /// Code (monospace) font family
 /// @type List
-$code-font: 'Courier New',
-monospace !default;
+$code-font: 'Courier New', monospace !default;
 
 // Serif front family
 /// @type List
-$serif-dm-display: 'DM Serif Display',
-serif;
+$serif-dm-display: 'Poppins', 'Helvetica Neue Light', 'Helvetica Neue',
+  'Helvetica', 'Arial', sans-serif !default;
 
 /// Colors
-$colors: (rich-black: rgba(5, 6, 9, 1),
+$colors: (
+  rich-black: rgba(5, 6, 9, 1),
   rich-black-75: rgba(5, 6, 9, 0.75),
   rich-black-50: rgba(5, 6, 9, 0.5),
   rich-black-25: rgba(5, 6, 9, 0.25),
@@ -91,10 +90,12 @@ $colors: (rich-black: rgba(5, 6, 9, 1),
   coconut-10: rgba(255, 255, 255, 0.1),
   ocean-blue: rgba(61, 68, 190, 1),
   persian-blue: rgba(55, 61, 169, 1),
-  sizzling-red: rgba(243, 57, 80, 1)) !default;
+  sizzling-red: rgba(243, 57, 80, 1)
+);
 
 /// Font Size
-$fontSize: (display: 3.25rem,
+$fontSize: (
+  display: 3.25rem,
   h1: 2.75rem,
   h2: 2.25rem,
   h3: 1.7rem,
@@ -102,13 +103,16 @@ $fontSize: (display: 3.25rem,
   body: 16px,
   button: 0.875rem,
   meta: 0.75rem,
-  small: 0.6875rem) !default;
+  small: 0.6875rem
+);
 
 /// Font weight
-$fontWeight: (regular: 400,
+$fontWeight: (
+  regular: 400,
   medium: 500,
   semibold: 600,
-  bold: 700) !default;
+  bold: 700
+);
 
 // Spacing
 // Spacing is size by multiple of 6.
@@ -142,34 +146,39 @@ p {
 
 h1 {
   font-family: $serif-dm-display;
-  font-size: fontSize(h1);
+  // font-size: fontSize(h1);
+  font-weight: fontWeight(bold);
   letter-spacing: $DEFAULT-LETTER-SPACING;
-  line-height: multily-px(fontSize(h1), $DEFAULT-LINE-HEIGHT);
+  // line-height: multily-px(fontSize(h1), $DEFAULT-LINE-HEIGHT);
 }
 
 h2 {
   font-family: $serif-dm-display;
-  font-size: fontSize(h2);
+  // font-size: fontSize(h2);
+  font-weight: fontWeight(bold);
   letter-spacing: $DEFAULT-LETTER-SPACING;
-  line-height: multily-px(fontSize(h2), $DEFAULT-LINE-HEIGHT);
+  // line-height: multily-px(fontSize(h2), $DEFAULT-LINE-HEIGHT);
 }
 
 h3 {
   font-family: $serif-dm-display;
-  font-size: fontSize(h3);
+  // font-size: fontSize(h3);
+  font-weight: fontWeight(semibold);
   letter-spacing: $DEFAULT-LETTER-SPACING;
-  line-height: multily-px(fontSize(h3), $DEFAULT-LINE-HEIGHT);
+  // line-height: multily-px(fontSize(h3), $DEFAULT-LINE-HEIGHT);
 }
 
 .h3-alt {
   font-family: $text-poppins;
+  font-weight: fontWeight(semibold);
 }
 
 h4 {
   font-family: $text-poppins;
-  font-size: fontSize(h4);
+  // font-size: fontSize(h4);
+  font-weight: fontWeight(medium);
   letter-spacing: $DEFAULT-LETTER-SPACING;
-  line-height: multily-px(fontSize(h4), $DEFAULT-LINE-HEIGHT);
+  // line-height: multily-px(fontSize(h4), $DEFAULT-LINE-HEIGHT);
 }
 
 button {
@@ -190,7 +199,7 @@ button {
 
 small {
   font-family: $text-poppins;
-  font-size: fontSize(small);
+  // font-size: fontSize(small);
   letter-spacing: $DEFAULT-LETTER-SPACING;
 }
 
@@ -348,15 +357,24 @@ body {
 
 //Section class properties
 .section {
-  width: 100%;
   overflow: hidden;
 
+  &--space {
+    padding: 7rem 0;
+    @media screen and (max-width: 768px) {
+      padding: 2.5rem 0;
+    }
+  }
   &--dark {
     background-color: colors(rich-black);
   }
 
   &--white-smoke {
     background-color: colors(white-smoke);
+  }
+
+  &--ocean-blue {
+    background-color: colors(ocean-blue);
   }
 
   &--100vh {
@@ -376,7 +394,35 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    padding-top: 7.625rem;
+    padding: 7.625rem 0;
+  }
+
+  &--services {
+    background-color: colors(rich-black);
+    a {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: colors(coconut);
+        &:hover {
+          color: colors(coconut-75) !important;
+        }
+      }
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: colors(coconut);
+    }
+    p {
+      color: colors(coconut-75);
+    }
   }
 
   .section__content {

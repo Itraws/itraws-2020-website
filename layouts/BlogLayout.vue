@@ -1,8 +1,9 @@
 <template>
-  <div class="body">
+  <div class="container-fluid px-0">
     <LayoutHeader />
     <BlogHeaderHero :featured-post="getFeaturedPost" />
     <nuxt keep-alive />
+    <LayoutFooter />
   </div>
 </template>
 
@@ -11,6 +12,7 @@ import Vue from 'vue'
 import { mapActions, mapGetters } from 'vuex'
 import LayoutHeader from '~/components/layout/Header.vue'
 import BlogHeaderHero from '~/components/layout/BlogHeaderHero.vue'
+import LayoutFooter from '~/components/layout/Footer.vue'
 
 export default Vue.extend({
   name: 'BlogPageLayout',
@@ -20,6 +22,7 @@ export default Vue.extend({
   },
   components: {
     LayoutHeader,
+    LayoutFooter,
     BlogHeaderHero
   },
   data() {

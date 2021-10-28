@@ -11,8 +11,6 @@
           v-html="$md.render(contentCms.content_markdown)"
         ></div>
       </section>
-      <ArticlesPreview />
-      <LayoutFooter />
     </div>
   </div>
 </template>
@@ -20,8 +18,6 @@
 <script lang="ts">
 import Vue from 'vue'
 import HeaderHero from '~/components/layout/HeaderHero.vue'
-import ArticlesPreview from '~/components/layout/ArticlesPreview.vue'
-import LayoutFooter from '~/components/layout/Footer.vue'
 const contentCmsEn = require('~/assets/content/page/privacy-policy-en.json')
 const contentCmsFr = require('~/assets/content/page/politique-de-confidentialité-fr.json')
 
@@ -32,9 +28,7 @@ interface objectType {
 export default Vue.extend({
   name: 'ProductsPage',
   components: {
-    HeaderHero,
-    ArticlesPreview,
-    LayoutFooter
+    HeaderHero
   },
   computed: {
     contentCms(): objectType {
