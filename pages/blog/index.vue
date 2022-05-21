@@ -1,38 +1,35 @@
 <template>
-  <div class="blog-page">
-    <BlogHeaderHero :featured-post="getFeaturedPost" />
-    <FilterBar @changeSearchInput="updateSearchInput($event)" />
+  <main class="flex-grow">
+    <section class="relative max-w-6xl mx-auto px-5 sm:px-6">
+      <BlogHeaderHero :featured-post="getFeaturedPost" />
+    </section>
+    <!-- filterbar -->
+    <section class="relative">
+      <FilterBar @changeSearchInput="updateSearchInput($event)" />
+    </section>
+    <!-- blog list -->
     <section class="section section--white-smoke">
       <div class="section__inner">
         <div class="articles-container">
-          <BlogCard
-            v-for="post in pageList"
-            :key="post.id"
-            :card-color="
-              post.tags[0].slug === 'blog-post'
-                ? 'white'
-                : post.tags[0].slug === 'publication'
+          <BlogCard v-for="post in pageList" :key="post.id" :card-color="
+            post.tags[0].slug === 'blog-post'
+              ? 'white'
+              : post.tags[0].slug === 'publication'
                 ? 'blue'
                 : post.tags[0].slug === 'open-source'
-                ? 'black'
-                : 'white'
-            "
-            i-type="fas"
-            :i-icon="
-              post.tags[0].slug === 'blog-post'
-                ? 'newspaper'
-                : post.tags[0].slug === 'publication'
-                ? 'file-alt'
-                : post.tags[0].slug === 'open-source'
-                ? 'file-code'
-                : post.tags[0].slug === 'podcast'
-                ? 'podcast'
-                : ''
-            "
-            i-color="blue"
-            i-background="true"
-            :i-link="`/blog/${post.slug}`"
-          >
+                  ? 'black'
+                  : 'white'
+          " i-type="fas" :i-icon="
+  post.tags[0].slug === 'blog-post'
+    ? 'newspaper'
+    : post.tags[0].slug === 'publication'
+      ? 'file-alt'
+      : post.tags[0].slug === 'open-source'
+        ? 'file-code'
+        : post.tags[0].slug === 'podcast'
+          ? 'podcast'
+          : ''
+" i-color="blue" i-background="true" :i-link="`/blog/${post.slug}`">
             <template #postCategory>
               <p v-if="post.tags[0]" class="blog-card__category">
                 {{ post.tags[0].name }}
@@ -46,7 +43,7 @@
             <template #postTitle>
               <h3 class="blog-card__title mg-bottom-2">
                 <nuxt-link :to="{ path: `/blog/${post.slug}` }">{{
-                  post.title
+                    post.title
                 }}</nuxt-link>
               </h3>
             </template>
@@ -63,8 +60,7 @@
         <Pagination :filter-data="search" />
       </div>
     </section>
-    <LayoutFooter />
-  </div>
+  </main>
 </template>
 
 <script lang="ts">
@@ -74,7 +70,6 @@ import BlogHeaderHero from '~/components/layout/BlogHeaderHero.vue'
 import FilterBar from '~/components/elements/FilterBar.vue'
 import BlogCard from '~/components/blog/BlogCard.vue'
 import Pagination from '~/components/elements/Pagination.vue'
-import LayoutFooter from '~/components/layout/Footer.vue'
 
 export default Vue.extend({
   name: 'BlogPage',
@@ -87,7 +82,6 @@ export default Vue.extend({
     BlogHeaderHero,
     BlogCard,
     Pagination,
-    LayoutFooter
   },
   async fetch() {
     this.error = ''

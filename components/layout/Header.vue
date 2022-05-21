@@ -1,50 +1,34 @@
 <template>
   <header
-    class="section header"
+    class="fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out false"
     :class="{ header__scroll: scrollPosition > 50 }"
   >
-    <section class="header__content">
-      <div class="header__inner">
-        <ItrawsLogo
-          :is-header="true"
-          :white-logo="
-            page === `blog-slug___${currentLocal}` && scrollPosition < 50
-              ? 'true'
-              : 'false'
-          "
-        />
-        <div class="header-menu--mobile">
-          <div class="menu-hamburger" @click="hamburgerClickedActive()">
-            <div
-              class="menu-hamburger--bar"
-              :class="{
-                'menu-hamburger--bar--clicked': hamburger,
-                'menu-hamburger--bar--white':
-                  page === `blog-slug___${currentLocal}`,
-                'menu-hamburger--bar--black':
-                  page !== `blog-slug___${currentLocal}`
-              }"
-            />
-          </div>
+    <div class="max-w-6xl mx-auto px-5 sm:px-6">
+      <div class="flex items-center justify-between h-auto ">
+        <div class="flex-shrink-0 mr-4">
+          <ItrawsLogo
+            :is-header="true"
+            :white-logo="
+              page === `blog-slug___${currentLocal}` && scrollPosition < 50
+                ? 'true'
+                : 'false'
+            "
+          />
         </div>
-        <ul class="header-menu">
+        <!-- tablet/desktop -->
+        <nav class="flex flex-grow hidden sm:block">
+        <ul class="flex flex-grow justify-end flex-wrap items-center">
           <li
             v-for="(link, index) in contentCms[0].navigation_list"
             v-show="link.link_display"
             :key="index"
-            class="meta-typo header-menu__item"
+            class="itrw-nav--item"
           >
             <nuxt-link
               :to="localePath(link.link_url)"
+              class="px-5 py-3 items-center transition duration-150 ease-in-out capitalize font-semibold"
               :class="{
-                'header-menu__item--active':
-                  page === link.link_url + `___${currentLocal}` ||
-                  page === `blog-slug___${currentLocal}` ||
-                  (page === `index___${currentLocal}` &&
-                    link.link_name === 'home') ||
-                  (page === `index___${currentLocal}` &&
-                    link.link_name === 'Acceuil'),
-                'header-menu__item--blogpost':
+                'itrw-nav--item--blogpost':
                   page === `blog-slug___${currentLocal}` && scrollPosition < 50
               }"
               >{{ link.link_name }}</nuxt-link
@@ -53,15 +37,15 @@
           <li
             v-for="locale in availableLocales"
             :key="locale.code"
-            class="meta-typo header-menu__item"
+            class="itrw-nav--item"
           >
             <nuxt-link
               :to="switchLocalePath(locale.code)"
+              class="flex px-5 py-3 items-center transition duration-150 ease-in-out capitalize font-semibold"
               :class="{
-                'header-menu__item--blogpost':
+                'itrw-nav--item--blogpost':
                   page === `blog-slug___${currentLocal}` && scrollPosition < 50
               }"
-              class="header-menu__item--active"
               ><Icon
                 i-type="fas"
                 i-icon="globe-africa"
@@ -73,13 +57,31 @@
             >
           </li>
         </ul>
+        </nav>
+        <nav class="flex flex-grow sm:hidden h-20 ">
+          <div class="flex flex-grow justify-end flex-wrap items-center header-menu--mobile">
+            <div class="menu-hamburger" @click="hamburgerClickedActive()">
+              <div
+                class="menu-hamburger--bar"
+                :class="{
+                  'menu-hamburger--bar--clicked': hamburger,
+                  'menu-hamburger--bar--white':
+                    page === `blog-slug___${currentLocal}` && scrollPosition < 50,
+                  'menu-hamburger--bar--black':
+                    page !== `blog-slug___${currentLocal}` || scrollPosition > 50,
+                }"
+              />
+            </div>
+          </div>
+          </nav>
       </div>
-    </section>
+    </div>
+    <!--  mobile below -->
     <div
       :class="
         hamburger
           ? 'mobile-menu scale-in-ver-top'
-          : 'mobile-menu--closed scale-in-ver-top--reversed'
+          : ' hidden transition duration-150 scale-in-ver-top '
       "
     >
       <ul class="mobile-menu__list">

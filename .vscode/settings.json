@@ -1,7 +1,9 @@
 {
-    "cSpell.words": [
-        "lastest",
-        "lastest posts",
-        "posts"
-    ]
+  "cSpell.words": ["lastest", "lastest posts", "posts"],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#103511",
+    "titleBar.activeBackground": "#164A18",
+    "titleBar.activeForeground": "#F7FDF7"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

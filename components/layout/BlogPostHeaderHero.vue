@@ -1,6 +1,5 @@
 <template>
   <section class="section section--dark section--not100vh">
-    <layout-header />
     <div class="section__content">
       <div class="section__inner section__flex">
         <div class="hero-blog-post">
@@ -35,13 +34,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import LayoutHeader from '~/components/layout/Header.vue'
 import Icon from '~/components/elements/Icon.vue'
 
 export default Vue.extend({
   components: {
     Icon,
-    LayoutHeader
   },
   props: {
     postHero: {

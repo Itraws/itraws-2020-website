@@ -1,7 +1,6 @@
 import { getAllPosts } from './api/GhostApi'
 
 export default {
-  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -70,9 +69,11 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     'vue-social-sharing/nuxt',
-    'nuxt-i18n',
+    '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    '@nuxtjs/tailwindcss'
+
   ],
   markdownit: {
     injected: true,
@@ -135,7 +136,7 @@ export default {
     }
   },
   server: {
-    port: 3000, // default: 3000
+    port: 3001, // default: 3000
     host: '0.0.0.0' // default: localhost
   }
 }
