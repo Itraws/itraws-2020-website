@@ -19,6 +19,12 @@
           "alt_text": "Victoria Analytica",
           "image_url": "https://itrawsorigin.s3.ca-central-1.amazonaws.com/itraws2020assets/UI/Branding/product-logo.png",
           "image_display": true
+        },
+        {
+          "type": "product",
+          "image_url": " https://www.golooka.com/static/media/Logo@2x.7432851e.png",
+          "alt_text": "GoLooka",
+          "image_display": true
         }
       ]
     }

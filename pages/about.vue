@@ -50,7 +50,8 @@
             </p>
           </div>
           <!-- Products list -->
-          <div class="max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
+          <div
+            class="max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-center md:max-w-2xl lg:max-w-none">
             <!-- product -->
             <ProductItem v-for="(product, index) in productsCms.content_list[1].products" v-show="product.image_display"
               :key="index" :image-url="product.image_url" :link-url="product.link_url" :alt-value="product.alt_text" />

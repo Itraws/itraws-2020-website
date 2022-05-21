@@ -1,30 +1,30 @@
 <template>
-  <div class="blog-post-page">
-    <BlogPostHeaderHero
-      :post-hero="{
+  <main class="flex-grow">
+    <section class="relative w-full  py-20 sm:py-32  flex flex-col justify-center section--dark ">
+      <BlogPostHeaderHero :post-hero="{
         title: data.title,
         excerpt: data.excerpt,
         date: data.created_at,
         image: data.feature_image
-      }"
-    />
-    <PostMetaBar
-      :authors="data.authors"
-      :post-url="fullPageUrl"
-      :post-title="data.title"
-      :post-description="data.excerpt"
-      post-hash-tag="itraws"
-    />
-    <section class="section">
-      <div class="section__inner">
-        <section class="blog-container">
+      }" />
+    </section>
+    <!-- meta bar -->
+    <section class="relative post-meta-section w-full ">
+      <PostMetaBar :authors="data.authors" :post-url="fullPageUrl" :post-title="data.title"
+        :post-description="data.excerpt" post-hash-tag="itraws" />
+    </section>
+    <!-- post body -->
+    <section class="relative">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6">
+        <section class="py-12 sm:py-20 blog-container">
           <article class="blog-post" v-html="data.html" />
         </section>
       </div>
     </section>
-    <ArticlesPreview />
-    <LayoutFooter />
-  </div>
+    <section class="relative articles-preview">
+      <ArticlesPreview />
+    </section>
+  </main>
 </template>
 
 <script lang="ts">

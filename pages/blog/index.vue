@@ -8,9 +8,9 @@
       <FilterBar @changeSearchInput="updateSearchInput($event)" />
     </section>
     <!-- blog list -->
-    <section class="section section--white-smoke">
-      <div class="section__inner">
-        <div class="articles-container">
+    <section class="relative section--white-smoke">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6">
+        <div class="py-12 sm:py-20">
           <BlogCard v-for="post in pageList" :key="post.id" :card-color="
             post.tags[0].slug === 'blog-post'
               ? 'white'
@@ -56,8 +56,8 @@
               </p>
             </template>
           </BlogCard>
+          <Pagination :filter-data="search" />
         </div>
-        <Pagination :filter-data="search" />
       </div>
     </section>
   </main>

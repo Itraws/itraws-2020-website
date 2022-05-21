@@ -1,5 +1,5 @@
 <template>
-  <article id="product-item" class="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
+  <article id="product-item" class="relative flex flex-col items-center p-6 bg-white rounded ">
     <img v-if="!linkUrl" :src="imageUrl" :alt="altValue" class="product-logo  p-1 -mt-1 mb-2" />
     <a v-else :href="linkUrl">
       <img :src="imageUrl" :alt="altValue" class="product-logo" />

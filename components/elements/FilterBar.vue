@@ -4,7 +4,7 @@
       <!-- filter cats -->
       <div class="filter-select">
         <ul class="filter-select__menu flex-wrap sm:flex-nowrap">
-          <li v-for="key in searchKeys" :key="key.id" class="filter-select__item" :class="
+          <li v-for="(key, index) in searchKeys" :key="index" class="filter-select__item" :class="
             getActiveTab === key
               ? 'filter-select__item--active'
               : getActiveTab === ''
