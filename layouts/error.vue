@@ -1,47 +1,36 @@
 <template>
-  <div>
-    <header-hero hero-headline="" hero-text="" />
-    <div class="error-page">
-      <section class="section">
-        <div class="section__inner">
-          <center>
-            <h1 class="display-typo text-bold text-ocean-blue">
-              Oopsss
-            </h1>
-            <h3
-              v-if="statusCode === 404"
-              class="h3-alt text-medium text-rich-black-75 mg-bottom-8"
-            >
-              {{ message }}
-            </h3>
-            <button-component
-              button-to="/"
-              button-value="Home page"
-              button-type="link"
-              button-color="oceanBlue"
-            />
-          </center>
+  <main class="flex-grow">
+    <section class="relative">
+      <header-hero hero-headline="" hero-text="" />
+    </section>
+    <!-- error -->
+    <section class="relative">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6">
+        <div class="py-12 sm:py-20 flex flex-col items-center justify-center">
+          <h1 class="display-typo text-bold text-ocean-blue">
+            Oopsss
+          </h1>
+          <h3 v-if="statusCode === 404" class="h3-alt text-medium text-rich-black-75 mg-bottom-8">
+            {{ message }}
+          </h3>
         </div>
-      </section>
+      </div>
+    </section>
+    <section class="relative articles-preview">
       <ArticlesPreview />
-      <LayoutFooter />
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import HeaderHero from '~/components/layout/HeaderHero.vue'
-import ButtonComponent from '~/components/elements/ButtonComponent.vue'
 import ArticlesPreview from '~/components/layout/ArticlesPreview.vue'
-import LayoutFooter from '~/components/layout/Footer.vue'
 
 export default Vue.extend({
   components: {
     HeaderHero,
-    ButtonComponent,
     ArticlesPreview,
-    LayoutFooter
   },
   props: {
     error: {
