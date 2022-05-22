@@ -11,7 +11,7 @@
     <section class="relative section--white-smoke">
       <div class="max-w-6xl mx-auto px-5 sm:px-6">
         <div class="py-12 sm:py-20">
-          <BlogCard v-for="post in pageList" :key="post.id" :card-color="
+          <BlogCard v-for="( post, index ) in pageList" :key="index" :card-color="
             post.tags[0].slug === 'blog-post'
               ? 'white'
               : post.tags[0].slug === 'publication'
@@ -75,7 +75,7 @@ export default Vue.extend({
   name: 'BlogPage',
   transition: {
     name: 'bloglist',
-    mode: 'out-in'
+    mode: 'out-in',
   },
   components: {
     FilterBar,
@@ -84,34 +84,28 @@ export default Vue.extend({
     Pagination,
   },
   async fetch() {
-    this.error = ''
-    this.loading = true
     try {
       await this.fetchBlogPosts()
+      await this.fetchFeaturedPost()
     } catch (error) {
-      this.setError(error)
+      throw error;
     }
-    this.loading = false
   },
   data() {
     return {
       search: '',
-      loading: false,
-      error: ''
     }
   },
   computed: {
     ...mapGetters('blog', ['getBlogPostsLength', 'getFeaturedPost']),
     ...mapGetters('blog', {
       blogPosts: 'getFilteredPosts',
-      paginatedPosts: 'getFilteredPostsV2'
+      paginatedPosts: 'getFilteredPostsV2',
     }),
     ...mapGetters('pagination', ['getCurrentPage', 'getNumberOfPages']),
     pageList(): [] {
-      // const begin: number = this.getCurrentPage
-      // const end: number = begin + this.getNumberOfPages
       return this.blogPosts(this.search)
-    }
+    },
   },
   activated() {
     // call fetch again if last fetch more than 60 sec ago
@@ -120,11 +114,10 @@ export default Vue.extend({
     }
   },
   methods: {
-    ...mapActions('blog', ['setFilteredPosts', 'fetchBlogPosts']),
-    ...mapActions('modal', ['setError']),
+    ...mapActions('blog', ['setFilteredPosts', 'fetchBlogPosts', 'fetchFeaturedPost']),
     updateSearchInput(input: string) {
       this.search = input
-    }
-  }
+    },
+  },
 })
 </script>
