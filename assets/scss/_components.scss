@@ -55,7 +55,8 @@
   letter-spacing: $DEFAULT-LETTER-SPACING;
   text-transform: uppercase;
   cursor: pointer;
-  padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 4rem);
+  padding: spacing-multiply($DEFAULT-SPACING, 2rem)
+    spacing-multiply($DEFAULT-SPACING, 4rem);
   border-radius: $DEFAULT-SPACING;
   border: none;
   transition: background-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -185,7 +186,8 @@
     text-transform: capitalize;
     border: 0;
     border-bottom: 1px solid colors(coconut);
-    padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
+    padding: spacing-multiply($DEFAULT-SPACING, 2rem)
+      spacing-multiply($DEFAULT-SPACING, 3rem);
     margin-bottom: spacing-multiply($DEFAULT-SPACING, 2rem);
 
     &:nth-last-of-type(1) {
@@ -209,12 +211,6 @@
   background-color: colors(white-smoke);
 
   &__link {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    vertical-align: top;
-    padding: 0;
-
     a {
       display: flex;
       color: colors(rich-black);
@@ -227,10 +223,6 @@
 }
 
 .articles-container {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-
   &__group {
     display: inherit;
     width: inherit;
@@ -429,7 +421,6 @@
     height: 15.75rem;
     background-color: transparent;
 
-
     .product-logo {
       width: 12.963rem;
       height: auto;
@@ -541,7 +532,8 @@
       font-size: fontSize(small);
       text-transform: uppercase;
       color: colors(rich-black-75);
-      padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
+      padding: spacing-multiply($DEFAULT-SPACING, 2rem)
+        spacing-multiply($DEFAULT-SPACING, 3rem);
       cursor: pointer;
       border-bottom: none;
       transition: border-bottom 0.2s ease;
@@ -595,7 +587,8 @@
       width: 100%;
       overflow: visible;
       margin: 0 0 0 spacing-multiply($DEFAULT-SPACING, 5rem);
-      padding: spacing-multiply($DEFAULT-SPACING, 2rem) spacing-multiply($DEFAULT-SPACING, 3rem);
+      padding: spacing-multiply($DEFAULT-SPACING, 2rem)
+        spacing-multiply($DEFAULT-SPACING, 3rem);
 
       &:focus {
         outline: 0;
@@ -829,10 +822,7 @@
 }
 
 // Cookie component
-.cookie {
-  z-index: 1;
-  position: fixed;
-  bottom: 0;
+.itrw-cookie {
   background-color: colors(persian-blue);
 
   &__inner {
@@ -842,10 +832,7 @@
     justify-content: space-between;
 
     .cookie__message {
-      display: inherit;
-      flex-direction: column;
-      max-width: 50%;
-      color: colors(coconut)
+      color: colors(coconut);
     }
 
     .cookie__actions {

@@ -1,60 +1,37 @@
 <template>
-  <section
-    class="section"
-    :class="isHomePage ? 'section--100vh' : 'section--not100vh'"
-  >
-    <layout-header />
-    <span :class="isHomePage ? 'shape-red' : 'shape-red--alt'" />
-    <span :class="isHomePage ? 'shape-blue' : 'shape-blue--alt'" />
-    <span
-      :class="isHomePage ? 'pattern--circle' : 'pattern--circle-alt'"
-      class="pattern"
-    />
-    <div class="section__content">
-      <div class="section__inner">
-        <div
-          class="hero"
-          :class="isHomePage ? 'hero--homePage' : 'hero--altPage'"
-        >
-          <!-- <span class="pattern pattern--dot-vertical" /> -->
-          <h1
-            class="hero__headline text-bold"
-            :class="isHomePage ? 'display-typo mg-bottom-5' : 'mg-bottom-3'"
-          >
-            {{ heroHeadline }}
-          </h1>
+  <div class="w-full py-20 sm:py-32  flex flex-col justify-center" :class="isHomePage ? 'h-screen' : ''">
+    <span class="invisible sm:visible" :class="isHomePage ? 'shape-red' : 'shape-red--alt'" />
+    <span class="invisible sm:visible" :class="isHomePage ? 'shape-blue' : 'shape-blue--alt'" />
+    <span :class="isHomePage ? 'pattern--circle' : 'pattern--circle-alt'" class="pattern overflow-hidden" />
+    <div class="w-full flex" :class="isHomePage ?'justify-center' : 'justify-start'">
 
-          <p v-if="isHomePage" class="hero__text text-regular">
-            {{ heroText }}
-          </p>
-          <h4 v-else class="text-regular text-rich-black-75">
-            {{ heroText }}
-          </h4>
-          <button-component
-            v-if="heroButtonText"
-            :button-to="heroButtonTo"
-            :button-value="heroButtonText"
-            button-type="link"
-            button-color="oceanBlue"
-          />
-        </div>
+      <div class="flex-col" :class="isHomePage ? 'max-w-2xl' : 'max-w-md '">
+        <h1 class="hero__headline font-bold" :class="isHomePage ? 'text-5xl mb-7 text-center' : 'mb-3'">
+          {{ heroHeadline }}
+        </h1>
 
-        <!-- Alt Page Hero End -->
+        <p v-if="isHomePage" class="hero__text font-normal mb-7 text-lg text-center">
+          {{ heroText }}
+        </p>
+        <p v-else class="font-normal text-lg text-rich-black-75">
+          {{ heroText }}
+        </p>
+        <!-- <button-component v-if="heroButtonText" :button-to="heroButtonTo" :button-value="heroButtonText"
+          button-type="link" button-color="oceanBlue" /> -->
       </div>
+
     </div>
-  </section>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import ButtonComponent from '~/components/elements/ButtonComponent.vue'
-import LayoutHeader from '~/components/layout/Header.vue'
 
 export default Vue.extend({
   name: 'HeaderHero',
   components: {
     ButtonComponent,
-    LayoutHeader
   },
   props: {
     heroHeadline: {

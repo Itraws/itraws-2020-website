@@ -16,12 +16,6 @@
     },
     {
       "type": "link",
-      "link_name": "products",
-      "link_url": "products",
-      "link_display": false
-    },
-    {
-      "type": "link",
       "link_name": "blog",
       "link_url": "blog",
       "link_display": true

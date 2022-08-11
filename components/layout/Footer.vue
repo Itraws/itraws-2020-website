@@ -1,24 +1,29 @@
 <template>
-  <footer class="section footer">
-    <div class="section__content">
-      <div class="section__inner footer__content">
-        <ItrawsLogo :is-header="false" />
-        <ul class="footer-menu">
-          <li
-            v-for="(social, index) in socialMedias"
-            v-show="social.display"
-            :key="index"
-            class="footer-menu__item meta-typo"
-          >
-            <a :href="social.profileUrl" target="_blank"
-              ><Icon
-                i-type="fab"
-                :i-icon="social.socialMediaName.toLowerCase()"
-                i-color="white"
-                i-background="true"
-            /></a>
-          </li>
-        </ul>
+  <footer class="w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out false footer">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6 py-6 sm:py-12">
+      <div class="flex items-center justify-between flex-wrap">
+        <div class="flex-shrink mr-20">
+          <ItrawsLogo :is-header="false" />
+        </div>
+        <nav class="flex flex-grow hidden sm:block">
+          <ul class="flex flex-grow justify-start items-center">
+            <li
+              v-for="(social, index) in socialMedias"
+              v-show="social.display"
+              :key="index"
+              class="footer-menu__item meta-typo"
+            >
+              <a :href="social.profileUrl" target="_blank" class="items-center"
+                ><Icon
+                  i-type="fab"
+                  :i-icon="social.socialMediaName.toLowerCase()"
+                  i-color="white"
+                  i-background="true"
+              /></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
         <small class="footer-copyright">
           {{ contentCms.copyright }} /
           <nuxt-link
@@ -29,7 +34,6 @@
             >{{ link.link_name }}</nuxt-link
           >
         </small>
-      </div>
     </div>
   </footer>
 </template>

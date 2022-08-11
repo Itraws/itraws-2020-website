@@ -1,23 +1,16 @@
 <template>
-  <section v-if="isOpen" class="cookie section">
-    <div class="section__inner cookie__inner">
-      <div class="cookie__message">
-        <small>{{ uiCookieContent.message }}</small>
-      </div>
-      <div class="cookie__actions">
-        <button-component
-          :button-value="uiCookieContent.acceptLabel"
-          button-type="button"
-          button-color="white"
-          @click.native="accept"
-        />
-        <button-component
-          :button-to="localePath(privacylink.link_url)"
-          :button-value="uiCookieContent.label"
-          button-type="link"
-          button-color="richblack"
-          class="mg-left-3"
-        />
+  <section v-if="isOpen" class="flex flex-col fixed z-30 bottom-0 itrw-cookie w-full">
+    <div class="max-w-6xl mx-auto p-5 sm:px-6">
+      <div class="flex flex-wrap items-center justify-between h-auto md:h-20">
+        <div class="flex-initial max-w-md cookie__message">
+          <small class="text-white">{{ uiCookieContent.message }}</small>
+        </div>
+        <div class="flex items-center justify-center flex-auto mt-2 md:mt-0">
+          <button-component :button-value="uiCookieContent.acceptLabel" button-type="button" button-color="coconut"
+            @click.native="accept" />
+          <button-component :button-to="localePath(privacyLink.link_url)" :button-value="uiCookieContent.label"
+            button-type="link" button-color="richblack" class="mg-left-3" />
+        </div>
       </div>
     </div>
   </section>
@@ -71,7 +64,7 @@ export default Vue.extend({
     containerPosition(): string {
       return `cookie--${this.position}`
     },
-    privacylink(): objectType | any {
+    privacyLink(): objectType | any {
       const local = this.$i18n.locale
       return local === 'en'
         ? subNavigationEn.navigation_list[0]
@@ -80,17 +73,17 @@ export default Vue.extend({
     uiCookieContent(): object | any {
       return this.$i18n.locale === 'en'
         ? {
-            message: uiSettings.cookieMessageEn,
-            label: uiSettings.cookieLabelEn,
-            acceptLabel: uiSettings.cookieAcceptLabelEn
-          }
+          message: uiSettings.cookieMessageEn,
+          label: uiSettings.cookieLabelEn,
+          acceptLabel: uiSettings.cookieAcceptLabelEn
+        }
         : this.$i18n.locale === 'fr'
-        ? {
+          ? {
             message: uiSettings.cookieMessageFr,
             label: uiSettings.cookieLabelFr,
             acceptLabel: uiSettings.cookieAcceptLabelFr
           }
-        : null
+          : null
     }
   },
   created() {

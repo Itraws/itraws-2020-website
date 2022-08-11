@@ -11,7 +11,7 @@ export const state = () =>
     lastestPosts: [],
     activeFilterTab: '',
     numberPerPage: 6,
-    filteredPosts: []
+    filteredPosts: [],
   } as BlogState)
 
 // RootState
@@ -54,7 +54,7 @@ export const getters: GetterTree<RootState, RootState> = {
     return state.blogPosts.length
   },
   getNumberPerPage: (state) => state.numberPerPage,
-  getFilteredPostsV2: (state) => state.filteredPosts
+  getFilteredPostsV2: (state) => state.filteredPosts,
 }
 
 // Mutations
@@ -73,7 +73,7 @@ export const mutations: MutationTree<RootState> = {
   },
   SET_FILTERED_POSTS(state, data: []) {
     state.filteredPosts = data
-  }
+  },
 }
 
 // Actions
@@ -82,7 +82,7 @@ export const actions: ActionTree<RootState, RootState> = {
     const posts: [] | any = await getPosts(currentPage)
     commit('SET_BLOG_POSTS', posts)
     dispatch('pagination/setPagination', posts.meta.pagination, {
-      root: true
+      root: true,
     })
     dispatch('fetchFeaturedPost')
   },
@@ -104,5 +104,5 @@ export const actions: ActionTree<RootState, RootState> = {
   setFilteredPosts: ({ commit }, data: []) => {
     const filteredData = data
     commit('SET_FILTERED_POSTS', filteredData)
-  }
+  },
 }

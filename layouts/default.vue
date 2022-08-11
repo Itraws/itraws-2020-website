@@ -1,18 +1,22 @@
 <template>
-  <div class="body">
+  <div class="flex flex-col min-h-screen overflow-hidden">
+    <layout-header />
     <modal-component v-if="getModalStatus" />
-    <nuxt keep-alive />
+      <nuxt keep-alive />
     <client-only>
       <cookie />
     </client-only>
+      <LayoutFooter />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { mapState, mapActions, mapGetters } from 'vuex'
+import layoutHeader from '~/components/layout/Header.vue'
+import LayoutFooter from '~/components/layout/Footer.vue'
 import modalComponent from '~/components/elements/Modal.vue'
-import Cookie from '~/components/elements/Cookie.vue'
+import cookie from '~/components/elements/Cookie.vue'
 
 const metaSettings = require('~/assets/site/settings/metasettings.json')
 
@@ -23,8 +27,10 @@ export default Vue.extend({
     mode: 'out-in'
   },
   components: {
+    layoutHeader,
     modalComponent,
-    Cookie
+    cookie,
+    LayoutFooter
   },
   data() {
     return {
@@ -75,7 +81,7 @@ export default Vue.extend({
     ...mapActions('modal', ['setError'])
   },
   head(): {} | any {
-    const i18nSeo: {} | any = this.$nuxtI18nSeo()
+    const i18nSeo: {} | any = this.$nuxtI18nHead()
     return {
       title: `${this.metaSettings.title} - ${this.metaSettings.slogan}`,
       htmlAttrs: {

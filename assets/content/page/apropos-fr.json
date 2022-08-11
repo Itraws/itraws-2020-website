@@ -5,19 +5,19 @@
     {
       "type": "hero_content",
       "headline": "Viser le sommet",
-      "text": "Chez Itraws, nous développons des infrastructures technologique afin d'améliorer le monde dans lequel nous vivons."
+      "text": "Itraws vise à devenir un fournisseur leader de technologies commerciales et sociales pour aider l'Afrique à prospérer."
     },
     {
       "type": "page_content_block",
-      "headline": "Notre histoire",
-      "text": "Itraws a été conçu dans le but d’améliorer la société dans laquelle nous vivons en utilisant la technologie. C’est l’œuvre d’un idéaliste, un rêve qui devient une réalité. L’histoire fascinante d’un autodidacte qui a fait preuve de persévérance et de vision. Les difficultés rencontrées sur le chemin du sommet ont permis de proposer des services en adéquation avec le marché et à la hauteur de vos exigences.",
+      "headline": "Notre Mission",
+      "text": "Itraws souhaite devenir un fournisseur de technologie commerciale et sociale de premier plan pour aider l'Afrique à prospérer. Nous créons des technologies qui amélioreront les marchés en réduisant la dépendance aux anciennes méthodes en utilisant une technologie et une ingénierie de pointe.",
       "image_url": "https://itrawsorigin.s3.ca-central-1.amazonaws.com/about-image-1-v2.jpg"
     },
     {
       "type": "page_content_block",
-      "image_url": "https://itrawsorigin.s3.ca-central-1.amazonaws.com/about-image-2-v2.jpg",
-      "text": "Aussi loin que cela puisse être, nous avons toujours été fascinés par la technologie. Elle nous permet de concevoir des solutions pour diverses problématiques, apporte de l’innovation et permet la construction des infrastructures qui constituent le monde dans lequel nous vivons. Cependant plusieurs obstacles au développement de notre société restent à résoudre. En les résolvant, nous croyons que nous pouvons contribuer à la croissance économique.",
-      "headline": "Solutions pour la société"
+      "image_url": "",
+      "text": "",
+      "headline": ""
     }
   ]
 }

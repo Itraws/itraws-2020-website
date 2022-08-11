@@ -3,7 +3,7 @@ import GhostContentApi from '@tryghost/content-api'
 const api = new GhostContentApi({
   url: 'https://ghost.itraws.com',
   key: 'fb222a38a47916a510a0f6c92f',
-  version: 'v3'
+  version: 'v5.8'
 })
 export const getPosts = async (currentPage = 1) => {
   return await api.posts.browse({

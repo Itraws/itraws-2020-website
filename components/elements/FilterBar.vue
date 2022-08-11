@@ -1,56 +1,33 @@
 <template>
-  <section class="filter-section">
-    <div class="filter-section__inner">
+  <div class="filter-section">
+    <div class="filter-section__inner flex-wrap sm:flex-nowrap">
+      <!-- filter cats -->
       <div class="filter-select">
-        <ul class="filter-select__menu">
-          <li
-            v-for="key in searchKeys"
-            :key="key.id"
-            class="filter-select__item"
-            :class="
-              getActiveTab === key
-                ? 'filter-select__item--active'
-                : getActiveTab === ''
+        <ul class="filter-select__menu flex-wrap sm:flex-nowrap">
+          <li v-for="(key, index) in searchKeys" :key="index" class="filter-select__item" :class="
+            getActiveTab === key
+              ? 'filter-select__item--active'
+              : getActiveTab === ''
                 ? setActiveTab('all')
                 : ''
-            "
-            @click="setActiveTab(key)"
-          >
+          " @click="setActiveTab(key)">
             {{ key }}
           </li>
         </ul>
       </div>
-      <div class="filter-search-bar">
-        <label
-          id="filter-search-label"
-          class="filter-search-label"
-          :class="
-            searchInput.isFocused
-              ? 'filter-search-label--focused'
-              : 'filter-search-label--not-focused'
-          "
-          for="search"
-          >Search</label
-        >
-        <input
-          v-model="search"
-          class="filter-search-input"
-          name="search"
-          role="button"
-          type="text"
-          @focus="onFocus($event)"
-          @blur="onBlur"
-        />
-        <Icon
-          class="filter-search-icon"
-          i-type="fas"
-          i-icon="search"
-          i-color="blue"
-          i-background="true"
-        />
+      <!-- search bar -->
+      <div class="filter-search-bar py-4 sm:py-0 flex items-center">
+        <label id="filter-search-label" class="filter-search-label" :class="
+          searchInput.isFocused
+            ? 'filter-search-label--focused'
+            : 'filter-search-label--not-focused'
+        " for="search">Search</label>
+        <input v-model="search" class="filter-search-input" name="search" role="button" type="text"
+          @focus="onFocus($event)" @blur="onBlur" />
+        <Icon class="filter-search-icon" i-type="fas" i-icon="search" i-color="blue" i-background="true" />
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script lang="ts">
