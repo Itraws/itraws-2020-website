@@ -1,6 +1,7 @@
 import { getAllPosts } from './api/GhostApi'
 
 export default {
+  target: 'static',
   /*
    ** Headers of the page
    */

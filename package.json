@@ -8,9 +8,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "generate": "nuxt generate",
-    "start": "nuxt start",
-    "lint": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
-    "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
+    "start": "nuxt start"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -23,27 +21,19 @@
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/tailwindcss": "^5.0.4",
     "@tryghost/content-api": "^1.9.8",
-    "nuxt": "^2.13.3",
+    "nuxt": "2.15.8",
     "vue-social-sharing": "^3.0.9"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "@nuxtjs/eslint-module": "3.1.0",
     "@nuxtjs/google-analytics": "^2.4.0",
     "@nuxtjs/moment": "^1.6.1",
     "@types/node": "^17.0.35",
     "@vue/runtime-dom": "^3.2.35",
-    "eslint": "^8.15.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-nuxt": ">=3.2.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-webpack-plugin": "^3.1.1",
     "fibers": "^5.0.1",
     "prettier": "2.6.2",
     "sass": "^1.52.0",
-    "sass-loader": "^10.1.1",
-    "webpack": "^4.46.0"
+    "sass-loader": "^10.1.1"
   }
 }
