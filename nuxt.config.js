@@ -26,13 +26,13 @@ export default {
    */
   css: [
     '@/assets/scss/main.scss',
-    '@fortawesome/fontawesome-svg-core/styles.css'
+    '@fortawesome/fontawesome-svg-core/styles.css',
   ],
   /*
    ** Middleware
    */
   router: {
-    middleware: 'pages'
+    middleware: 'pages',
   },
   generate: {
     routes: async () => {
@@ -40,10 +40,10 @@ export default {
       return data.map((post) => {
         return {
           route: `/blog/${post.slug}`,
-          payload: post
+          payload: post,
         }
       })
-    }
+    },
   },
   /*
    ** Plugins to load before mounting the App
@@ -55,12 +55,7 @@ export default {
   buildModules: [
     '@nuxt/typescript-build',
     '@nuxtjs/moment',
-    [
-      '@nuxtjs/google-analytics',
-      {
-        id: 'UA-170813746-1'
-      }
-    ]
+    '@nuxtjs/google-analytics',
   ],
   /*
    ** Nuxt.js modules
@@ -72,19 +67,18 @@ export default {
     '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
     '@nuxtjs/markdownit',
-    '@nuxtjs/tailwindcss'
-
+    '@nuxtjs/tailwindcss',
   ],
   markdownit: {
     injected: true,
     preset: 'default',
     linkify: true,
-    breaks: true
+    breaks: true,
   },
   sitemap: {
     hostname: 'https://www.itraws.com',
     gzip: true,
-    exclude: ['/admin/**']
+    exclude: ['/admin/**'],
   },
   i18n: {
     baseUrl: 'https://www.itraws.com',
@@ -93,29 +87,36 @@ export default {
       {
         code: 'en',
         name: 'English',
-        iso: 'en-US'
+        iso: 'en-US',
       },
       {
         code: 'fr',
         name: 'Francais',
-        iso: 'fr-FR'
-      }
+        iso: 'fr-FR',
+      },
     ],
     defaultLocale: 'en',
     vueI18n: {
       fallbackLocale: 'en',
       messages: {
         en: require('./locales/en.json'),
-        fr: require('./locales/fr.json')
-      }
-    }
+        fr: require('./locales/fr.json'),
+      },
+    },
+  },
+  // Google analytics
+  googleAnalytics: {
+    id: 'UA116353420-1',
+    autoTracking: {
+      screenview: true,
+    },
   },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    proxy: false
+    proxy: false,
   },
   proxy: {},
   /*
@@ -127,16 +128,16 @@ export default {
      */
     hotMiddleware: {
       client: {
-        overlay: false
-      }
+        overlay: false,
+      },
     },
     extend(config) {
       // add frontmatter-markdown-loader
       config.module.rules.push({})
-    }
+    },
   },
   server: {
     port: 3001, // default: 3000
-    host: '0.0.0.0' // default: localhost
-  }
+    host: '0.0.0.0', // default: localhost
+  },
 }

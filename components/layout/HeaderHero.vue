@@ -3,20 +3,21 @@
     <span class="invisible sm:visible" :class="isHomePage ? 'shape-red' : 'shape-red--alt'" />
     <span class="invisible sm:visible" :class="isHomePage ? 'shape-blue' : 'shape-blue--alt'" />
     <span :class="isHomePage ? 'pattern--circle' : 'pattern--circle-alt'" class="pattern overflow-hidden" />
-    <div class="flex justify-start">
-      <div class="w-full hero" :class="isHomePage ? 'max-w-md' : 'max-wd-lg'">
-        <h1 class="hero__headline font-bold" :class="isHomePage ? 'display-typo mb-7' : 'mb-3'">
+    <div class="w-full flex" :class="isHomePage ?'justify-center' : 'justify-start'">
+
+      <div class="flex-col" :class="isHomePage ? 'max-w-2xl' : 'max-w-md '">
+        <h1 class="hero__headline font-bold" :class="isHomePage ? 'text-5xl mb-7 text-center' : 'mb-3'">
           {{ heroHeadline }}
         </h1>
 
-        <p v-if="isHomePage" class="hero__text font-normal mb-7">
+        <p v-if="isHomePage" class="hero__text font-normal mb-7 text-lg text-center">
           {{ heroText }}
         </p>
-        <h4 v-else class="font-normal text-rich-black-75">
+        <p v-else class="font-normal text-lg text-rich-black-75">
           {{ heroText }}
-        </h4>
-        <button-component v-if="heroButtonText" :button-to="heroButtonTo" :button-value="heroButtonText"
-          button-type="link" button-color="oceanBlue" />
+        </p>
+        <!-- <button-component v-if="heroButtonText" :button-to="heroButtonTo" :button-value="heroButtonText"
+          button-type="link" button-color="oceanBlue" /> -->
       </div>
 
     </div>

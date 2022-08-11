@@ -22,14 +22,14 @@
                   {{ contentCms.content_list[1].text }}
                 </p>
               </div>
-              <div class="mb-8">
-                <h4 class="text-ocean-blue h4 font-bold mb-3">
+              <!-- <div class="mb-8">
+                <h4 v-if="contentCms.content_list[2].headline" class="text-ocean-blue h4 font-bold mb-3">
                   {{ contentCms.content_list[2].headline }}
                 </h4>
                 <p class="text-persian-blue text-normal">
                   {{ contentCms.content_list[2].text }}
                 </p>
-              </div>
+              </div> -->
               <!-- <img class="md:max-w-none mx-auto rounded about-section__image--1"
                 :src="contentCms.content_list[1].image_url" alt="image 1" /> -->
             </div>
